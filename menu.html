@@ -3,16 +3,16 @@
 	<md-tooltip md-direction="bottom">Home</md-tooltip>
 </md-button>
 <md-button class="md-icon-button" ng-if="gestione.moduli.scadenziario && logged_user.fl_scadenziario == '1'" ng-click="page('scadenziario')" ng-class="{'selected': page()=='scadenziario'}" aria-label="scadenziario">
-	<md-icon md-svg-icon="img/icons/road.svg"></md-icon>
-	<md-tooltip md-direction="bottom">Scadenziario/Strada</md-tooltip>
+	<md-icon md-svg-icon="img/icons/helmet.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Pista</md-tooltip>
 </md-button>
 <md-button class="md-icon-button" ng-if="gestione.moduli.allegati && logged_user.fl_allegati == '1'" ng-click="page('allegati')" ng-class="{'selected': page()=='allegati'}" aria-label="allegati">
-	<md-icon md-svg-icon="img/icons/map.svg"></md-icon>
-	<md-tooltip md-direction="bottom">Allegati/Chi Siamo</md-tooltip>
+	<md-icon md-svg-icon="img/icons/allegato.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Allegati</md-tooltip>
 </md-button>
 <md-button class="md-icon-button" ng-if="gestione.moduli.report && logged_user.fl_report == '1'" ng-click="page('report')" ng-class="{'selected': page()=='report'}" aria-label="report">
-	<md-icon md-svg-icon="img/icons/helmet.svg"></md-icon>
-	<md-tooltip md-direction="bottom">Report/Pista</md-tooltip>
+	<md-icon md-svg-icon="img/icons/calendar.svg"></md-icon>
+	<md-tooltip md-direction="bottom">Calendario</md-tooltip>
 </md-button>
 <md-button class="md-icon-button" ng-if="gestione.moduli.gestione && logged_user.fl_gestione == '1'" ng-click="page('gestione')" ng-class="{'selected': page()=='gestione'}" aria-label="gestione">
 	<md-icon md-svg-icon="img/icons/settings.svg"></md-icon>
@@ -37,7 +37,7 @@
 		</md-menu-item>
 		<md-menu-item>
 			<md-button>
-				<md-icon md-svg-icon="img/icons/info.svg"></md-icon> {{logged_user.username}} (Version 1.2)
+				<md-icon md-svg-icon="img/icons/info.svg"></md-icon> Version 1.0.1
 			</md-button>
 		</md-menu-item>
 		<md-menu-item>

@@ -166,7 +166,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 	$rootScope.anagrafica_azienda_activity = function(azienda_activity) {
 		let dialog = {};
 		dialog.clickOutsideToClose = true;
-		dialog.title = "Anagrafica attività azienda";
+		dialog.title = "Anagrafica agenda pilota";
 		dialog.class = "dialog-md";
 		dialog.content_tmpl = "tmpl/anagrafica_azienda_activity.tmpl.html";
 		dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";

@@ -24,7 +24,7 @@
 			</md-input-container>
 		</div>
 
-		<div layout="row" layout-align="start center" layout-padding>
+		<!--<div layout="row" layout-align="start center" layout-padding>
 			<md-icon md-svg-src="img/icons/person_tie.svg"></md-icon>
 			<md-input-container flex>
 				<md-autocomplete
@@ -70,7 +70,7 @@
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>
-		</div>
+		</div>-->
 
 		<div layout="row" layout-align="space-around center" layout-padding>
 			<md-button class="md-icon-button" ng-if="dialog.logged_user.admin == '1' && (dialog.utente | utente_is_utente)" ng-class="{'selected': dialog.utente.admin == '1'}" ng-click="dialog.utente.admin = dialog.utente.admin == '1' ? '0' : '1'" ng-disabled="dialog.disabledform">
@@ -78,16 +78,16 @@
 				<md-tooltip md-direction="top">Admin</md-tooltip>
 			</md-button>
 			<md-button class="md-icon-button" ng-if="dialog.moduli.scadenziario && dialog.logged_user.fl_scadenziario == '1'" ng-class="{'selected': dialog.utente.fl_scadenziario == '1'}" ng-click="dialog.utente.fl_scadenziario = dialog.utente.fl_scadenziario == '1' ? '0' : '1'" ng-disabled="dialog.disabledform">
-				<md-icon md-svg-src="img/icons/calendar.svg"></md-icon>
-				<md-tooltip md-direction="top">Scadenziario</md-tooltip>
+				<md-icon md-svg-src="img/icons/helmet.svg"></md-icon>
+				<md-tooltip md-direction="top">Pista</md-tooltip>
 			</md-button>
 			<md-button class="md-icon-button" ng-if="dialog.moduli.allegati && dialog.logged_user.fl_allegati == '1'" ng-class="{'selected': dialog.utente.fl_allegati == '1'}" ng-click="dialog.utente.fl_allegati = dialog.utente.fl_allegati == '1' ? '0' : '1'" ng-disabled="dialog.disabledform">
 				<md-icon md-svg-src="img/icons/allegato.svg"></md-icon>
-				<md-tooltip md-direction="top">Allegati</md-tooltip>
+				<md-tooltip md-direction="top">Allegato</md-tooltip>
 			</md-button>
 			<md-button class="md-icon-button" ng-if="dialog.moduli.report && dialog.logged_user.fl_report == '1'" ng-class="{'selected': dialog.utente.fl_report == '1'}" ng-click="dialog.utente.fl_report = dialog.utente.fl_report == '1' ? '0' : '1'" ng-disabled="dialog.disabledform">
-				<md-icon md-svg-src="img/icons/report.svg"></md-icon>
-				<md-tooltip md-direction="top">Report</md-tooltip>
+				<md-icon md-svg-src="img/icons/road.svg"></md-icon>
+				<md-tooltip md-direction="top">Strada</md-tooltip>
 			</md-button>
 			<md-button class="md-icon-button" ng-if="dialog.moduli.gestione && dialog.logged_user.fl_gestione == '1' && (dialog.utente | utente_is_utente)" ng-class="{'selected': dialog.utente.fl_gestione == '1'}" ng-click="dialog.utente.fl_gestione = dialog.utente.fl_gestione == '1' ? '0' : '1'" ng-disabled="dialog.disabledform">
 				<md-icon md-svg-src="img/icons/settings.svg"></md-icon>

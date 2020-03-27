@@ -17,7 +17,7 @@
 			md-search-text-change="gestione.argomento = undefined; gestione_clear_adempimento()"
 		>
 			<md-item-template>
-				<div>{{argomento.ar_id}} - {{argomento.ar_descr}}</div>
+				<div>{{argomento.ar_descr}}</div>
 				<md-not-found>Non sono stati trovati argomenti per "{{search_argomento}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>
@@ -47,7 +47,7 @@
 			md-search-text-change="gestione.adempimento = undefined"
 		>
 			<md-item-template>
-				<div>{{adempimento.ad_id}} - {{adempimento.ad_descr}}</div>
+				<div>{{adempimento.ad_descr}}</div>
 				<md-not-found>Non sono stati trovati adempimenti per "{{search_adempimento}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>
@@ -77,7 +77,7 @@
 			md-search-text-change="gestione.stato = undefined"
 		>
 			<md-item-template>
-				<div>{{stato.st_id}} - {{stato.st_descr}}</div>
+				<div>{{stato.st_descr}}</div>
 				<md-not-found>Non sono stati trovati stati per "{{search_stato}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>
@@ -107,7 +107,7 @@
 			md-search-text-change="gestione.sanzione = undefined"
 		>
 			<md-item-template>
-				<div>{{sanzione.sa_id}} - {{sanzione.sa_descr}}</div>
+				<div>{{sanzione.sa_descr}}</div>
 				<md-not-found>Non sono state trovate sanzioni per "{{search_sanzione}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>

@@ -9,7 +9,7 @@
 					md-search-text="dialog.dipendente_search"
 					md-items="dipendente in dialog.dipendenti.righe | filter:dialog.dipendente_search"
 					md-item-text="dipendente.di_descr"
-					md-floating-label="Dipendente"
+					md-floating-label="Evento"
 					md-no-cache="true"
 					md-min-length="0"
 					md-clear-button="!dialog.disabledform"
@@ -19,8 +19,8 @@
 					ng-required="true"
 				>
 					<md-item-template>
-						<div>{{dipendente.di_id}} - {{dipendente.di_descr}}</div>
-						<md-not-found>Non sono stati trovati dipendenti per "{{dialog.dipendente_search}}".</md-not-found>
+						<div>{{dipendente.di_descr}}</div>
+						<md-not-found>Non sono stati trovati eventi per "{{dialog.dipendente_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>
@@ -34,7 +34,7 @@
 					md-search-text="dialog.formazione_search"
 					md-items="formazione in dialog.formazioni.righe | filter:dialog.formazione_search"
 					md-item-text="formazione.fo_descr"
-					md-floating-label="Formazione"
+					md-floating-label="Categoria"
 					md-no-cache="true"
 					md-min-length="0"
 					md-clear-button="!dialog.disabledform"
@@ -44,8 +44,8 @@
 					ng-required="true"
 				>
 					<md-item-template>
-						<div>{{formazione.fo_id}} - {{formazione.fo_descr}}</div>
-						<md-not-found>Non sono state trovate formazioni per "{{dialog.formazione_search}}".</md-not-found>
+						<div>{{formazione.fo_descr}}</div>
+						<md-not-found>Non sono state trovate categorie per "{{dialog.formazione_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>
@@ -67,13 +67,13 @@
 			</md-input-container>
 		</div>
 
-		<div layout="row" layout-align="start center" layout-padding>
+		<!--<div layout="row" layout-align="start center" layout-padding>
 			<md-icon md-svg-src="img/icons/person_school.svg"></md-icon>
 			<md-input-container flex>
 				<label>Docente</label>
 				<input type="text" ng-model="dialog.dipendente_formazione.df_docente" ng-readonly="dialog.disabledform" />
 			</md-input-container>
-		</div>
+		</div>-->
 
 		<div layout="row" layout-align="start center" layout-padding>
 			<md-icon md-svg-src="img/icons/note.svg"></md-icon>

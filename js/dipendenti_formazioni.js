@@ -207,7 +207,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			(response) => {
 				let dialog = {};
 				dialog.clickOutsideToClose = true;
-				dialog.title = "Storico formazione svolta";
+				dialog.title = "Storico evento";
 				dialog.class = "";
 				dialog.content_tmpl = "tmpl/history_dipendente_formazione.tmpl.html";
 				dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";
@@ -275,7 +275,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 	$rootScope.anagrafica_dipendente_formazione = function(dipendente_formazione, disabledform, editableform) {
 		let dialog = {};
 		dialog.clickOutsideToClose = true;
-		dialog.title = "Anagrafica formazione svolta";
+		dialog.title = "Anagrafica Evento";
 		dialog.class = "";
 		dialog.content_tmpl = "tmpl/anagrafica_dipendente_formazione.tmpl.html";
 		dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";
@@ -327,7 +327,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			).then(
 				(response) => {
 					$scope.splice($rootScope.dipendenti_formazioni.righe, dipendente_formazione);
-					$scope.toast("Formazione svolta eliminata");
+					$scope.toast("Evento eliminato");
 					return Promise.resolve(dipendente_formazione);
 				}
 				,(response) => {return Promise.reject(response)}

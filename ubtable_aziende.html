@@ -15,12 +15,12 @@
 		</md-menu-item>
 		<md-menu-item>
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flsocio" aria-label="az_flsocio">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/people.svg"></md-icon>
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/flag.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flcontratto" aria-label="az_flcontratto">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/document.svg"></md-icon>
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/euro.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
@@ -35,7 +35,7 @@
 	<div layout="row" class="ub-table-head">
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.az_descr">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_descr')">
-				<md-icon md-svg-src="img/icons/person_tie.svg"><md-tooltip md-direction="top">Circuito</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Circuito</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_descr') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_descr') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
@@ -49,14 +49,14 @@
 		</div>
 		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flsocio">
 			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_flsocio')">
-				<md-icon md-svg-src="img/icons/people.svg"><md-tooltip md-direction="top">Italia</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/flag.svg"><md-tooltip md-direction="top">Italia</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flsocio') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flsocio') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
 		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flcontratto">
 			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_flcontratto')">
-				<md-icon md-svg-src="img/icons/document.svg"><md-tooltip md-direction="top">Europeo</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/euro.svg"><md-tooltip md-direction="top">Europeo</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flcontratto') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flcontratto') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>

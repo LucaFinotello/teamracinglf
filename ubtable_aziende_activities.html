@@ -15,22 +15,42 @@
 		</md-menu-item>
 		<md-menu-item>
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_descr" aria-label="aa_descr">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/crm.svg"></md-icon>
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/circuit.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_idutente" aria-label="aa_idutente">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/person.svg"></md-icon>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_sosp_ant" aria-label="aa_idutente">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/suspension.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_qta" aria-label="aa_qta">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/timelapse.svg"></md-icon>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_precarico" aria-label="aa_qta">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/precarico.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_note" aria-label="aa_note">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/note.svg"></md-icon>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_mono" aria-label="aa_note">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/suspension.svg"></md-icon>
+			</md-checkbox>
+		</md-menu-item>
+		<md-menu-item>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_ant" aria-label="aa_note">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pressione.svg"></md-icon>
+			</md-checkbox>
+		</md-menu-item>
+		<md-menu-item>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_post" aria-label="aa_note">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pressione.svg"></md-icon>
+			</md-checkbox>
+		</md-menu-item>
+		<md-menu-item>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_temperatura" aria-label="aa_note">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/termo.svg"></md-icon>
+			</md-checkbox>
+		</md-menu-item>
+		<md-menu-item>
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_moto" aria-label="aa_note">
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pista.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 	</md-menu-content>
@@ -40,7 +60,7 @@
 	<div layout="row" class="ub-table-head">
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_idazienda && page() != 'scadenziario' && scadenziario.page != 'crm'">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_idazienda')">
-				<md-icon md-svg-src="img/icons/person_tie.svg"><md-tooltip md-direction="top">Azienda</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Azienda</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_idazienda') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_idazienda') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
@@ -52,13 +72,6 @@
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_date') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
-		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_descr">
-			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_descr')">
-				<md-icon md-svg-src="img/icons/crm.svg"><md-tooltip md-direction="top">Descrizione</md-tooltip></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_descr') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_descr') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
-			</div>
-		</div>
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_idutente">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_idutente')">
 				<md-icon md-svg-src="img/icons/person.svg"><md-tooltip md-direction="top">Utente</md-tooltip></md-icon>
@@ -66,16 +79,72 @@
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_idutente') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_descr">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_descr')">
+				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Circuito</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_descr') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_descr') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_qta">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_qta')">
-				<md-icon md-svg-src="img/icons/timelapse.svg"><md-tooltip md-direction="top">Minuti</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/suspension.svg"><md-tooltip md-direction="top">Sospensioni</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_qta') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_qta') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
-				<md-icon md-svg-src="img/icons/note.svg"><md-tooltip md-direction="top">Note</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/precarico.svg"><md-tooltip md-direction="top">Precarico Ant</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/suspension.svg"><md-tooltip md-direction="top">Mono</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/precarico.svg"><md-tooltip md-direction="top">Precarico Post</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/pressione.svg"><md-tooltip md-direction="top">Pressione anteriore</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/pressione.svg"><md-tooltip md-direction="top">Presione Posteriore</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/termo.svg"><md-tooltip md-direction="top">Temperatura</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/pista.svg"><md-tooltip md-direction="top">Moto</md-tooltip></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+			</div>
+		</div>
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+				<md-icon md-svg-src="img/icons/note.svg"><md-tooltip md-direction="top">Precarico</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>

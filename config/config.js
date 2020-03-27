@@ -13,13 +13,11 @@ if (url.indexOf(http_https + "www.") === 0) {
 http_https	= http_https	? http_https	: "https://";
 subdomain	= subdomain		? subdomain		: "";
 
-url = "localhost/teamRacingLF/";	//DEV
+url = "http://127.0.0.1/teamRacingLF/";	//DEV
 //url = "test.ubware.it/ubmanagement/";								//TEST
 //url = "show.ubware.it/ubmanagement/";								//DEMO
 //url = "xxx.xxx.xxx.xxx/ubmanagement";								//PROD
-//url = "www.teamracinglf.cloud/TeamRacing/";							//PROD DNS
-
-url = http_https + subdomain + url;
+//url = "https://www.teamracinglf.cloud/TeamRacing/";					//PROD DNS
 
 let statusbar_backgroundcolor = "#1976D2";
 

@@ -93,7 +93,7 @@ app.controller("formazioni", ["$rootScope", "$scope", "$localStorage", "$filter"
 					formazione.fo_id = response[0].fo_id;
 					$scope.push($rootScope.formazioni.righe, formazione);
 					$rootScope.formazioni.map[formazione.fo_id] = formazione;
-					$scope.toast("Formazione salvata");
+					$scope.toast("Evento salvato");
 					return Promise.resolve(formazione);
 				}
 				,(response) => {return Promise.reject(response)}
@@ -130,7 +130,7 @@ app.controller("formazioni", ["$rootScope", "$scope", "$localStorage", "$filter"
 				(response) => {
 					$scope.splice($rootScope.formazioni.righe, formazione);
 					$rootScope.formazioni.map[formazione.fo_id] = undefined;
-					$scope.toast("Formazione eliminata");
+					$scope.toast("Evento eliminato");
 					return Promise.resolve(formazione);
 				}
 				,(response) => {return Promise.reject(response)}

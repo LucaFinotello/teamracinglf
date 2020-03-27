@@ -10,10 +10,10 @@ $fl_prod = 0;
 
 # DEV
 # URL
-$url						= "localhost/teamRacingLF/";
+$url						= "127.0.0.1/teamRacingLF/";
 # DB
-$db_host					= "localhost";
-$db_name					= "TeamRacingLF_dev";
+$db_host					= "127.0.0.1";
+$db_name					= "teamRacingLf_dev";
 $db_user					= "root";
 $db_pass					= "";
 # DB gestionale
@@ -71,12 +71,12 @@ if ($fl_prod == 1) { # TEST
 	$db_name_gestionale		= "xxx";
 } else if ($fl_prod == 3) { # PROD
 	# URL
-	$url =					"http://www.teamracinglf.cloud/TeamRacing/";
+	$url =					"https://www.teamracinglf.cloud/TeamRacing/";
 	# DB
-	$db_host				= "xxx";
-	$db_name				= "xxx";
-	$db_user				= "xxx";
-	$db_pass				= "xxx";
+	$db_host				= "89.46.111.108";
+	$db_name				= "Sql1344355_1";
+	$db_user				= "Sql1344355";
+	$db_pass				= "m6477r3814";
 	# DB gestionale
 	$db_host_gestionale		= "xxx.xxx.xxx.xxx";
 	$db_user_gestionale		= "xxx";

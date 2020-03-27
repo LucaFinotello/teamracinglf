@@ -1,12 +1,12 @@
 <div layout="row" layout-align="start center">
-	<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>
+	<md-icon md-svg-icon="img/icons/task.svg"></md-icon>
 	<md-input-container flex>
 		<md-autocomplete
 			md-selected-item="scadenziario.dipendente"
 			md-search-text="scadenziario.dipendente_search"
 			md-items="dipendente in dipendenti.righe | filter:{di_idazienda: scadenziario.azienda.az_id} | filter:scadenziario.dipendente_search"
 			md-item-text="dipendente.di_descr"
-			md-floating-label="Dipendente"
+			md-floating-label="Eventi"
 			md-no-cache="true"
 			md-min-length="0"
 			md-clear-button="!(logged_user | utente_is_dipendente)"
@@ -16,7 +16,7 @@
 		>
 			<md-item-template>
 				<div>{{dipendente.di_descr}}</div>
-				<md-not-found>Non sono stati trovati dipendenti per "{{scadenziario.dipendente_search}}".</md-not-found>
+				<md-not-found>Non sono stati trovati eventi per "{{scadenziario.dipendente_search}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>
 	</md-input-container>

@@ -9,7 +9,7 @@
 					md-search-text="dialog.azienda_search"
 					md-items="azienda in dialog.aziende.righe | filter:dialog.azienda_search"
 					md-item-text="azienda.az_descr"
-					md-floating-label="Azienda"
+					md-floating-label="Circuito"
 					md-no-cache="true"
 					md-min-length="0"
 					md-clear-button="!dialog.disabledform"
@@ -19,8 +19,8 @@
 					ng-required="true"
 				>
 					<md-item-template>
-						<div>{{azienda.az_id}} - {{azienda.az_descr}}</div>
-						<md-not-found>Non sono state trovate aziende per "{{dialog.azienda_search}}".</md-not-found>
+						<div>{{azienda.az_descr}}</div>
+						<md-not-found>Non sono state trovati circuiti per "{{dialog.azienda_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>
@@ -34,7 +34,7 @@
 					md-search-text="dialog.formazione_search"
 					md-items="formazione in dialog.formazioni.righe | filter:dialog.formazione_search"
 					md-item-text="formazione.fo_descr"
-					md-floating-label="Formazione"
+					md-floating-label="Evento"
 					md-no-cache="true"
 					md-min-length="0"
 					md-clear-button="!dialog.disabledform"
@@ -44,8 +44,8 @@
 					ng-required="true"
 				>
 					<md-item-template>
-						<div>{{formazione.fo_id}} - {{formazione.fo_descr}}</div>
-						<md-not-found>Non sono state trovate formazioni per "{{dialog.formazione_search}}".</md-not-found>
+						<div>{{formazione.fo_descr}}</div>
+						<md-not-found>Non sono state trovati eventi per "{{dialog.formazione_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>

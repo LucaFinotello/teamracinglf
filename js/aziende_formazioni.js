@@ -142,7 +142,7 @@ app.controller("aziende_formazioni", ["$rootScope", "$scope", "$localStorage", "
 					$scope.push($rootScope.aziende_formazioni.righe, azienda_formazione);
 					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] : {};
 					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = azienda_formazione;
-					$scope.toast("Prenotazione di formazione assegnata all'azienda");
+					$scope.toast("Prenotazione di evento avvenuta");
 					return Promise.resolve(azienda_formazione);
 				}
 				,(response) => {return Promise.reject(response)}
@@ -160,7 +160,7 @@ app.controller("aziende_formazioni", ["$rootScope", "$scope", "$localStorage", "
 	$rootScope.anagrafica_azienda_formazione = function(azienda_formazione, disabledform, editableform) {
 		let dialog = {};
 		dialog.clickOutsideToClose = true;
-		dialog.title = "Anagrafica prenotazione di formazione";
+		dialog.title = "Anagrafica prenotazione evento";
 		dialog.class = "";
 		dialog.content_tmpl = "tmpl/anagrafica_azienda_formazione.tmpl.html";
 		dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";
@@ -200,7 +200,7 @@ app.controller("aziende_formazioni", ["$rootScope", "$scope", "$localStorage", "
 
 	$rootScope.delete_azienda_formazione = function(azienda_formazione, fl_ask_confirm) {
 		if (azienda_formazione) {
-			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere la prenotazione di formazione da questa azienda?", "SI", "NO").then(
+			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere la prenotazione?", "SI", "NO").then(
 				(yes) => {return $rootScope.delete_azienda_formazione(azienda_formazione, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(
@@ -212,7 +212,7 @@ app.controller("aziende_formazioni", ["$rootScope", "$scope", "$localStorage", "
 					$scope.splice($rootScope.aziende_formazioni.righe, azienda_formazione);
 					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] : {};
 					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = undefined;
-					$scope.toast("Prenotazione di formazione rimossa dall'azienda");
+					$scope.toast("Prenotazione di evento avvenuto");
 					return Promise.resolve(azienda_formazione);
 				}
 				,(response) => {return Promise.reject(response)}

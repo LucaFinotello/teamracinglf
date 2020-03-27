@@ -40,7 +40,7 @@
 		<div layout="row" class="ub-table-head">
 			<div class="ub-table-cell" flex ng-if="postdata.filtri.show.idazienda">
 				<div layout="row" layout-align="center center" ng-click="postdata.filtri_app_scope.fn_filtri_sort_by('idazienda')">
-					<md-icon md-svg-src="../../../img/icons/person_tie.svg"><md-tooltip md-direction="top">Azienda</md-tooltip></md-icon>
+					<md-icon md-svg-src="../../../img/icons/circuit.svg"><md-tooltip md-direction="top">Azienda</md-tooltip></md-icon>
 					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'idazienda'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'idazienda'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
 					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'idazienda'}).length > 0 && (postdata.filtri.sorting | filter:{property:'idazienda'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
 				</div>

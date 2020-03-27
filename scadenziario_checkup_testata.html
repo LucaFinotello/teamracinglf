@@ -33,7 +33,7 @@
 				md-search-text="checkups.selected.azienda_search"
 				md-items="azienda in aziende.righe | filter:checkups.selected.azienda_search"
 				md-item-text="azienda.az_descr"
-				md-floating-label="Azienda"
+				md-floating-label="Circuiti"
 				md-no-cache="true"
 				md-min-length="0"
 				md-clear-button="logged_user | utente_is_utente"
@@ -42,8 +42,8 @@
 				ng-disabled="checkups.selected.disabledform"
 			>
 				<md-item-template>
-					<div>{{azienda.az_id}} - {{azienda.az_descr}}</div>
-					<md-not-found>Non sono state trovate aziende per "{{checkups.selected.azienda_search}}".</md-not-found>
+					<div>{{azienda.az_descr}}</div>
+					<md-not-found>Non sono stati trovati circuiti per "{{checkups.selected.azienda_search}}".</md-not-found>
 				</md-item-template>
 			</md-autocomplete>
 		</md-input-container>

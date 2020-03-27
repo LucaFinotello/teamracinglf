@@ -1,12 +1,12 @@
 <div layout="row" layout-align="start center">
-	<md-icon md-svg-icon="img/icons/person_tie.svg"></md-icon>
+	<md-icon md-svg-icon="img/icons/circuit.svg"></md-icon>
 	<md-input-container flex>
 		<md-autocomplete
 			md-selected-item="scadenziario.azienda"
 			md-search-text="scadenziario.azienda_search"
 			md-items="azienda in aziende.righe | filter:scadenziario.azienda_search"
 			md-item-text="azienda.az_descr"
-			md-floating-label="Azienda"
+			md-floating-label="Circuito"
 			md-no-cache="true"
 			md-min-length="0"
 			md-clear-button="logged_user | utente_is_utente"

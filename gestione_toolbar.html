@@ -4,11 +4,11 @@
 </md-button>
 <md-button ng-if="logged_user.admin == '1'" class="md-icon-button" ng-click="gestione.page = 'aziende'" ng-class="{'selected': gestione.page == 'aziende'}" aria-label="aziende">
 	<md-icon md-svg-src="img/icons/circuit.svg"></md-icon>
-	<md-tooltip md-direction="top">Aziende</md-tooltip>
+	<md-tooltip md-direction="top">Circuiti</md-tooltip>
 </md-button>
 <md-button ng-if="logged_user.admin == '1'" class="md-icon-button" ng-click="gestione.page = 'dipendenti'" ng-class="{'selected': gestione.page == 'dipendenti'}" aria-label="dipendenti">
-	<md-icon md-svg-src="img/icons/person_helm.svg"></md-icon>
-	<md-tooltip md-direction="top">Dipendenti</md-tooltip>
+	<md-icon md-svg-src="img/icons/task.svg"></md-icon>
+	<md-tooltip md-direction="top">Eventi</md-tooltip>
 </md-button>
 <md-button ng-if="logged_user.admin == '1'" class="md-icon-button" ng-click="gestione.page = 'argomenti'" ng-class="{'selected': gestione.page == 'argomenti'}" aria-label="argomenti">
 	<md-icon md-svg-src="img/icons/books.svg"></md-icon>
