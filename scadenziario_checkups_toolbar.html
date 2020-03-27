@@ -1,0 +1,9 @@
+<md-button class="md-icon-button" ng-click="select_checkups()" aria-label="refresh">
+	<md-icon md-svg-src="img/icons/refresh.svg"></md-icon>
+	<md-tooltip md-direction="top">Aggiorna</md-tooltip>
+</md-button>
+<div flex></div>
+<md-button class="md-icon-button" ng-click="insert_checkup(undefined, !(logged_user | utente_is_utente), logged_user | utente_is_utente)" aria-label="add">
+	<md-icon md-svg-src="img/icons/add.svg"></md-icon>
+	<md-tooltip md-direction="top">Aggiungi</md-tooltip>
+</md-button>
