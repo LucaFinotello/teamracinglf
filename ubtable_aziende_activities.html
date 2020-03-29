@@ -34,12 +34,12 @@
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_ant" aria-label="aa_note">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_ant" aria-label="aa_pres_ant">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pressione.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_post" aria-label="aa_note">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_pres_post" aria-label="aa_pres_post">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pressione.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
@@ -49,7 +49,7 @@
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_moto" aria-label="aa_note">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.aa_moto" aria-label="aa_moto">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/pista.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
@@ -136,7 +136,7 @@
 			</div>
 		</div>
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.aa_note">
-			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_note')">
+			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('aa_moto')">
 				<md-icon md-svg-src="img/icons/pista.svg"><md-tooltip md-direction="top">Moto</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('aa_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>

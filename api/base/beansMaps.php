@@ -307,6 +307,48 @@ $beansMaps->AziendaActivityBean = (Object) [
 				"type" => null
 			]
 		]
+        ,"aa_pre_ant" => (Object) [
+            "name" => "aa_pre_ant"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_ant" => (Object) [
+            "name" => "aa_ant"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_post" => (Object) [
+            "name" => "aa_post"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_moto" => (Object) [
+            "name" => "aa_moto"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_gradi" => (Object) [
+            "name" => "aa_gradi"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_pres_post" => (Object) [
+            "name" => "aa_pres_post"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
+        ,"aa_pres_ant" => (Object) [
+            "name" => "aa_pres_ant"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
 	]
 	,"pksMap" => [
 		"aa_id" => (Object) [
