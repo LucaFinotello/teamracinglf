@@ -313,6 +313,12 @@ $beansMaps->AziendaActivityBean = (Object) [
                 "type" => null
             ]
         ]
+        ,"aa_pre_post" => (Object) [
+            "name" => "aa_pre_post"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
         ,"aa_ant" => (Object) [
             "name" => "aa_ant"
             ,"options" => (Object) [

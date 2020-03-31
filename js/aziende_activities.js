@@ -29,6 +29,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 				$rootScope.aziende_activities.filtri.show.aa_note					= true;
 				$rootScope.aziende_activities.filtri.show.aa_qta					= true;
 				$rootScope.aziende_activities.filtri.show.aa_pre_ant				= true;
+				$rootScope.aziende_activities.filtri.show.aa_pre_post				= true;
 				$rootScope.aziende_activities.filtri.show.aa_ant					= true;
 				$rootScope.aziende_activities.filtri.show.aa_post					= true;
 				$rootScope.aziende_activities.filtri.show.aa_moto					= true;
@@ -60,6 +61,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 					$rootScope.aziende_activities.filtri.show.aa_note					= !!filtri_app.show.aa_note;
 					$rootScope.aziende_activities.filtri.show.aa_qta					= !!filtri_app.show.aa_qta;
 					$rootScope.aziende_activities.filtri.show.aa_pre_ant				= !!filtri_app.show.aa_pre_ant;
+					$rootScope.aziende_activities.filtri.show.aa_pre_post				= !!filtri_app.show.aa_pre_post;
 					$rootScope.aziende_activities.filtri.show.aa_ant					= !!filtri_app.show.aa_ant;
 					$rootScope.aziende_activities.filtri.show.aa_post					= !!filtri_app.show.aa_post;
 					$rootScope.aziende_activities.filtri.show.aa_moto					= !!filtri_app.show.aa_moto;
