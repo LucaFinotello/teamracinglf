@@ -292,63 +292,63 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 		)
 	}
 	$rootScope.report_aziende_export_pdf = function(aziende, filtri) {
-		aziende = aziende ? aziende : [];
-		filtri = filtri ? filtri : {};
-		filtri.show = filtri.show ? filtri.show : {
-			az_id: true
-			,az_descr: true
-			,az_note: true
-			,az_note_interne: true
-			,az_flsocio: true
-			,az_flcontratto: true
-		};
+				aziende = aziende ? aziende : [];
+                filtri = filtri ? filtri : {};
+                filtri.show = filtri.show ? filtri.show : {
+                    az_id: true
+                    ,az_descr: true
+                    ,az_note: true
+                    ,az_note_interne: true
+                    ,az_flsocio: true
+                    ,az_flcontratto: true
+                };
 
-		let righe = [];
-		for (let az = 0; az < aziende.length; az++) {
-			let azienda = aziende[az];
-			righe.push({
-				az_descr: azienda.az_id
-				,az_descr: azienda.az_descr
-				,az_note: azienda.az_note
-				,az_flsocio: azienda.az_flsocio
-				,az_flcontratto: azienda.az_flcontratto
-			});
-		}
+                let righe = [];
+                for (let az = 0; az < aziende.length; az++) {
+                    let azienda = aziende[az];
+                    righe.push({
+                        az_descr: azienda.az_id
+                        ,az_descr: azienda.az_descr
+                        ,az_note: azienda.az_note
+                        ,az_flsocio: azienda.az_flsocio
+                        ,az_flcontratto: azienda.az_flcontratto
+                    });
+                }
 
-		return $scope.ajax(
-			"api/base/toPdf.php"
-			,{
-				template: "report_aziende.tmpl.html"
-				,options: {
-					landscape: true
-					,disable_links: true
-					,disable_backgrounds: true // non usare!!! toglie anche i css striped D:
-					,delay: 2 // da 0 a 10
-					,use_print: true
-					,format: "A4"
-				}
-				,pdfpostdata: {
-					righe: righe
-					,filtri: filtri
-					,date: new Date().toISOString()
-				}
-			}
-			,true
-		).then(
-			(response) => {
-				let file = {
-					name: "Circuiti" + $filter("date")(new Date(), "_yyyy_MM_dd_HH_mm_ss") + ".pdf"
-					,type: "application/pdf"
-					,size: response.length
-					,blob_base64: window.btoa(unescape(encodeURIComponent(response)))
-				};
+                return $scope.ajax(
+                    "api/base/toPdf.php"
+                    ,{
+                        template: "report_aziende.tmpl.html"
+                        ,options: {
+                            landscape: true
+                            ,disable_links: true
+                            ,disable_backgrounds: true // non usare!!! toglie anche i css striped D:
+                            ,delay: 2 // da 0 a 10
+                            ,use_print: true
+                            ,format: "A4"
+                        }
+                        ,pdfpostdata: {
+                            righe: righe
+                            ,filtri: filtri
+                            ,date: new Date().toISOString()
+                        }
+                    }
+                    ,true
+                ).then(
+                    (response) => {
+                        let file = {
+                            name: "Circuiti" + $filter("date")(new Date(), "_yyyy_MM_dd_HH_mm_ss") + ".pdf"
+                            ,type: "application/pdf"
+                            ,size: response.length
+                            ,blob_base64: window.btoa(unescape(encodeURIComponent(response)))
+                        };
 
-				return $rootScope.ub_input_model_change_insert_allegato(file).then(
-					(allegato) => {return $scope.download_file_by_base64(file.blob_base64, file.name, file.type, true)}
-					,(response) => {return Promise.resolve(response)}
-				)
-			}
-			,(response) => {return Promise.reject(response)}
-		);
+                        return $rootScope.ub_input_model_change_insert_allegato(file).then(
+                            (allegato) => {return $scope.download_file_by_base64(file.blob_base64, file.name, file.type, true)}
+                            ,(response) => {return Promise.resolve(response)}
+                        )
+                    }
+                    ,(response) => {return Promise.reject(response)}
+                );
 	}
 }]);

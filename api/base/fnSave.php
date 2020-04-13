@@ -8,6 +8,7 @@ function save($beanName, $model) {
 	];
 
 	$sqlTableName	= $beanName && isset($beansMaps->{$beanName}) && isset($beansMaps->{$beanName}->sqlTableName)	? $beansMaps->{$beanName}->sqlTableName	: null;
+
 	$sqlFieldsMap	= $beanName && isset($beansMaps->{$beanName}) && isset($beansMaps->{$beanName}->sqlFieldsMap)	? $beansMaps->{$beanName}->sqlFieldsMap	: null;
 	$pksMap			= $beanName && isset($beansMaps->{$beanName}) && isset($beansMaps->{$beanName}->pksMap)			? $beansMaps->{$beanName}->pksMap		: null;
 	$children		= $beanName && isset($beansMaps->{$beanName}) && isset($beansMaps->{$beanName}->children)		? $beansMaps->{$beanName}->children		: null;
