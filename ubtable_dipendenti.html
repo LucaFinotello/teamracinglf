@@ -25,14 +25,14 @@
 	<div layout="row" class="ub-table-head">
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.di_idazienda">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('di_idazienda')">
-				<md-icon md-svg-src="img/icons/person_tie.svg"><md-tooltip md-direction="top">Circuito</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Circuito</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('di_idazienda') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('di_idazienda') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.di_descr">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('di_descr')">
-				<md-icon md-svg-src="img/icons/person_helm.svg"><md-tooltip md-direction="top">Dipendente</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/task.svg"><md-tooltip md-direction="top">Evento</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('di_descr') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('di_descr') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>

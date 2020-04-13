@@ -5,7 +5,7 @@
 	<md-menu-content ng-mouseleave="$mdMenu.close()" layout-padding>
 		<md-menu-item ng-if="page() != 'scadenziario' && scadenziario.page != 'school_calendar'">
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.af_idazienda" aria-label="af_idazienda">
-				<md-icon class="no-padding no-margin" md-svg-src="img/icons/person_tie.svg"></md-icon>
+				<md-icon class="no-padding no-margin" md-svg-src="img/icons/circuit.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
@@ -35,7 +35,7 @@
 	<div layout="row" class="ub-table-head">
 		<div class="ub-table-cell" flex ng-if="model.filtri.show.af_idazienda && page() != 'scadenziario' && scadenziario.page != 'school_calendar'">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('af_idazienda')">
-				<md-icon md-svg-src="img/icons/person_tie.svg"><md-tooltip md-direction="top">Azienda</md-tooltip></md-icon>
+				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Circuiti</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('af_idazienda') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('af_idazienda') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
