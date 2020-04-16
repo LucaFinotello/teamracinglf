@@ -5,7 +5,7 @@ $beansMaps = (Object) [
 	# "BaseBean" => => null, 
 	"UtenteBean" => null
 	,"DipendenteBean" => null
-	,"AziendaBean" => null
+	,"CircuitoBean" => null
 	,"AziendaActivityBean" => null
 	,"ArgomentoBean" => null
 	,"AziendaArgomentoBean" => null
@@ -149,7 +149,7 @@ $beansMaps->UtenteBean = (Object) [
 			,"flReadOnly" => true
 		]
 		,"azienda" => (Object) [
-			"beanName" => "AziendaBean"
+			"beanName" => "CircuitoBean"
 			,"fksMap" => (Object) [
 				"az_id" => (Object) [
 					"name" => "idazienda"
@@ -204,8 +204,8 @@ $beansMaps->DipendenteBean = (Object) [
 		]
 	]
 ];
-# AziendaBean
-$beansMaps->AziendaBean = (Object) [
+# CircuitoBean
+$beansMaps->CircuitoBean = (Object) [
 	"dbh" => $dbh
 	,"sqlTableName" => "aziende"
 	,"sqlFieldsMap" => (Object) [
@@ -221,30 +221,24 @@ $beansMaps->AziendaBean = (Object) [
 				"type" => null
 			]
 		]
-		,"az_note" => (Object) [
-			"name" => "az_note"
+		,"az_flitaliano" => (Object) [
+			"name" => "az_flitaliano"
 			,"options" => (Object) [
 				"type" => null
 			]
 		]
-		,"az_note_interne" => (Object) [
-			"name" => "az_note_interne"
+		,"az_fleuropeo" => (Object) [
+			"name" => "az_fleuropeo"
 			,"options" => (Object) [
 				"type" => null
 			]
 		]
-		,"az_flsocio" => (Object) [
-			"name" => "az_flsocio"
-			,"options" => (Object) [
-				"type" => null
-			]
-		]
-		,"az_flcontratto" => (Object) [
-			"name" => "az_flcontratto"
-			,"options" => (Object) [
-				"type" => null
-			]
-		]
+        ,"az_flmondiale" => (Object) [
+            "name" => "az_flmondiale"
+            ,"options" => (Object) [
+                "type" => null
+            ]
+        ]
 	]
 	,"pksMap" => [
 		"az_id" => (Object) [

@@ -40,18 +40,25 @@
 					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_note'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_note'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
 				</div>
 			</div>
-			<div class="ub-table-cell ub-table-cell-33" ng-if="postdata.filtri.show.az_flsocio">
+			<div class="ub-table-cell ub-table-cell-33" ng-if="postdata.filtri.show.az_flitaliano">
 				<div layout="row" layout-align="space-around center">
 					<md-icon md-svg-src="../../../img/icons/people.svg"><md-tooltip md-direction="top">Socio</md-tooltip></md-icon>
-					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flsocio'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'az_flsocio'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
-					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flsocio'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_flsocio'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flitaliano'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'az_flsocio'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flitaliano'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_flsocio'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
 				</div>
 			</div>
-			<div class="ub-table-cell ub-table-cell-33" ng-if="postdata.filtri.show.az_flcontratto">
+			<div class="ub-table-cell ub-table-cell-33" ng-if="postdata.filtri.show.az_fleuropeo">
 				<div layout="row" layout-align="space-around center">
 					<md-icon md-svg-src="../../../img/icons/document.svg"><md-tooltip md-direction="top">Contratto</md-tooltip></md-icon>
-					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flcontratto'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
-					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flcontratto'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_fleuropeo'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_fleuropeo'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
+				</div>
+			</div>
+			<div class="ub-table-cell ub-table-cell-33" ng-if="postdata.filtri.show.az_flmondale">
+				<div layout="row" layout-align="space-around center">
+					<md-icon md-svg-src="../../../img/icons/document.svg"><md-tooltip md-direction="top">Mondaile</md-tooltip></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flmondiale'}).length > 0 && !(postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_up.svg"></md-icon>
+					<md-icon ng-if="(postdata.filtri.sorting | filter:{property:'az_flmondiale'}).length > 0 && (postdata.filtri.sorting | filter:{property:'az_flcontratto'})[0].reverse" md-svg-src="../../../img/icons/arrow_down.svg"></md-icon>
 				</div>
 			</div>
 		</div>
@@ -70,14 +77,19 @@
 						<div class="md-caption" md-truncate>{{azienda.az_note}}</div>
 					</div>
 				</div>
-				<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="postdata.filtri.show.az_flsocio">
+				<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="postdata.filtri.show.az_flitaliano">
 					<div layout="row" layout-align="space-around center" layout-fill>
-						<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flsocio" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flsocio"></md-checkbox>
+						<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flitaliano" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flitaliano"></md-checkbox>
 					</div>
 				</div>
-				<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="postdata.filtri.show.az_flcontratto">
+				<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="postdata.filtri.show.az_fleuropeo">
 					<div layout="row" layout-align="space-around center" layout-fill>
-						<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flcontratto" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flcontratto"></md-checkbox>
+						<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_fleuropeo" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_fleuropeo"></md-checkbox>
+					</div>
+				</div>
+				<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="postdata.filtri.show.az_flmondiale">
+					<div layout="row" layout-align="space-around center" layout-fill>
+						<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flmondiale" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flmondiale"></md-checkbox>
 					</div>
 				</div>
 			</div>

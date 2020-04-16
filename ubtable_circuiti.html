@@ -14,17 +14,17 @@
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flsocio" aria-label="az_flsocio">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flitaliano" aria-label="az_flitaliano">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/flag.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flcontratto" aria-label="az_flcontratto">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_fleuropeo" aria-label="az_fleuropeo">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/euro.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
 		<md-menu-item>
-			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flmondiale" aria-label="az_flcontratto">
+			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.az_flmondiale" aria-label="az_flmondiale">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/world.svg"></md-icon>
 			</md-checkbox>
 		</md-menu-item>
@@ -47,18 +47,18 @@
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_note') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
-		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flsocio">
-			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_flsocio')">
+		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flitaliano">
+			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_flitaliano')">
 				<md-icon md-svg-src="img/icons/flag.svg"><md-tooltip md-direction="top">Italia</md-tooltip></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flsocio') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flsocio') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flitaliano') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flitaliano') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
-		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flcontratto">
-			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_flcontratto')">
+		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_fleuropeo">
+			<div layout="row" layout-align="space-around center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('az_fleuropeo')">
 				<md-icon md-svg-src="img/icons/euro.svg"><md-tooltip md-direction="top">Europeo</md-tooltip></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flcontratto') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
-				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_flcontratto') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_fleuropeo') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
+				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('az_fleuropeo') == 'desc'" md-svg-src="img/icons/arrow_down.svg"></md-icon>
 			</div>
 		</div>
 		<div class="ub-table-cell ub-table-cell-33" ng-if="model.filtri.show.az_flmondiale">
@@ -85,14 +85,14 @@
 					<div class="md-caption" md-truncate>{{azienda.az_note}}</div>
 				</div>
 			</div>
-			<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.az_flsocio">
+			<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.az_flitaliano">
 				<div layout="row" layout-align="space-around center" layout-fill>
-					<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flsocio" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flsocio"></md-checkbox>
+					<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flitaliano" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flitaliano"></md-checkbox>
 				</div>
 			</div>
-			<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.az_flcontratto">
+			<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.az_fleuropeo">
 				<div layout="row" layout-align="space-around center" layout-fill>
-					<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_flcontratto" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_flcontratto"></md-checkbox>
+					<md-checkbox md-no-ink class="md-primary no-margin" ng-model="azienda.az_fleuropeo" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="true" aria-label="az_fleuropeo"></md-checkbox>
 				</div>
 			</div>
 			<div class="ub-table-cell ub-table-cell-33" ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.az_flmondiale">

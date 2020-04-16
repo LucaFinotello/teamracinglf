@@ -3,19 +3,19 @@ app.controller("aziende_tipi", ["$rootScope", function($rootScope) {
 
 	$rootScope.select_aziende_tipi = function() {
 		$rootScope.aziende_tipi.righe = [{
-			at_property: "az_flsocio"
+			at_property: "az_flitaliano"
 			,at_value: "0"
 			,at_descr: "Non socio"
 		},{
-			at_property: "az_flsocio"
+			at_property: "az_flitaliano"
 			,at_value: "1"
 			,at_descr: "Socio"
 		},{
-			at_property: "az_flcontratto"
+			at_property: "az_fleuropeo"
 			,at_value: "0"
 			,at_descr: "Senza contratto"
 		},{
-			at_property: "az_flcontratto"
+			at_property: "az_fleuropeo"
 			,at_value: "1"
 			,at_descr: "Con contratto"
 		}];
@@ -29,10 +29,13 @@ app.controller("aziende_tipi", ["$rootScope", function($rootScope) {
 	}
 
 	$rootScope.azienda_is_socio = function(azienda) {
-		return azienda && azienda.az_flsocio == "1";
+		return azienda && azienda.az_flitaliano == "1";
 	}
 	$rootScope.azienda_is_contratto = function(azienda) {
-		return azienda && azienda.az_flcontratto == "1";
+		return azienda && azienda.az_fleuropeo == "1";
+	}
+	$rootScope.azienda_is_mondiale = function(azienda) {
+		return azienda && azienda.az_flmondiale == "1";
 	}
 }]);
 

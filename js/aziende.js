@@ -17,8 +17,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 				$rootScope.aziende.filtri.show.az_descr				= true;
 				$rootScope.aziende.filtri.show.az_note				= true;
 				$rootScope.aziende.filtri.show.az_note_interne		= true;
-				$rootScope.aziende.filtri.show.az_flsocio			= true;
-				$rootScope.aziende.filtri.show.az_flcontratto		= true;
+				$rootScope.aziende.filtri.show.az_flitaliano		= true;
+				$rootScope.aziende.filtri.show.az_fleuropeo		    = true;
+				$rootScope.aziende.filtri.show.az_flmondiale		= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
@@ -38,8 +39,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 					$rootScope.aziende.filtri.show.az_descr			= !!filtri_app.show.az_descr;
 					$rootScope.aziende.filtri.show.az_note			= !!filtri_app.show.az_note;
 					$rootScope.aziende.filtri.show.az_note_interne	= !!filtri_app.show.az_note_interne;
-					$rootScope.aziende.filtri.show.az_flsocio		= !!filtri_app.show.az_flsocio;
-					$rootScope.aziende.filtri.show.az_flcontratto	= !!filtri_app.show.az_flcontratto;
+					$rootScope.aziende.filtri.show.az_flitaliano	= !!filtri_app.show.az_flitaliano;
+					$rootScope.aziende.filtri.show.az_fleuropeo	 	= !!filtri_app.show.az_fleuropeo;
+					$rootScope.aziende.filtri.show.az_flmondiale	= !!filtri_app.show.az_flmondiale;
 				}
 			}
 		}
@@ -123,7 +125,7 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
-				beanName: "AziendaBean"
+				beanName: "CircuitoBean"
 				,model: undefined
 			}
 			,true
@@ -173,7 +175,7 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 		return azienda ? $scope.ajax(
 			"api/base/save.php"
 			,{
-				beanName: "AziendaBean"
+				beanName: "CircuitoBean"
 				,model: azienda
 			}
 			,true
@@ -227,8 +229,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 			,az_descr: true
 			,az_note: true
 			,az_note_interne: true
-			,az_flsocio: true
-			,az_flcontratto: true
+			,az_flitaliano: true
+			,az_fleuropeo: true
+			,az_flmondiale: true
 		};
 		
 		let title = "Circuiti";
@@ -236,8 +239,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 		if (filtri.show.az_descr) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>ID</b></th>";
 		if (filtri.show.az_descr) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Azienda</b></th>";
 		if (filtri.show.az_note) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Note</b></th>";
-		if (filtri.show.az_flsocio) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Socio</b></th>";
-		if (filtri.show.az_flcontratto) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Contratto</b></th>";
+		if (filtri.show.az_flitaliano) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Socio</b></th>";
+		if (filtri.show.az_fleuropeo) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Contratto</b></th>";
+		if (filtri.show.az_flmondiale) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Contratto</b></th>";
 		table += "</tr></thead>";
 		table +="<tbody>";
 		for (let az = 0; az < aziende.length; az++) {
@@ -246,8 +250,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
 			if (filtri.show.az_descr) table += "<td>" + azienda.az_id + "</td>";
 			if (filtri.show.az_descr) table += "<td>" + azienda.az_descr + "</td>";
 			if (filtri.show.az_note) table += "<td>" + azienda.az_note + "</td>";
-			if (filtri.show.az_flsocio) table += "<td>" + (azienda.az_flsocio == "1" ? "SI" : "NO") + "</td>";
-			if (filtri.show.az_flcontratto) table += "<td>" + (azienda.az_flcontratto == "1" ? "SI" : "NO") + "</td>";
+			if (filtri.show.az_flitaliano) table += "<td>" + (azienda.az_flitaliano == "1" ? "SI" : "NO") + "</td>";
+			if (filtri.show.az_fleuropeo) table += "<td>" + (azienda.az_fleuropeo == "1" ? "SI" : "NO") + "</td>";
+			if (filtri.show.az_flmondiale) table += "<td>" + (azienda.az_flmondiale == "1" ? "SI" : "NO") + "</td>";
 			table += "</tr>";
 		}
 		table += "</tbody>";
@@ -299,8 +304,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
                     ,az_descr: true
                     ,az_note: true
                     ,az_note_interne: true
-                    ,az_flsocio: true
-                    ,az_flcontratto: true
+                    ,az_flitaliano: true
+                    ,az_fleuropeo: true
+                    ,az_flmondiale: true
                 };
 
                 let righe = [];
@@ -310,8 +316,9 @@ app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", f
                         az_descr: azienda.az_id
                         ,az_descr: azienda.az_descr
                         ,az_note: azienda.az_note
-                        ,az_flsocio: azienda.az_flsocio
-                        ,az_flcontratto: azienda.az_flcontratto
+                        ,az_flitaliano: azienda.az_flitaliano
+                        ,az_fleuropeo: azienda.az_fleuropeo
+                        ,az_flmondiale: azienda.az_flmondiale
                     });
                 }
 

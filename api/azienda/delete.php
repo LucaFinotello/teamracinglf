@@ -20,7 +20,7 @@ try {
 		if ($azienda) {
 			$params = [isset($azienda->az_id) ? $azienda->az_id : 0];
 			$sql = "DELETE FROM aziende WHERE az_id = ?";
-			$query = query($beansMaps->AziendaBean->dbh, $sql, $params);
+			$query = query($beansMaps->CircuitoBean->dbh, $sql, $params);
 			if ($query->status) {
 				$response->response = $query->rowCount;
 				$response->status = true;
