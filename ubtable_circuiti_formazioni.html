@@ -77,7 +77,7 @@
 		<div class="ub-table-body-row" layout="row" layout-align="start stretch">
 			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.af_idazienda && page() != 'scadenziario' && scadenziario.page != 'school_calendar'">
 				<div layout="row" layout-align="start center" layout-fill>
-					<div flex class="md-caption" md-truncate>{{aziende.map[azienda_formazione.af_idazienda].az_descr}}</div>
+					<div flex class="md-caption" md-truncate>{{circuiti.map[azienda_formazione.af_idazienda].az_descr}}</div>
 				</div>
 			</div>
 			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.af_idformazione">
@@ -104,7 +104,7 @@
 				<div layout="row" layout-align="space-around center" layout-fill>
 					<md-button ng-if="logged_user | utente_is_utente" class="md-icon-button"
 						ng-click="
-							azienda_formazione.azienda = aziende.map[azienda_formazione.af_idazienda];
+							azienda_formazione.azienda = circuiti.map[azienda_formazione.af_idazienda];
 							azienda_formazione.formazione = formazioni.map[azienda_formazione.af_idformazione];
 							anagrafica_azienda_formazione(azienda_formazione, !(logged_user | utente_is_utente), logged_user | utente_is_utente);
 						"

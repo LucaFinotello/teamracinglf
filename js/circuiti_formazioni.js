@@ -1,27 +1,27 @@
-app.controller("aziende_formazioni", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
-	$rootScope.aziende_formazioni = $rootScope.aziende_formazioni ? $rootScope.aziende_formazioni : {
-		filtri_key: "filtri_aziende_formazioni"
+app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
+	$rootScope.circuiti_formazioni = $rootScope.circuiti_formazioni ? $rootScope.circuiti_formazioni : {
+		filtri_key: "filtri_circuiti_formazioni"
 		,fn_filtri_set_default_filtri_app: function() {
-			if ($rootScope.aziende_formazioni && $rootScope.aziende_formazioni.filtri) {
+			if ($rootScope.circuiti_formazioni && $rootScope.circuiti_formazioni.filtri) {
 				let data_inizio = new Date();
 				data_inizio.setHours(0,0,0,0);
 				let data_fine = new Date();
 				data_fine.setHours(23,59,59,999);
 
-				$rootScope.aziende_formazioni.filtri.sorting						= [{
+				$rootScope.circuiti_formazioni.filtri.sorting						= [{
 					property: "af_data_richiesta"
 					,reverse: true
 				}];
 
-				$rootScope.aziende_formazioni.filtri.search							= undefined;
-				$rootScope.aziende_formazioni.filtri.fl_show_done					= false;
+				$rootScope.circuiti_formazioni.filtri.search							= undefined;
+				$rootScope.circuiti_formazioni.filtri.fl_show_done					= false;
 
-				$rootScope.aziende_formazioni.filtri.fl_data_richiesta				= true;
-				$rootScope.aziende_formazioni.filtri.data_inizio_richiesta			= new Date(data_inizio.valueOf());
-				$rootScope.aziende_formazioni.filtri.data_fine_richiesta			= new Date(data_fine.valueOf());
-				$rootScope.aziende_formazioni.filtri.fl_data_evasione				= false;
-				$rootScope.aziende_formazioni.filtri.data_inizio_evasione			= new Date(data_inizio.valueOf());
-				$rootScope.aziende_formazioni.filtri.data_fine_evasione				= new Date(data_fine.valueOf());
+				$rootScope.circuiti_formazioni.filtri.fl_data_richiesta				= true;
+				$rootScope.circuiti_formazioni.filtri.data_inizio_richiesta			= new Date(data_inizio.valueOf());
+				$rootScope.circuiti_formazioni.filtri.data_fine_richiesta			= new Date(data_fine.valueOf());
+				$rootScope.circuiti_formazioni.filtri.fl_data_evasione				= false;
+				$rootScope.circuiti_formazioni.filtri.data_inizio_evasione			= new Date(data_inizio.valueOf());
+				$rootScope.circuiti_formazioni.filtri.data_fine_evasione				= new Date(data_fine.valueOf());
 
 				$rootScope.aziende_formazioni.filtri.show							= $rootScope.aziende_formazioni.filtri.show ? $rootScope.aziende_formazioni.filtri.show : {};
 				$rootScope.aziende_formazioni.filtri.show.af_id						= true;

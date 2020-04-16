@@ -4,19 +4,19 @@
 	class="toolbar no-padding"
 	md-colors="{background: colors.secondary_toolbar}"
 >
-	<md-button class="md-icon-button" ng-class="{'selected': aziende_formazioni.rubrica_filtri_aziende_formazioni.fl_open}" ng-click="aziende_formazioni.toggle_rubrica(aziende_formazioni.rubrica_filtri_aziende_formazioni)">
+	<md-button class="md-icon-button" ng-class="{'selected': circuiti_formazioni.rubrica_filtri_circuiti_formazioni.fl_open}" ng-click="circuiti_formazioni.toggle_rubrica(circuiti_formazioni.rubrica_filtri_circuiti_formazioni)">
 		<md-icon md-svg-icon="img/icons/filter.svg"></md-icon>
 		<md-tooltip md-direction="top">Filtri</md-tooltip>
 	</md-button>
 
 	<div flex></div>
-	<md-button class="md-icon-button" ng-click="aziende_formazioni.fn_filtri_set_default_filtri_app()">
+	<md-button class="md-icon-button" ng-click="circuiti_formazioni.fn_filtri_set_default_filtri_app()">
 		<md-icon md-svg-icon="img/icons/broom.svg"></md-icon>
 		<md-tooltip md-direction="top">Pulisci filtri</md-tooltip>
 	</md-button>
 </div>
 
 <div layout="row" layout-align="start start" class="full-height" flex>
-	<div ng-if="aziende_formazioni.rubrica_filtri_aziende_formazioni.fl_open" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(aziende_formazioni.rubrica_filtri_aziende_formazioni)" ng-include="rubrica.template"></div>
-	<div flex ng-controller="filtri_app" ng-init="filtri_app(aziende_formazioni)" ub-table layout="column" layout-align="start stretch" class="full-height" ng-include="'ubtable_aziende_formazioni.html'"></div>
+	<div ng-if="circuiti_formazioni.rubrica_filtri_circuiti_formazioni.fl_open" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(circuiti_formazioni.rubrica_filtri_circuiti_formazioni)" ng-include="rubrica.template"></div>
+	<div flex ng-controller="filtri_app" ng-init="filtri_app(circuiti_formazioni)" ub-table layout="column" layout-align="start stretch" class="full-height" ng-include="'ubtable_circuiti_formazioni.html'"></div>
 </div>

@@ -4,7 +4,7 @@
 		<md-autocomplete
 			md-selected-item="gestione.azienda"
 			md-search-text="gestione.search_azienda"
-			md-items="azienda in aziende.righe | filter:search_azienda"
+			md-items="azienda in circuiti.righe | filter:search_azienda"
 			md-item-text="azienda.az_descr"
 			md-floating-label="Circuito"
 			md-no-cache="true"
@@ -48,7 +48,7 @@
 			<input type="text" ng-model="gestione.search_argomenti_assegnati"/>
 		</md-input-container>
 		<md-list class="md-dense">
-			<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="argomento in argomenti.righe | in:gestione.azienda:argomento_in_azienda | filter:gestione.search_argomenti_assegnati" ng-click="delete_azienda_argomento(aziende_argomenti.map[argomento.ar_id][gestione.azienda.az_id], true)">
+			<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="argomento in argomenti.righe | in:gestione.azienda:argomento_in_azienda | filter:gestione.search_argomenti_assegnati" ng-click="delete_azienda_argomento(circuiti_argomenti.map[argomento.ar_id][gestione.azienda.az_id], true)">
 				<div class="md-list-item-text">
 					<div class="md-body-1" md-truncate>{{argomento.ar_descr}}</div>
 				</div>

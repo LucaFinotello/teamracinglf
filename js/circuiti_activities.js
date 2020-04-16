@@ -102,16 +102,16 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_filtri_aziende_activities	&& this.rubrica_filtri_aziende_activities != rubrica)	this.rubrica_filtri_aziende_activities.fl_open = false;
+			if (this.rubrica_filtri_aziende_activities	&& this.rubrica_filtri_circuiti_activities != rubrica)	this.rubrica_filtri_circuiti_activities.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_filtri_aziende_activities: {
+		,rubrica_filtri_circuiti_activities: {
 			template: "tmpl/rubrica_filtri_aziende_activities.tmpl.html"
 			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.aziende_activities
 			,fl_open: false
 		}
 	};
-	$rootScope.aziende_activities.rubrica_filtri_aziende_activities.model = $rootScope.aziende_activities;
+	$rootScope.aziende_activities.rubrica_filtri_circuiti_activities.model = $rootScope.circuiti_activities;
 
 	$rootScope.select_aziende_activities = function() {
 		return $scope.ajax(

@@ -39,18 +39,18 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					$rootScope.circuiti.filtri.show.az_descr			= !!filtri_app.show.az_descr;
 					$rootScope.circuiti.filtri.show.az_note			= !!filtri_app.show.az_note;
 					$rootScope.circuiti.filtri.show.az_note_interne	= !!filtri_app.show.az_note_interne;
-					$rootScope.aziende.filtri.show.az_flitaliano	= !!filtri_app.show.az_flitaliano;
-					$rootScope.aziende.filtri.show.az_fleuropeo	 	= !!filtri_app.show.az_fleuropeo;
-					$rootScope.aziende.filtri.show.az_flmondiale	= !!filtri_app.show.az_flmondiale;
+					$rootScope.circuiti.filtri.show.az_flitaliano	= !!filtri_app.show.az_flitaliano;
+					$rootScope.circuiti.filtri.show.az_fleuropeo	 	= !!filtri_app.show.az_fleuropeo;
+					$rootScope.circuiti.filtri.show.az_flmondiale	= !!filtri_app.show.az_flmondiale;
 				}
 			}
 		}
 		,fn_filtri_filter: function(items, filtri, limit) {
 			let filtered = [];
 
-			let at_properties = filtri && filtri.aziende_tipi ? $scope.get_valid_keys(filtri.aziende_tipi) : [];
+			let at_properties = filtri && filtri.circuiti_tipi ? $scope.get_valid_keys(filtri.circuiti_tipi) : [];
 			at_properties = at_properties.length > 0 ? at_properties : undefined;
-			let op = filtri && filtri.aziende_tipi_operator ? filtri.aziende_tipi_operator : "AND";
+			let op = filtri && filtri.circuiti_tipi_operator ? filtri.circuiti_tipi_operator : "AND";
 
 			for (let i = 0; items && i < items.length && (!limit || (limit && limit > filtered.length)); i++) {
 				let item = items[i];
@@ -61,7 +61,7 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 
 					for (let at = 0; (op == "AND" ? fl_ok : !fl_ok) && at < at_properties.length; at++) {
 						let at_property = at_properties[at];
-						let at_values = $scope.get_valid_keys(filtri.aziende_tipi[at_property]);
+						let at_values = $scope.get_valid_keys(filtri.circuiti_tipi[at_property]);
 						
 						for (let atv = 0; (op == "AND" ? fl_ok : !fl_ok) && atv < at_values.length; atv++) {
 							at_value = at_values[atv];
@@ -79,34 +79,34 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_filtri_aziende	&& this.rubrica_filtri_aziende != rubrica)		this.rubrica_filtri_aziende.fl_open = false;
+			if (this.rubrica_filtri_circuiti	&& this.rubrica_filtri_circuiti != rubrica)		this.rubrica_filtri_circuiti.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_filtri_aziende: {
-			template: "tmpl/rubrica_filtri_aziende.tmpl.html"
+		,rubrica_filtri_circuiti: {
+			template: "tmpl/rubrica_filtri_circuiti.tmpl.html"
 			,model: undefined
 			,fl_open: false
-			,aziende_tipi: $rootScope.aziende_tipi
-			,aziende_tipi_checked: function(azienda_tipo) {
-				return $rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] && $rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property][azienda_tipo.at_value];
+			,circuiti_tipi: $rootScope.circuiti_tipi
+			,circuiti_tipi_checked: function(azienda_tipo) {
+				return $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] && $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value];
 			}
-			,aziende_tipi_click: function(azienda_tipo) {
-				if ($rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] && $rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property][azienda_tipo.at_value]) {
-					$rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property][azienda_tipo.at_value] = undefined;
-					if ($scope.get_valid_keys($rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property]).length == 0) {
-						$rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] = undefined;
+			,circuiti_tipi_click: function(azienda_tipo) {
+				if ($rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] && $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value]) {
+					$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value] = undefined;
+					if ($scope.get_valid_keys($rootScope.aziende.filtri.circuiti_tipi[azienda_tipo.at_property]).length == 0) {
+						$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] = undefined;
 					}
 				} else {
-					$rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] = $rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] ? $rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property] : {};
-					$rootScope.aziende.filtri.aziende_tipi[azienda_tipo.at_property][azienda_tipo.at_value] = azienda_tipo.at_descr;
+					$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] = $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] ? $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] : {};
+					$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value] = azienda_tipo.at_descr;
 				}
 			}
-			,aziende_tipi_subhead: function(azienda_tipo) {return azienda_tipo && azienda_tipo.at_descr ? azienda_tipo.at_descr : ""}
-			,aziende_tipi_body: undefined
-			,aziende_tipi_caption: function(azienda_tipo) {return azienda_tipo && azienda_tipo.at_property ? azienda_tipo.at_property : ""}
+			,circuiti_tipi_subhead: function(azienda_tipo) {return azienda_tipo && azienda_tipo.at_descr ? azienda_tipo.at_descr : ""}
+			,circuiti_tipi_body: undefined
+			,circuiti_tipi_caption: function(azienda_tipo) {return azienda_tipo && azienda_tipo.at_property ? azienda_tipo.at_property : ""}
 		}
 	};
-	$rootScope.aziende.rubrica_filtri_aziende.model = $rootScope.aziende;
+	$rootScope.circuiti.rubrica_filtri_circuiti.model = $rootScope.circuiti;
 
 	$rootScope.push_azienda = function(azienda) {
 		if (azienda) {
@@ -115,13 +115,13 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					$rootScope.push_azienda(azienda[i]);
 				}
 			} else {
-				$scope.push($rootScope.aziende.righe, azienda);
-				$rootScope.aziende.map[azienda.az_id] = azienda;
+				$scope.push($rootScope.circuiti.righe, azienda);
+				$rootScope.circuiti.map[azienda.az_id] = azienda;
 			}
 		}
 	}
 
-	$rootScope.select_aziende = function() {
+	$rootScope.select_circuiti = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -131,13 +131,13 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			,true
 		).then(
 			(response) => {
-				$rootScope.aziende.righe = response;
-				$rootScope.aziende.map = {};
-				for (let az = 0; az < $rootScope.aziende.righe.length; az++) {
-					let azienda = $rootScope.aziende.righe[az];
-					$rootScope.aziende.map[azienda.az_id] = azienda;
+				$rootScope.circuiti.righe = response;
+				$rootScope.circuiti.map = {};
+				for (let az = 0; az < $rootScope.circuiti.righe.length; az++) {
+					let azienda = $rootScope.circuiti.righe[az];
+					$rootScope.circuiti.map[azienda.az_id] = azienda;
 				}
-				return Promise.resolve($rootScope.aziende.righe);
+				return Promise.resolve($rootScope.circuiti.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -154,8 +154,8 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.aziende.righe, azienda);
-					$rootScope.aziende.map[azienda.az_id] = undefined;
+					$scope.splice($rootScope.circuiti.righe, azienda);
+					$rootScope.circuiti.map[azienda.az_id] = undefined;
 					$scope.toast("Circuito eliminato");
 					return Promise.resolve(azienda);
 				}
