@@ -2,9 +2,9 @@
 	<md-icon md-svg-icon="img/icons/person.svg"></md-icon>
 	<md-tooltip md-direction="top">Utenti</md-tooltip>
 </md-button>
-<md-button ng-if="logged_user | utente_is_utente" class="md-icon-button" ng-class="{'selected': allegati.rubrica_aziende.fl_open}" ng-click="allegati.toggle_rubrica(allegati.rubrica_aziende)">
+<md-button ng-if="logged_user | utente_is_utente" class="md-icon-button" ng-class="{'selected': allegati.rubrica_circuiti.fl_open}" ng-click="allegati.toggle_rubrica(allegati.rubrica_circuiti)">
 	<md-icon md-svg-icon="img/icons/person_tie.svg"></md-icon>
-	<md-tooltip md-direction="top">Aziende</md-tooltip>
+	<md-tooltip md-direction="top">Circuiti</md-tooltip>
 </md-button>
 <md-button ng-if="(logged_user | utente_is_utente) || (logged_user | utente_is_azienda)" class="md-icon-button" ng-class="{'selected': allegati.rubrica_dipendenti.fl_open}" ng-click="allegati.toggle_rubrica(allegati.rubrica_dipendenti)">
 	<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>

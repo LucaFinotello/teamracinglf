@@ -9,7 +9,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 				}];
 
 				$rootScope.dipendenti.filtri.search						= undefined;
-				$rootScope.dipendenti.filtri.aziende					= {};
+				$rootScope.dipendenti.filtri.circuiti					= {};
 
 				$rootScope.dipendenti.filtri.show						= $rootScope.dipendenti.filtri.show ? $rootScope.dipendenti.filtri.show : {};
 				$rootScope.dipendenti.filtri.show.di_id					= true;
@@ -26,7 +26,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 				if (filtri_app) {
 					$rootScope.dipendenti.filtri.sorting				= filtri_app.sorting					? filtri_app.sorting					: $rootScope.dipendenti.filtri.sorting;
 					$rootScope.dipendenti.filtri.search					= filtri_app.search						? filtri_app.search						: $rootScope.dipendenti.filtri.search;
-					$rootScope.dipendenti.filtri.aziende				= filtri_app.dipendenti					? filtri_app.dipendenti					: $rootScope.dipendenti.filtri.aziende;
+					$rootScope.dipendenti.filtri.circuiti				= filtri_app.dipendenti					? filtri_app.dipendenti					: $rootScope.dipendenti.filtri.circuiti;
 					$rootScope.dipendenti.filtri.show					= $rootScope.dipendenti.filtri.show		? $rootScope.dipendenti.filtri.show		: {};
 					filtri_app.show										= filtri_app.show						? filtri_app.show						: {};
 					$rootScope.dipendenti.filtri.show.di_id				= !!filtri_app.show.di_id;
@@ -43,7 +43,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			for (let i = 0; items && i < items.length && (!limit || (limit && limit > filtered.length)); i++) {
 				let item = items[i];
 
-				if (filtri.aziende && $scope.get_valid_keys(filtri.aziende).length > 0 && filtri.aziende[item.di_idazienda] === undefined) continue;
+				if (filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && filtri.circuiti[item.di_idazienda] === undefined) continue;
 
 				if (
 					filtri
@@ -65,19 +65,19 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_aziende			&& this.rubrica_aziende != rubrica)					this.rubrica_aziende.fl_open = false;
+			if (this.rubrica_circuiti			&& this.rubrica_circuiti != rubrica)					this.rubrica_circuiti.fl_open = false;
 			if (this.rubrica_filtri_dipendenti	&& this.rubrica_filtri_dipendenti != rubrica)		this.rubrica_filtri_dipendenti.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_aziende: {
+		,rubrica_circuiti: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.aziende
+			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti.filtri.aziende = {}}
+			,deselect: function() {$rootScope.dipendenti.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti.filtri.aziende[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti.filtri.aziende[item.az_id] = $rootScope.dipendenti.filtri.aziende[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.dipendenti.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.dipendenti.filtri.circuiti[item.az_id] = $rootScope.dipendenti.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -191,10 +191,10 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 
 		dipendente = dipendente ? dipendente : {};
 		dialog.dipendente = dipendente;
-		dipendente.azienda = dipendente.di_idazienda ? $rootScope.aziende.map[dipendente.di_idazienda] : undefined;
+		dipendente.azienda = dipendente.di_idazienda ? $rootScope.circuiti.map[dipendente.di_idazienda] : undefined;
 		dialog.logged_user = $scope.logged_user;
 
-		dialog.aziende = $rootScope.aziende;
+		dialog.circuiti = $rootScope.circuiti;
 
 		dialog.deleteFn = dipendente.di_id ? function(answer, cancelFn) {
 			return $rootScope.delete_dipendente(answer.dipendente, true).then(
@@ -238,7 +238,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			let dipendente = dipendenti[di];
 			table += "<tr>";
 			if (filtri.show.di_idazienda) table += "<td>" + (dipendente.di_idazienda ? dipendente.di_idazienda : "") + "</td>";
-			if (filtri.show.di_idazienda) table += "<td>" + (dipendente.di_idazienda ? $rootScope.aziende.map[dipendente.di_idazienda].az_descr : "") + "</td>";
+			if (filtri.show.di_idazienda) table += "<td>" + (dipendente.di_idazienda ? $rootScope.circuiti.map[dipendente.di_idazienda].az_descr : "") + "</td>";
 			if (filtri.show.di_descr) table += "<td>" + dipendente.di_id + "</td>";
 			if (filtri.show.di_descr) table += "<td>" + dipendente.di_descr + "</td>";
 			if (filtri.show.di_note) table += "<td>" + dipendente.di_note + "</td>";
@@ -303,7 +303,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			righe.push({
 				di_id: dipendente.di_id
 				,di_idazienda: dipendente.di_idazienda
-				,az_descr: $rootScope.aziende.map[dipendente.di_idazienda] ? $rootScope.aziende.map[dipendente.di_idazienda].az_descr : ""
+				,az_descr: $rootScope.circuiti.map[dipendente.di_idazienda] ? $rootScope.circuiti.map[dipendente.di_idazienda].az_descr : ""
 				,di_descr: dipendente.di_id
 				,di_descr: dipendente.di_descr
 				,di_note: dipendente.di_note

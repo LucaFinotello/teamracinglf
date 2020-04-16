@@ -52,7 +52,7 @@
 		<div class="ub-table-body-row" layout="row" ng-click="anagrafica_dipendente(dipendente)">
 			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.di_idazienda">
 				<div layout="row" layout-align="start center" layout-fill>
-					<div class="md-caption" md-truncate>{{aziende.map[dipendente.di_idazienda].az_descr}}</div>
+					<div class="md-caption" md-truncate>{{circuiti.map[dipendente.di_idazienda].az_descr}}</div>
 				</div>
 			</div>
 			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.di_descr">

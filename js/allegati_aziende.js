@@ -1,7 +1,7 @@
-app.controller("allegati_aziende", ["$rootScope", "$scope", function($rootScope, $scope) {
-	$rootScope.allegati_aziende = $rootScope.allegati_aziende ? $rootScope.allegati_aziende : {};
+app.controller("allegati_circuiti", ["$rootScope", "$scope", function($rootScope, $scope) {
+	$rootScope.allegati_circuiti = $rootScope.allegati_circuiti ? $rootScope.allegati_circuiti : {};
 
-	$rootScope.select_allegati_aziende = function() {
+	$rootScope.select_allegati_circuiti = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -11,10 +11,10 @@ app.controller("allegati_aziende", ["$rootScope", "$scope", function($rootScope,
 			,true
 		).then(
 			(response) => {
-				$rootScope.allegati_aziende.righe = [];
-				$rootScope.allegati_aziende.map = {};
+				$rootScope.allegati_circuiti.righe = [];
+				$rootScope.allegati_circuiti.map = {};
 				$rootScope.push_allegato_azienda(response);
-				return Promise.resolve($rootScope.allegati_aziende.righe);
+				return Promise.resolve($rootScope.allegati_circuiti.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -27,9 +27,9 @@ app.controller("allegati_aziende", ["$rootScope", "$scope", function($rootScope,
 					$rootScope.push_allegato_azienda(allegato_azienda[i]);
 				}
 			} else {
-				$scope.push($rootScope.allegati_aziende.righe, allegato_azienda);
-				$rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato] = $rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato] ? $rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato] : {};
-				$rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato][allegato_azienda.aa_idazienda] = allegato_azienda;
+				$scope.push($rootScope.allegati_circuiti.righe, allegato_azienda);
+				$rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato] = $rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato] ? $rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato] : {};
+				$rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato][allegato_azienda.aa_idazienda] = allegato_azienda;
 			}
 		}
 	}
@@ -69,9 +69,9 @@ app.controller("allegati_aziende", ["$rootScope", "$scope", function($rootScope,
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.allegati_aziende.righe, allegato_azienda);
-					if ($rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato]) {
-						$rootScope.allegati_aziende.map[allegato_azienda.aa_idallegato][allegato_azienda.aa_idazienda] = undefined;
+					$scope.splice($rootScope.allegati_circuiti.righe, allegato_azienda);
+					if ($rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato]) {
+						$rootScope.allegati_circuiti.map[allegato_azienda.aa_idallegato][allegato_azienda.aa_idazienda] = undefined;
 					}
 					$scope.toast("Azienda rimossa");
 					return Promise.resolve(allegato_azienda);

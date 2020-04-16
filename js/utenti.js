@@ -53,7 +53,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 					&& !$filter("filter")(
 						[{
 							item: item
-							,azienda: $rootScope.aziende.map[item.idazienda]
+							,azienda: $rootScope.circuiti.map[item.idazienda]
 							,dipendente: $rootScope.dipendenti.map[item.iddipendente]
 						}]
 						,filtri.search
@@ -201,7 +201,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 			dialog.logged_user = $rootScope.logged_user;
 			dialog.utente = utente;
 			dialog.dipendenti = $rootScope.dipendenti;
-			dialog.aziende = $rootScope.aziende;
+			dialog.circuiti = $rootScope.circuiti;
 			dialog.moduli = $rootScope.gestione.moduli;
 
 			dialog.change_password = $rootScope.change_password;
@@ -259,7 +259,7 @@ app.filter("utenti_dipendenti", ["$rootScope", function($rootScope) {
 		return filtered;
 	}
 }]);
-app.filter("utenti_aziende", ["$rootScope", function($rootScope) {
+app.filter("utenti_circuiti", ["$rootScope", function($rootScope) {
 	return function(utenti) {
 		let filtered = [];
 		for (let ut = 0; utenti && ut < utenti.length; ut++) {

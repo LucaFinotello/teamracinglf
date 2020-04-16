@@ -41,27 +41,27 @@
 			<div ng-controller="utenti"						ng-init="select_utenti()"																></div>
 			<div ng-controller="gestione"					ng-init="gestione.page = logged_user.admin == '1' ? 'utenti' : 'azienda_argomenti'"		></div>
 			<div ng-controller="scadenziario"				ng-init="init_scadenziario()"															></div>
-			<div ng-controller="aziende_tipi"				ng-init="select_aziende_tipi()"															></div>
-			<div ng-controller="aziende"					ng-init="select_aziende()"																></div>
-			<div ng-controller="aziende_activities"			ng-init="select_aziende_activities()"													></div>
+			<div ng-controller="circuiti_tipi"				ng-init="select_circuiti_tipi()"															></div>
+			<div ng-controller="circuiti"					ng-init="select_circuiti()"																></div>
+			<div ng-controller="circuiti_activities"		ng-init="select_circuiti_activities()"													></div>
 			<div ng-controller="dipendenti"					ng-init="select_dipendenti()"															></div>
 			<div ng-controller="argomenti"					ng-init="select_argomenti()"															></div>
-			<div ng-controller="aziende_argomenti"			ng-init="select_aziende_argomenti()"													></div>
+			<div ng-controller="circuiti_argomenti"			ng-init="select_circuiti_argomenti()"													></div>
 			<div ng-controller="adempimenti"				ng-init="select_lastest_adempimenti()"													></div>
 			<div ng-controller="stati"																												></div>
 			<div ng-controller="sanzioni"																											></div>
 			<div ng-controller="formazioni"					ng-init="select_formazioni()"															></div>
-			<div ng-controller="aziende_formazioni"			ng-init="select_aziende_formazioni()"													></div>
+			<div ng-controller="circuiti_formazioni"		ng-init="select_circuiti_formazioni()"													></div>
 			<div ng-controller="dipendenti_formazioni"		ng-init="select_lastest_dipendenti_formazioni()"										></div>
 			<div ng-controller="checkups"					ng-init="select_checkups()"																></div>
 			<div ng-controller="allegati"					ng-init="select_allegati()"																></div>
 			<div ng-controller="allegati_utenti"			ng-init="select_allegati_utenti()"														></div>
-			<div ng-controller="allegati_aziende"			ng-init="select_allegati_aziende()"														></div>
+			<div ng-controller="allegati_circuiti"			ng-init="select_allegati_circuiti()"														></div>
 			<div ng-controller="allegati_dipendenti"		ng-init="select_allegati_dipendenti()"													></div>
 			<div ng-controller="allegati_checkups"			ng-init="select_allegati_checkups()"													></div>
 			<div ng-controller="allegati_checkups_righe"	ng-init="select_allegati_checkups_righe()"												></div>
-			<div ng-controller="report"						ng-init="report.page = 'aziende'"														></div>
-			<div ng-controller="report_aziende"																										></div>
+			<div ng-controller="report"						ng-init="report.page = 'circuiti'"														></div>
+			<div ng-controller="report_circuiti"																										></div>
 			<div ng-controller="report_dipendenti"																									></div>
 
 			<div
@@ -110,27 +110,27 @@
 <script type="text/javascript" src="js/utenti.js"></script>
 <script type="text/javascript" src="js/gestione.js"></script>
 <script type="text/javascript" src="js/scadenziario.js"></script>
-<script type="text/javascript" src="js/aziende_tipi.js"></script>
-<script type="text/javascript" src="js/aziende.js"></script>
-<script type="text/javascript" src="js/aziende_activities.js"></script>
+<script type="text/javascript" src="js/circuiti_tipi.js"></script>
+<script type="text/javascript" src="js/circuiti.js"></script>
+<script type="text/javascript" src="js/circuiti_activities.js"></script>
 <script type="text/javascript" src="js/dipendenti.js"></script>
 <script type="text/javascript" src="js/argomenti.js"></script>
-<script type="text/javascript" src="js/aziende_argomenti.js"></script>
+<script type="text/javascript" src="js/circuiti_argomenti.js"></script>
 <script type="text/javascript" src="js/adempimenti.js"></script>
 <script type="text/javascript" src="js/stati.js"></script>
 <script type="text/javascript" src="js/sanzioni.js"></script>
 <script type="text/javascript" src="js/formazioni.js"></script>
-<script type="text/javascript" src="js/aziende_formazioni.js"></script>
+<script type="text/javascript" src="js/circuiti_formazioni.js"></script>
 <script type="text/javascript" src="js/dipendenti_formazioni.js"></script>
 <script type="text/javascript" src="js/checkups.js"></script>
 <script type="text/javascript" src="js/allegati.js"></script>
 <script type="text/javascript" src="js/allegati_utenti.js"></script>
-<script type="text/javascript" src="js/allegati_aziende.js"></script>
+<script type="text/javascript" src="js/allegati_circuiti.js"></script>
 <script type="text/javascript" src="js/allegati_dipendenti.js"></script>
 <script type="text/javascript" src="js/allegati_checkups.js"></script>
 <script type="text/javascript" src="js/allegati_checkups_righe.js"></script>
 <script type="text/javascript" src="js/report.js"></script>
-<script type="text/javascript" src="js/report_aziende.js"></script>
+<script type="text/javascript" src="js/report_circuiti.js"></script>
 <script type="text/javascript" src="js/report_dipendenti.js"></script>
 
 <link href="css/main.css" rel="stylesheet">

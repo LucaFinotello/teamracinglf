@@ -15,7 +15,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 
 				$rootScope.allegati.filtri.search					= undefined;
 				$rootScope.allegati.filtri.utenti					= {};
-				$rootScope.allegati.filtri.aziende					= {};
+				$rootScope.allegati.filtri.circuiti					= {};
 				$rootScope.allegati.filtri.dipendenti				= {};
 				$rootScope.allegati.filtri.checkups					= {};
 
@@ -42,7 +42,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					$rootScope.allegati.filtri.sorting						= filtri_app.sorting					? filtri_app.sorting								: $rootScope.allegati.filtri.sorting;
 					$rootScope.allegati.filtri.search						= filtri_app.search						? filtri_app.search									: $rootScope.allegati.filtri.search;
 					$rootScope.allegati.filtri.utenti						= filtri_app.utenti						? filtri_app.utenti									: $rootScope.allegati.filtri.utenti;
-					$rootScope.allegati.filtri.aziende						= filtri_app.aziende					? filtri_app.aziende								: $rootScope.allegati.filtri.aziende;
+					$rootScope.allegati.filtri.circuiti						= filtri_app.circuiti					? filtri_app.circuiti								: $rootScope.allegati.filtri.circuiti;
 					$rootScope.allegati.filtri.dipendenti					= filtri_app.dipendenti					? filtri_app.dipendenti								: $rootScope.allegati.filtri.dipendenti;
 					$rootScope.allegati.filtri.checkups						= filtri_app.checkups					? filtri_app.checkups								: $rootScope.allegati.filtri.checkups;
 
@@ -87,11 +87,11 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					if (!fl_ok) continue;
 				}
 
-				let aziende = $scope.get_valid_keys(filtri.aziende);
-				if ($rootScope.utente_is_utente($scope.logged_user) && aziende.length > 0) {
+				let circuiti = $scope.get_valid_keys(filtri.circuiti);
+				if ($rootScope.utente_is_utente($scope.logged_user) && circuiti.length > 0) {
 					let fl_ok = false;
-					for (let i = 0; !fl_ok && i < aziende.length; i++) {
-						fl_ok = $rootScope.allegato_is_visibile(item.al_id, undefined, aziende[i]);
+					for (let i = 0; !fl_ok && i < circuiti.length; i++) {
+						fl_ok = $rootScope.allegato_is_visibile(item.al_id, undefined, circuiti[i]);
 					}
 					if (!fl_ok) continue;
 				}
@@ -136,7 +136,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 		}
 		,toggle_rubrica: function(rubrica) {
 			if (this.rubrica_utenti				&& this.rubrica_utenti != rubrica)				this.rubrica_utenti.fl_open = false;
-			if (this.rubrica_aziende			&& this.rubrica_aziende != rubrica)				this.rubrica_aziende.fl_open = false;
+			if (this.rubrica_circuiti			&& this.rubrica_circuiti != rubrica)			this.rubrica_circuiti.fl_open = false;
 			if (this.rubrica_dipendenti			&& this.rubrica_dipendenti != rubrica)			this.rubrica_dipendenti.fl_open = false;
 			if (this.rubrica_checkups			&& this.rubrica_checkups != rubrica)			this.rubrica_checkups.fl_open = false;
 			if (this.rubrica_filtri_allegati	&& this.rubrica_filtri_allegati != rubrica)		this.rubrica_filtri_allegati.fl_open = false;
@@ -157,15 +157,15 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			,lines: 2
 			,custom_filter_fn: undefined
 		}
-		,rubrica_aziende: {
+		,rubrica_circuiti: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.aziende
+			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.allegati.filtri.aziende = {}}
+			,deselect: function() {$rootScope.allegati.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.allegati.filtri.aziende[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.allegati.filtri.aziende[item.az_id] = $rootScope.allegati.filtri.aziende[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.allegati.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.allegati.filtri.circuiti[item.az_id] = $rootScope.allegati.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -197,9 +197,9 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 
 					if (
 						$rootScope.allegati.filtri
-						&& $rootScope.allegati.filtri.aziende
-						&& $scope.get_valid_keys($rootScope.allegati.filtri.aziende).length > 0
-						&& !$rootScope.allegati.filtri.aziende[item.di_idazienda]
+						&& $rootScope.allegati.filtri.circuiti
+						&& $scope.get_valid_keys($rootScope.allegati.filtri.circuiti).length > 0
+						&& !$rootScope.allegati.filtri.circuiti[item.di_idazienda]
 						&& !$rootScope.allegati.filtri.dipendenti[item.di_id]
 					) {
 						return false;
@@ -226,9 +226,9 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				if ($rootScope.utente_is_utente($scope.logged_user)) {
 					if (
 						$rootScope.allegati.filtri
-						&& $rootScope.allegati.filtri.aziende
-						&& $scope.get_valid_keys($rootScope.allegati.filtri.aziende).length > 0
-						&& !$rootScope.allegati.filtri.aziende[item.ch_idazienda]
+						&& $rootScope.allegati.filtri.circuiti
+						&& $scope.get_valid_keys($rootScope.allegati.filtri.circuiti).length > 0
+						&& !$rootScope.allegati.filtri.circuiti[item.ch_idazienda]
 					) {
 						return false;
 					}
@@ -348,8 +348,8 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				return allegato && utente && $rootScope.allegato_is_visibile(allegato.al_id, utente.username);
 			}
 
-			dialog.aziende = $rootScope.aziende;
-			dialog.allegati_aziende = $rootScope.allegati_aziende;
+			dialog.circuiti = $rootScope.circuiti;
+			dialog.allegati_circuiti = $rootScope.allegati_circuiti;
 			dialog.insert_allegato_azienda = $rootScope.insert_allegato_azienda;
 			dialog.delete_allegato_azienda = $rootScope.delete_allegato_azienda;
 			dialog.azienda_in_allegato = function(allegato, azienda) {
@@ -398,7 +398,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 	$rootScope.allegato_is_visibile = function(idallegato, idutente, idazienda, iddipendente, idcheckup, idcheckup_riga) {
 		return idallegato ? (
 			(!idutente				|| ($rootScope.allegati_utenti.map[idallegato] && $rootScope.allegati_utenti.map[idallegato][idutente]))
-			&& (!idazienda			|| ($rootScope.allegati_aziende.map[idallegato] && $rootScope.allegati_aziende.map[idallegato][idazienda]))
+			&& (!idazienda			|| ($rootScope.allegati_circuiti.map[idallegato] && $rootScope.allegati_circuiti.map[idallegato][idazienda]))
 			&& (!iddipendente		|| ($rootScope.allegati_dipendenti.map[idallegato] && $rootScope.allegati_dipendenti.map[idallegato][iddipendente]))
 			&& (!idcheckup			|| ($rootScope.allegati_checkups.map[idallegato] && $rootScope.allegati_checkups.map[idallegato][idcheckup]))
 			&& (!idcheckup_riga		|| ($rootScope.allegati_checkups_righe.map[idallegato] && $rootScope.allegati_checkups_righe.map[idallegato][idcheckup_riga]))

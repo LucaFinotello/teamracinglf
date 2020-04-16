@@ -1,44 +1,44 @@
-app.controller("aziende", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
-	$rootScope.aziende = $rootScope.aziende ? $rootScope.aziende : {
-		filtri_key: "filtri_aziende"
+app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
+	$rootScope.circuiti = $rootScope.circuiti ? $rootScope.circuiti : {
+		filtri_key: "filtri_circuiti"
 		,fn_filtri_set_default_filtri_app: function() {
-			if ($rootScope.aziende && $rootScope.aziende.filtri) {
-				$rootScope.aziende.filtri.sorting				= [{
+			if ($rootScope.circuiti && $rootScope.circuiti.filtri) {
+				$rootScope.circuiti.filtri.sorting				= [{
 					property: "az_descr"
 					,reverse: false
 				}];
 
-				$rootScope.aziende.filtri.search					= undefined;
-				$rootScope.aziende.filtri.aziende_tipi				= {};
-				$rootScope.aziende.filtri.aziende_tipi_operator		= "AND";
+				$rootScope.circuiti.filtri.search					= undefined;
+				$rootScope.circuiti.filtri.circuiti_tipi			= {};
+				$rootScope.circuiti.filtri.circuiti_tipi_operator	= "AND";
 
-				$rootScope.aziende.filtri.show						= $rootScope.aziende.filtri.show ? $rootScope.aziende.filtri.show : {};
-				$rootScope.aziende.filtri.show.az_id				= true;
-				$rootScope.aziende.filtri.show.az_descr				= true;
-				$rootScope.aziende.filtri.show.az_note				= true;
-				$rootScope.aziende.filtri.show.az_note_interne		= true;
-				$rootScope.aziende.filtri.show.az_flitaliano		= true;
-				$rootScope.aziende.filtri.show.az_fleuropeo		    = true;
-				$rootScope.aziende.filtri.show.az_flmondiale		= true;
+				$rootScope.circuiti.filtri.show						= $rootScope.circuiti.filtri.show ? $rootScope.circuiti.filtri.show : {};
+				$rootScope.circuiti.filtri.show.az_id				= true;
+				$rootScope.circuiti.filtri.show.az_descr				= true;
+				$rootScope.circuiti.filtri.show.az_note				= true;
+				$rootScope.circuiti.filtri.show.az_note_interne		= true;
+				$rootScope.circuiti.filtri.show.az_flitaliano		= true;
+				$rootScope.circuiti.filtri.show.az_fleuropeo		    = true;
+				$rootScope.circuiti.filtri.show.az_flmondiale		= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
-			if ($rootScope.aziende && $rootScope.aziende.filtri) {
-				let filtri_app = $localStorage[$rootScope.aziende.filtri_key];
+			if ($rootScope.circuiti && $rootScope.circuiti.filtri) {
+				let filtri_app = $localStorage[$rootScope.circuiti.filtri_key];
 
 				if (filtri_app) {
-					$rootScope.aziende.filtri.sorting				= filtri_app.sorting					? filtri_app.sorting					: $rootScope.aziende.filtri.sorting;
+					$rootScope.circuiti.filtri.sorting				= filtri_app.sorting					? filtri_app.sorting					: $rootScope.circuiti.filtri.sorting;
 
-					$rootScope.aziende.filtri.search				= filtri_app.search						? filtri_app.search						: $rootScope.aziende.filtri.search;
-					$rootScope.aziende.filtri.aziende_tipi			= filtri_app.aziende_tipi				? filtri_app.aziende_tipi				: {};
-					$rootScope.aziende.filtri.aziende_tipi_operator	= filtri_app.aziende_tipi_operator		? filtri_app.aziende_tipi_operator		: "AND";
+					$rootScope.circuiti.filtri.search				= filtri_app.search						? filtri_app.search						: $rootScope.circuiti.filtri.search;
+					$rootScope.circuiti.filtri.circuiti_tipi			= filtri_app.circuiti_tipi				? filtri_app.circuiti_tipi				: {};
+					$rootScope.circuiti.filtri.circuiti_tipi_operator	= filtri_app.circuiti_tipi_operator		? filtri_app.circuiti_tipi_operator		: "AND";
 
-					$rootScope.aziende.filtri.show					= $rootScope.aziende.filtri.show		? $rootScope.aziende.filtri.show		: {};
+					$rootScope.circuiti.filtri.show					= $rootScope.circuiti.filtri.show		? $rootScope.circuiti.filtri.show		: {};
 					filtri_app.show									= filtri_app.show						? filtri_app.show						: {};
-					$rootScope.aziende.filtri.show.az_id			= !!filtri_app.show.az_id;
-					$rootScope.aziende.filtri.show.az_descr			= !!filtri_app.show.az_descr;
-					$rootScope.aziende.filtri.show.az_note			= !!filtri_app.show.az_note;
-					$rootScope.aziende.filtri.show.az_note_interne	= !!filtri_app.show.az_note_interne;
+					$rootScope.circuiti.filtri.show.az_id			= !!filtri_app.show.az_id;
+					$rootScope.circuiti.filtri.show.az_descr			= !!filtri_app.show.az_descr;
+					$rootScope.circuiti.filtri.show.az_note			= !!filtri_app.show.az_note;
+					$rootScope.circuiti.filtri.show.az_note_interne	= !!filtri_app.show.az_note_interne;
 					$rootScope.aziende.filtri.show.az_flitaliano	= !!filtri_app.show.az_flitaliano;
 					$rootScope.aziende.filtri.show.az_fleuropeo	 	= !!filtri_app.show.az_fleuropeo;
 					$rootScope.aziende.filtri.show.az_flmondiale	= !!filtri_app.show.az_flmondiale;

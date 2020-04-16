@@ -10,7 +10,7 @@
 			md-no-cache="true"
 			md-min-length="0"
 			md-clear-button="!(logged_user | utente_is_dipendente)"
-			md-selected-item-change="scadenziario.dipendente && (scadenziario.azienda = aziende.map[scadenziario.dipendente.di_idazienda])"
+			md-selected-item-change="scadenziario.dipendente && (scadenziario.azienda = circuiti.map[scadenziario.dipendente.di_idazienda])"
 			md-search-text-change="scadenziario.dipendente = undefined"
 			ng-disabled="(logged_user | utente_is_dipendente)"
 		>

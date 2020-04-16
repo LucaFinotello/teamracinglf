@@ -4,7 +4,7 @@
 		<md-autocomplete
 			md-selected-item="scadenziario.azienda"
 			md-search-text="scadenziario.azienda_search"
-			md-items="azienda in aziende.righe | filter:scadenziario.azienda_search"
+			md-items="azienda in circuiti.righe | filter:scadenziario.azienda_search"
 			md-item-text="azienda.az_descr"
 			md-floating-label="Circuito"
 			md-no-cache="true"
@@ -23,7 +23,7 @@
 		>
 			<md-item-template>
 				<div>{{azienda.az_descr}}</div>
-				<md-not-found>Non sono state trovate aziende per "{{scadenziario.azienda_search}}".</md-not-found>
+				<md-not-found>Non sono state trovate circuiti per "{{scadenziario.azienda_search}}".</md-not-found>
 			</md-item-template>
 		</md-autocomplete>
 	</md-input-container>
