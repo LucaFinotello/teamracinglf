@@ -14,7 +14,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				}];
 
 				$rootScope.dipendenti_formazioni.filtri.search						= undefined;
-				$rootScope.dipendenti_formazioni.filtri.aziende						= {};
+				$rootScope.dipendenti_formazioni.filtri.circuiti						= {};
 				$rootScope.dipendenti_formazioni.filtri.dipendenti					= {};
 				$rootScope.dipendenti_formazioni.filtri.formazioni					= {};
 
@@ -43,7 +43,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				if (filtri_app) {
 					$rootScope.dipendenti_formazioni.filtri.sorting						= filtri_app.sorting								? filtri_app.sorting										: $rootScope.dipendenti_formazioni.filtri.sorting;
 					$rootScope.dipendenti_formazioni.filtri.search						= filtri_app.search									? filtri_app.search											: $rootScope.dipendenti_formazioni.filtri.search;
-					$rootScope.dipendenti_formazioni.filtri.aziende						= filtri_app.aziende								? filtri_app.aziende										: $rootScope.dipendenti_formazioni.filtri.aziende;
+					$rootScope.dipendenti_formazioni.filtri.circuiti						= filtri_app.circuiti								? filtri_app.circuiti										: $rootScope.dipendenti_formazioni.filtri.circuiti;
 					$rootScope.dipendenti_formazioni.filtri.dipendenti					= filtri_app.dipendenti								? filtri_app.dipendenti										: $rootScope.dipendenti_formazioni.filtri.dipendenti;
 					$rootScope.dipendenti_formazioni.filtri.formazioni					= filtri_app.formazioni								? filtri_app.formazioni										: $rootScope.dipendenti_formazioni.filtri.formazioni;
 
@@ -87,7 +87,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 							continue;
 						}
 					} else {
-						if (filtri && filtri.aziende && $scope.get_valid_keys(filtri.aziende).length > 0 && !filtri.aziende[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) {
+						if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) {
 							continue;
 						}
 					}
@@ -101,7 +101,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 						}
 					}
 				} else {
-					if (filtri && filtri.aziende && $scope.get_valid_keys(filtri.aziende).length > 0 && !filtri.aziende[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) continue;
+					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) continue;
 					if (filtri && filtri.dipendenti && $scope.get_valid_keys(filtri.dipendenti).length > 0 && !filtri.dipendenti[item.df_iddipendente]) continue;
 				}
 				if (filtri && filtri.formazioni && $scope.get_valid_keys(filtri.formazioni).length > 0 && !filtri.formazioni[item.df_idformazione]) continue;
@@ -126,21 +126,21 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_aziende						&& this.rubrica_aziende != rubrica)							this.rubrica_aziende.fl_open = false;
+			if (this.rubrica_circuiti						&& this.rubrica_circuiti != rubrica)							this.rubrica_circuiti.fl_open = false;
 			if (this.rubrica_dipendenti						&& this.rubrica_dipendenti != rubrica)						this.rubrica_dipendenti.fl_open = false;
 			if (this.rubrica_formazioni						&& this.rubrica_formazioni != rubrica)						this.rubrica_formazioni.fl_open = false;
 			if (this.rubrica_filtri_dipendenti_formazioni	&& this.rubrica_filtri_dipendenti_formazioni != rubrica)	this.rubrica_filtri_dipendenti_formazioni.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_aziende: {
+		,rubrica_circuiti: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.aziende
+			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti_formazioni.filtri.aziende = {}}
+			,deselect: function() {$rootScope.dipendenti_formazioni.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti_formazioni.filtri.aziende[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti_formazioni.filtri.aziende[item.az_id] = $rootScope.dipendenti_formazioni.filtri.aziende[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] = $rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -378,7 +378,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				if ($rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda;
 				table += "</td>";
 				table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">";
-				if ($rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.aziende.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr;
+				if ($rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.circuiti.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr;
 				table += "</td>";
 			}
 			if (filtri.show.df_iddipendente) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + dipendente_formazione.df_iddipendente + "</td>";
@@ -451,7 +451,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			let dipendente_formazione = dipendenti_formazioni[di];
 			righe.push({
 				az_id: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda
-				,az_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda ? $rootScope.aziende.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr : undefined
+				,az_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda ? $rootScope.circuiti.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr : undefined
 				,df_iddipendente: dipendente_formazione.df_iddipendente
 				,di_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_descr
 				,df_idformazione: dipendente_formazione.df_idformazione

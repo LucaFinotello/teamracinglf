@@ -79,14 +79,14 @@
 		<div layout="column" layout-align="start stretch" class="full-height" flex>
 			<div layout="row" layout-align="start center">
 				<md-icon md-svg-icon="img/icons/person_tie.svg"></md-icon>
-				<div flex md-truncate class="md-title">Aziende assegnabili</div>
+				<div flex md-truncate class="md-title">circuiti assegnabili</div>
 			</div>
 			<md-input-container>
 				<label>Cerca</label>
-				<input type="text" ng-model="dialog.search_aziende"/>
+				<input type="text" ng-model="dialog.search_circuiti"/>
 			</md-input-container>
-			<md-list class="md-dense" scroll="dialog.aziende" style="max-height: 250px;">
-				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="azienda in dialog.aziende.righe | not_in:dialog.allegato:dialog.azienda_in_allegato | filter:dialog.search_aziende | limitTo:dialog.aziende.limit" ng-click="dialog.insert_allegato_azienda({aa_idallegato: dialog.allegato.al_id, au_idazienda: azienda.az_id})">
+			<md-list class="md-dense" scroll="dialog.circuiti" style="max-height: 250px;">
+				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="azienda in dialog.circuiti.righe | not_in:dialog.allegato:dialog.azienda_in_allegato | filter:dialog.search_circuiti | limitTo:dialog.circuiti.limit" ng-click="dialog.insert_allegato_azienda({aa_idallegato: dialog.allegato.al_id, au_idazienda: azienda.az_id})">
 					<div class="md-list-item-text">
 						<div class="md-body-1" md-truncate>{{azienda.az_descr}}</div>
 						<div class="md-caption" md-truncate>{{azienda.az_id}}</div>
@@ -97,17 +97,17 @@
 		<div layout="column" layout-align="start stretch" class="full-height" flex>
 			<div layout="row" layout-align="start center">
 				<md-icon md-svg-icon="img/icons/person_tie.svg"></md-icon>
-				<div flex md-truncate class="md-title">Aziende assegnate</div>
+				<div flex md-truncate class="md-title">circuiti assegnate</div>
 			</div>
 			<md-input-container>
 				<label>Cerca</label>
-				<input type="text" ng-model="dialog.search_aziende_assegnati"/>
+				<input type="text" ng-model="dialog.search_circuiti_assegnati"/>
 			</md-input-container>
-			<md-list class="md-dense" scroll="dialog.allegati_aziende" style="max-height: 250px;">
-				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="allegato_azienda in dialog.allegati_aziende.map[dialog.allegato.al_id] | toArray | filter:dialog.search_aziende_assegnati | limitTo:dialog.allegati_aziende.limit" ng-click="dialog.delete_allegato_azienda(allegato_azienda, true)">
+			<md-list class="md-dense" scroll="dialog.allegati_circuiti" style="max-height: 250px;">
+				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="allegato_azienda in dialog.allegati_circuiti.map[dialog.allegato.al_id] | toArray | filter:dialog.search_circuiti_assegnati | limitTo:dialog.allegati_circuiti.limit" ng-click="dialog.delete_allegato_azienda(allegato_azienda, true)">
 					<div class="md-list-item-text">
-						<div class="md-body-1" md-truncate>{{dialog.aziende.map[allegato_azienda.aa_idazienda].az_descr}}</div>
-						<div class="md-caption" md-truncate>{{dialog.aziende.map[allegato_azienda.aa_idazienda].az_id}}</div>
+						<div class="md-body-1" md-truncate>{{dialog.circuiti.map[allegato_azienda.aa_idazienda].az_descr}}</div>
+						<div class="md-caption" md-truncate>{{dialog.circuiti.map[allegato_azienda.aa_idazienda].az_id}}</div>
 					</div>
 				</md-list-item>
 			</md-list>

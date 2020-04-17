@@ -207,7 +207,7 @@ $beansMaps->DipendenteBean = (Object) [
 # CircuitoBean
 $beansMaps->CircuitoBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "aziende"
+	,"sqlTableName" => "circuiti"
 	,"sqlFieldsMap" => (Object) [
 		"az_id" => (Object) [
 			"name" => "az_id"
@@ -251,7 +251,7 @@ $beansMaps->CircuitoBean = (Object) [
 # AziendaActivityBean
 $beansMaps->AziendaActivityBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "aziende_activities"
+	,"sqlTableName" => "circuiti_activities"
 	,"sqlFieldsMap" => (Object) [
 		"aa_id" => (Object) [
 			"name" => "aa_id"
@@ -405,7 +405,7 @@ $beansMaps->ArgomentoBean = (Object) [
 # AziendaArgomentoBean
 $beansMaps->AziendaArgomentoBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "aziende_argomenti"
+	,"sqlTableName" => "circuiti_argomenti"
 	,"sqlFieldsMap" => (Object) [
 		"aa_idazienda" => (Object) [
 			"name" => "aa_idazienda"
@@ -612,7 +612,7 @@ $beansMaps->FormazioneBean = (Object) [
 # AziendaFormazioneBean
 $beansMaps->AziendaFormazioneBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "aziende_formazioni"
+	,"sqlTableName" => "circuiti_formazioni"
 	,"sqlFieldsMap" => (Object) [
 		"af_id" => (Object) [
 			"name" => "af_id"
@@ -818,7 +818,7 @@ $beansMaps->AllegatoUtenteBean = (Object) [
 # AllegatoAziendaBean
 $beansMaps->AllegatoAziendaBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "allegati_aziende"
+	,"sqlTableName" => "allegati_circuiti"
 	,"sqlFieldsMap" => (Object) [
 		"aa_idallegato" => (Object) [
 			"name" => "aa_idallegato"

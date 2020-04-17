@@ -19,9 +19,9 @@
 				<md-icon md-svg-src="../../../img/icons/calendar_priority.svg"></md-icon>
 				<div class="md-body-1" md-truncate>Dal {{postdata.filtri.data_inizio_scadenza | date:'dd/MM/yyyy'}} al {{postdata.filtri.data_fine_scadenza | date:'dd/MM/yyyy'}}</div>
 			</div>
-			<div ng-if="get_valid_keys(postdata.filtri.aziende).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
+			<div ng-if="get_valid_keys(postdata.filtri.circuiti).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
 				<md-icon md-svg-src="../../../img/icons/person_tie.svg"></md-icon>
-				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.aziende)">{{filter_key}} - {{postdata.filtri.aziende[filter_key]}}</div>
+				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.circuiti)">{{filter_key}} - {{postdata.filtri.circuiti[filter_key]}}</div>
 			</div>
 			<div ng-if="get_valid_keys(postdata.filtri.dipendenti).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
 				<md-icon md-svg-src="../../../img/icons/person_helm.svg"></md-icon>

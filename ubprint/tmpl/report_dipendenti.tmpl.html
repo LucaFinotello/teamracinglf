@@ -11,9 +11,9 @@
 				<div class="md-body-2" md-truncate>Cerca:</div>
 				<div class="md-body-1" md-truncate>{{postdata.filtri.search}}</div>
 			</div>
-			<div ng-if="get_valid_keys(postdata.filtri.aziende).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
+			<div ng-if="get_valid_keys(postdata.filtri.circuiti).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
 				<md-icon md-svg-src="../../../img/icons/circuit.svg"></md-icon>
-				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.aziende)">{{filter_key}} - {{postdata.filtri.aziende[filter_key]}}</div>
+				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.circuiti)">{{filter_key}} - {{postdata.filtri.circuiti[filter_key]}}</div>
 			</div>
 		</div>
 	</div>

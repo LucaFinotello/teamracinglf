@@ -30,7 +30,7 @@
 				<md-autocomplete
 					md-selected-item="dialog.utente.azienda"
 					md-search-text="dialog.azienda_search"
-					md-items="azienda in dialog.aziende.righe | filter:dialog.azienda_search"
+					md-items="azienda in dialog.circuiti.righe | filter:dialog.azienda_search"
 					md-item-text="azienda.az_descr"
 					md-floating-label="Azienda"
 					md-no-cache="true"
@@ -42,7 +42,7 @@
 				>
 					<md-item-template>
 						<div>{{azienda.az_id}} - {{azienda.az_descr}}</div>
-						<md-not-found>Non sono state trovate aziende per "{{dialog.azienda_search}}".</md-not-found>
+						<md-not-found>Non sono state trovate circuiti per "{{dialog.azienda_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>

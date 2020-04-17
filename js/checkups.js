@@ -78,7 +78,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 					&& !$filter("filter")(
 						[{
 							item: item
-							,azienda: $rootScope.aziende.map[item.ch_idazienda]
+							,azienda: $rootScope.circuiti.map[item.ch_idazienda]
 							,utente: $rootScope.utenti.map[item.ch_idutente]
 						}]
 						, filtri.search
@@ -153,7 +153,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 
 	$rootScope.insert_checkup = function(checkup) {
 		if (checkup) {
-			checkup.azienda = $rootScope.aziende.map[checkup.ch_idazienda];
+			checkup.azienda = $rootScope.circuiti.map[checkup.ch_idazienda];
 			checkup.utente = $rootScope.utenti.map[checkup.ch_idutente];
 			return $scope.ajax(
 				"api/checkup/save.php"
@@ -168,7 +168,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 
 					$rootScope.push_allegato(response[0].allegati);
 					$rootScope.push_allegato_utente(response[0].allegati_utenti);
-					$rootScope.push_allegato_azienda(response[0].allegati_aziende);
+					$rootScope.push_allegato_azienda(response[0].allegati_circuiti);
 					$rootScope.push_allegato_dipendente(response[0].allegati_dipendenti);
 					$rootScope.push_allegato_checkup(response[0].allegati_checkups);
 					$rootScope.push_allegato_checkup_riga(response[0].allegati_checkups_righe);
@@ -277,7 +277,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 			if (!checkup.ch_id && !checkup.disabledform && checkup.editableform) {
 				if ($rootScope.scadenziario.azienda) {
 					checkup.ch_idazienda = checkup.ch_idazienda ? checkup.ch_idazienda : $rootScope.scadenziario.azienda.az_id;
-					checkup.azienda = checkup.azienda ? checkup.azienda : $rootScope.aziende.map[checkup.ch_idazienda];
+					checkup.azienda = checkup.azienda ? checkup.azienda : $rootScope.circuiti.map[checkup.ch_idazienda];
 					checkup.ch_idutente = checkup.ch_idutente ? checkup.ch_idutente : $scope.logged_user.username;
 					checkup.utente = checkup.utente ? checkup.utente : $rootScope.utenti.map[checkup.ch_idutente];
 					checkup.ch_date = checkup.ch_date ? new Date(checkup.ch_date.valueOf()) : new Date();

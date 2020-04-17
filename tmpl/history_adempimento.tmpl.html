@@ -3,7 +3,7 @@
 		<div class="md-title" ng-if="!dialog.adempimenti.righe.length">Nessun dato da visualizzare</div>
 		<div ng-if="dialog.adempimenti.righe.length" layout="row" layout-align="start center">
 			<md-icon md-svg-icon="img/icons/person_tie.svg"></md-icon>
-			<div class="md-subhead">{{dialog.adempimenti.righe[0].ch_idazienda}} - {{dialog.aziende.map[dialog.adempimenti.righe[0].ch_idazienda].az_descr}}</div>
+			<div class="md-subhead">{{dialog.adempimenti.righe[0].ch_idazienda}} - {{dialog.circuiti.map[dialog.adempimenti.righe[0].ch_idazienda].az_descr}}</div>
 		</div>
 		<div ng-if="dialog.adempimenti.righe.length" layout="row" layout-align="start center">
 			<md-icon md-svg-icon="img/icons/books.svg"></md-icon>

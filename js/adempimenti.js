@@ -18,7 +18,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 				}];
 
 				$rootScope.adempimenti.filtri.search						= undefined;
-				$rootScope.adempimenti.filtri.aziende						= {};
+				$rootScope.adempimenti.filtri.circuiti						= {};
 				$rootScope.adempimenti.filtri.argomenti						= {};
 				$rootScope.adempimenti.filtri.adempimenti					= {};
 				$rootScope.adempimenti.filtri.stati							= {};
@@ -43,7 +43,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 					$rootScope.adempimenti.filtri.sorting					= filtri_app.sorting					? filtri_app.sorting								: $rootScope.adempimenti.filtri.sorting;
 
 					$rootScope.adempimenti.filtri.search					= filtri_app.search						? filtri_app.search									: $rootScope.adempimenti.filtri.search;
-					$rootScope.adempimenti.filtri.aziende					= filtri_app.aziende					? filtri_app.aziende								: $rootScope.adempimenti.filtri.aziende;
+					$rootScope.adempimenti.filtri.circuiti					= filtri_app.circuiti					? filtri_app.circuiti								: $rootScope.adempimenti.filtri.circuiti;
 					$rootScope.adempimenti.filtri.argomenti					= filtri_app.argomenti					? filtri_app.argomenti								: $rootScope.adempimenti.filtri.argomenti;
 					$rootScope.adempimenti.filtri.adempimenti				= filtri_app.adempimenti				? filtri_app.adempimenti							: $rootScope.adempimenti.filtri.adempimenti;
 					$rootScope.adempimenti.filtri.stati						= filtri_app.stati						? filtri_app.stati									: $rootScope.adempimenti.filtri.stati;
@@ -75,7 +75,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "school_calendar") {
 					if ($rootScope.scadenziario.azienda && $rootScope.scadenziario.azienda.az_id != item.ch_idazienda) continue;
 				} else if ($rootScope.utente_is_utente($scope.logged_user)) {
-					if (filtri && filtri.aziende && $scope.get_valid_keys(filtri.aziende).length > 0 && !filtri.aziende[item.ch_idazienda]) continue;
+					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[item.ch_idazienda]) continue;
 				} else {
 					if (item.ch_idazienda != $scope.logged_user.idazienda) continue;
 				}
@@ -88,7 +88,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 					&& !$filter("filter")(
 						[{
 							item: item
-							,azienda: $rootScope.aziende.map[item.ch_idazienda].ar_id
+							,azienda: $rootScope.circuiti.map[item.ch_idazienda].ar_id
 							,argomento: {
 								ar_id: $rootScope.argomenti.map[item.cr_idargomento].ar_id
 								,ar_descr: $rootScope.argomenti.map[item.cr_idargomento].ar_descr
@@ -118,22 +118,22 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_aziende				&& this.rubrica_aziende != rubrica)						this.rubrica_aziende.fl_open = false;
+			if (this.rubrica_circuiti				&& this.rubrica_circuiti != rubrica)						this.rubrica_circuiti.fl_open = false;
 			if (this.rubrica_argomenti				&& this.rubrica_argomenti != rubrica)					this.rubrica_argomenti.fl_open = false;
 			if (this.rubrica_adempimenti			&& this.rubrica_adempimenti != rubrica)					this.rubrica_adempimenti.fl_open = false;
 			if (this.rubrica_stati					&& this.rubrica_stati != rubrica)						this.rubrica_stati.fl_open = false;
 			if (this.rubrica_filtri_adempimenti		&& this.rubrica_filtri_adempimenti != rubrica)			this.rubrica_filtri_adempimenti.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_aziende: {
+		,rubrica_circuiti: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.aziende
+			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.adempimenti.filtri.aziende = {}}
+			,deselect: function() {$rootScope.adempimenti.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.adempimenti.filtri.aziende[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.adempimenti.filtri.aziende[item.az_id] = $rootScope.adempimenti.filtri.aziende[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.adempimenti.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.adempimenti.filtri.circuiti[item.az_id] = $rootScope.adempimenti.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -337,7 +337,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 				dialog.editableform = false;
 
 				dialog.adempimenti = {righe: response};
-				dialog.aziende = $rootScope.aziende;
+				dialog.circuiti = $rootScope.circuiti;
 				dialog.argomenti = $rootScope.argomenti;
 
 				return $scope.alert(dialog).then(
@@ -401,7 +401,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 			table += "<tr>";
 			if (filtri.show.ch_date) table += "<td>" + $filter("date")(adempimento.ch_date, "dd/MM/yyyy HH:mm") + "</td>";
 			if (filtri.show.ch_idazienda) table += "<td>" + adempimento.ch_idazienda + "</td>";
-			if (filtri.show.ch_idazienda) table += "<td>" + $rootScope.aziende.map[adempimento.ch_idazienda].az_descr + "</td>";
+			if (filtri.show.ch_idazienda) table += "<td>" + $rootScope.circuiti.map[adempimento.ch_idazienda].az_descr + "</td>";
 			if (filtri.show.cr_idargomento) {
 				table += "<td>";
 				if (adempimento.cr_idargomento) table += adempimento.cr_idargomento;
@@ -486,7 +486,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 			righe.push({
 				ch_date: adempimento.ch_date
 				,ch_idazienda: adempimento.ch_idazienda
-				,az_descr: $rootScope.aziende.map[adempimento.ch_idazienda].az_descr
+				,az_descr: $rootScope.circuiti.map[adempimento.ch_idazienda].az_descr
 				,cr_idargomento: adempimento.cr_idargomento
 				,ar_descr: adempimento.cr_idargomento ? $rootScope.argomenti.map[adempimento.cr_idargomento].ar_descr : undefined
 				,cr_idadempimento: adempimento.cr_idadempimento

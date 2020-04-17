@@ -1,7 +1,7 @@
 app.controller("circuiti_tipi", ["$rootScope", function($rootScope) {
 	$rootScope.circuiti_tipi = $rootScope.circuiti_tipi ? $rootScope.circuiti_tipi : {};
 
-	$rootScope.select_aziende_tipi = function() {
+	$rootScope.select_circuiti_tipi = function() {
 		$rootScope.circuiti_tipi.righe = [{
 			at_property: "az_flitaliano"
 			,at_value: "0"
@@ -25,7 +25,7 @@ app.controller("circuiti_tipi", ["$rootScope", function($rootScope) {
 			$rootScope.circuiti_tipi.map[azienda_tipo.at_property] = $rootScope.circuiti_tipi.map[azienda_tipo.at_property] ? $rootScope.circuiti_tipi.map[azienda_tipo.at_property] : {};
 			$rootScope.circuiti_tipi.map[azienda_tipo.at_property][azienda_tipo.at_value] = azienda_tipo;
 		}
-		return Promise.resolve($rootScope.aziende_tipi.righe);
+		return Promise.resolve($rootScope.circuiti_tipi.righe);
 	}
 
 	$rootScope.azienda_is_socio = function(azienda) {

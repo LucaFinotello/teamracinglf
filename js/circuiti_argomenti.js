@@ -1,7 +1,7 @@
 app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScope, $scope) {
-	$rootScope.aziende_argomenti = $rootScope.aziende_argomenti ? $rootScope.aziende_argomenti : {};
+	$rootScope.circuiti_argomenti = $rootScope.circuiti_argomenti ? $rootScope.circuiti_argomenti : {};
 
-	$rootScope.select_aziende_argomenti = function() {
+	$rootScope.select_circuiti_argomenti = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -11,14 +11,14 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 			,true
 		).then(
 			(response) => {
-				$rootScope.aziende_argomenti.righe = response;
-				$rootScope.aziende_argomenti.map = {};
-				for (let aa = 0; aa < $rootScope.aziende_argomenti.righe.length; aa++) {
-					let azienda_argomento = $rootScope.aziende_argomenti.righe[aa];
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] : {};
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = azienda_argomento;
+				$rootScope.circuiti_argomenti.righe = response;
+				$rootScope.circuiti_argomenti.map = {};
+				for (let aa = 0; aa < $rootScope.circuiti_argomenti.righe.length; aa++) {
+					let azienda_argomento = $rootScope.circuiti_argomenti.righe[aa];
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] : {};
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = azienda_argomento;
 				}
-				return Promise.resolve($rootScope.aziende_argomenti.righe);
+				return Promise.resolve($rootScope.circuiti_argomenti.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -35,9 +35,9 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 				,true
 			).then(
 				(response) => {
-					$scope.push($rootScope.aziende_argomenti.righe, azienda_argomento);
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] : {};
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = azienda_argomento;
+					$scope.push($rootScope.circuiti_argomenti.righe, azienda_argomento);
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] : {};
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = azienda_argomento;
 					$scope.toast("Argomento assegnato all'azienda");
 					return Promise.resolve(azienda_argomento);
 				}
@@ -64,9 +64,9 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.aziende_argomenti.righe, azienda_argomento);
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento] : {};
-					$rootScope.aziende_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = undefined;
+					$scope.splice($rootScope.circuiti_argomenti.righe, azienda_argomento);
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] : {};
+					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = undefined;
 					$scope.toast("Argomento rimosso dall'azienda");
 					return Promise.resolve(azienda_argomento);
 				}
@@ -83,6 +83,6 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 	}
 
 	$rootScope.argomento_in_azienda = function(azienda, argomento) {
-		return azienda && argomento && $rootScope.aziende_argomenti.map && $rootScope.aziende_argomenti.map[argomento.ar_id] && $rootScope.aziende_argomenti.map[argomento.ar_id][azienda.az_id]
+		return azienda && argomento && $rootScope.circuiti_argomenti.map && $rootScope.circuiti_argomenti.map[argomento.ar_id] && $rootScope.circuiti_argomenti.map[argomento.ar_id][azienda.az_id]
 	}
 }]);
