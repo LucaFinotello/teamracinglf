@@ -21,41 +21,41 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 				$rootScope.circuiti_formazioni.filtri.data_fine_richiesta			= new Date(data_fine.valueOf());
 				$rootScope.circuiti_formazioni.filtri.fl_data_evasione				= false;
 				$rootScope.circuiti_formazioni.filtri.data_inizio_evasione			= new Date(data_inizio.valueOf());
-				$rootScope.circuiti_formazioni.filtri.data_fine_evasione				= new Date(data_fine.valueOf());
+				$rootScope.circuiti_formazioni.filtri.data_fine_evasione			= new Date(data_fine.valueOf());
 
-				$rootScope.aziende_formazioni.filtri.show							= $rootScope.aziende_formazioni.filtri.show ? $rootScope.aziende_formazioni.filtri.show : {};
-				$rootScope.aziende_formazioni.filtri.show.af_id						= true;
-				$rootScope.aziende_formazioni.filtri.show.af_idazienda				= true;
-				$rootScope.aziende_formazioni.filtri.show.af_idformazione			= true;
-				$rootScope.aziende_formazioni.filtri.show.af_data_richiesta			= true;
-				$rootScope.aziende_formazioni.filtri.show.af_data_evasione			= true;
-				$rootScope.aziende_formazioni.filtri.show.af_note					= true;
+				$rootScope.circuiti_formazioni.filtri.show							= $rootScope.circuiti_formazioni.filtri.show ? $rootScope.circuiti_formazioni.filtri.show : {};
+				$rootScope.circuiti_formazioni.filtri.show.af_id					= true;
+				$rootScope.circuiti_formazioni.filtri.show.af_idazienda				= true;
+				$rootScope.circuiti_formazioni.filtri.show.af_idformazione			= true;
+				$rootScope.circuiti_formazioni.filtri.show.af_data_richiesta		= true;
+				$rootScope.circuiti_formazioni.filtri.show.af_data_evasione			= true;
+				$rootScope.circuiti_formazioni.filtri.show.af_note					= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
-			if ($rootScope.aziende_formazioni && $rootScope.aziende_formazioni.filtri) {
-				let filtri_app = $localStorage[$rootScope.aziende_formazioni.filtri_key];
+			if ($rootScope.circuiti_formazioni && $rootScope.circuiti_formazioni.filtri) {
+				let filtri_app = $localStorage[$rootScope.circuiti_formazioni.filtri_key];
 
 				if (filtri_app) {
-					$rootScope.aziende_formazioni.filtri.sorting						= filtri_app.sorting							? filtri_app.sorting							: $rootScope.aziende_formazioni.filtri.sorting;
-					$rootScope.aziende_formazioni.filtri.search							= filtri_app.search								? filtri_app.search								: $rootScope.aziende_formazioni.filtri.search;
-					$rootScope.aziende_formazioni.filtri.fl_show_done					= filtri_app.fl_show_done						? filtri_app.fl_show_done						: $rootScope.aziende_formazioni.filtri.fl_show_done;
+					$rootScope.circuiti_formazioni.filtri.sorting						= filtri_app.sorting							? filtri_app.sorting							: $rootScope.circuiti_formazioni.filtri.sorting;
+					$rootScope.circuiti_formazioni.filtri.search						= filtri_app.search								? filtri_app.search								: $rootScope.circuiti_formazioni.filtri.search;
+					$rootScope.circuiti_formazioni.filtri.fl_show_done					= filtri_app.fl_show_done						? filtri_app.fl_show_done						: $rootScope.circuiti_formazioni.filtri.fl_show_done;
 
-					$rootScope.aziende_formazioni.filtri.fl_data_richiesta				= !!filtri_app.fl_data_richiesta;
-					$rootScope.aziende_formazioni.filtri.data_inizio_richiesta			= filtri_app.data_inizio_richiesta				? new Date(filtri_app.data_inizio_richiesta.valueOf())		: $rootScope.aziende_formazioni.filtri.data_inizio_richiesta;
-					$rootScope.aziende_formazioni.filtri.data_fine_richiesta			= filtri_app.data_fine_richiesta				? new Date(filtri_app.data_fine_richiesta.valueOf())		: $rootScope.aziende_formazioni.filtri.data_fine_richiesta;
-					$rootScope.aziende_formazioni.filtri.fl_data_evasione				= !!filtri_app.fl_data_evasione;
-					$rootScope.aziende_formazioni.filtri.data_inizio_evasione			= filtri_app.data_inizio_evasione				? new Date(filtri_app.data_inizio_evasione.valueOf())		: $rootScope.aziende_formazioni.filtri.data_inizio_evasione;
-					$rootScope.aziende_formazioni.filtri.data_fine_evasione				= filtri_app.data_fine_evasione					? new Date(filtri_app.data_fine_evasione.valueOf())			: $rootScope.aziende_formazioni.filtri.data_fine_evasione;
+					$rootScope.circuiti_formazioni.filtri.fl_data_richiesta				= !!filtri_app.fl_data_richiesta;
+					$rootScope.circuiti_formazioni.filtri.data_inizio_richiesta			= filtri_app.data_inizio_richiesta				? new Date(filtri_app.data_inizio_richiesta.valueOf())		: $rootScope.circuiti_formazioni.filtri.data_inizio_richiesta;
+					$rootScope.circuiti_formazioni.filtri.data_fine_richiesta			= filtri_app.data_fine_richiesta				? new Date(filtri_app.data_fine_richiesta.valueOf())		: $rootScope.circuiti_formazioni.filtri.data_fine_richiesta;
+					$rootScope.circuiti_formazioni.filtri.fl_data_evasione				= !!filtri_app.fl_data_evasione;
+					$rootScope.circuiti_formazioni.filtri.data_inizio_evasione			= filtri_app.data_inizio_evasione				? new Date(filtri_app.data_inizio_evasione.valueOf())		: $rootScope.circuiti_formazioni.filtri.data_inizio_evasione;
+					$rootScope.circuiti_formazioni.filtri.data_fine_evasione			= filtri_app.data_fine_evasione			 		? new Date(filtri_app.data_fine_evasione.valueOf())			: $rootScope.circuiti_formazioni.filtri.data_fine_evasione;
 
-					$rootScope.aziende_formazioni.filtri.show							= $rootScope.aziende_formazioni.filtri.show		? $rootScope.aziende_formazioni.filtri.show		: {};
+					$rootScope.circuiti_formazioni.filtri.show							= $rootScope.circuiti_formazioni.filtri.show	? $rootScope.circuiti_formazioni.filtri.show		: {};
 					filtri_app.show														= filtri_app.show								? filtri_app.show								: {};
-					$rootScope.aziende_formazioni.filtri.show.af_id						= !!filtri_app.show.af_id;
-					$rootScope.aziende_formazioni.filtri.show.af_idazienda				= !!filtri_app.show.af_idazienda;
-					$rootScope.aziende_formazioni.filtri.show.af_idformazione			= !!filtri_app.show.af_idformazione;
-					$rootScope.aziende_formazioni.filtri.show.af_data_richiesta			= !!filtri_app.show.af_data_richiesta;
-					$rootScope.aziende_formazioni.filtri.show.af_data_evasione			= !!filtri_app.show.af_data_evasione;
-					$rootScope.aziende_formazioni.filtri.show.af_note					= !!filtri_app.show.af_note;
+					$rootScope.circuiti_formazioni.filtri.show.af_id					= !!filtri_app.show.af_id;
+					$rootScope.circuiti_formazioni.filtri.show.af_idazienda				= !!filtri_app.show.af_idazienda;
+					$rootScope.circuiti_formazioni.filtri.show.af_idformazione			= !!filtri_app.show.af_idformazione;
+					$rootScope.circuiti_formazioni.filtri.show.af_data_richiesta		= !!filtri_app.show.af_data_richiesta;
+					$rootScope.circuiti_formazioni.filtri.show.af_data_evasione			= !!filtri_app.show.af_data_evasione;
+					$rootScope.circuiti_formazioni.filtri.show.af_note					= !!filtri_app.show.af_note;
 				}
 			}
 		}
@@ -93,18 +93,18 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_filtri_aziende_formazioni	&& this.rubrica_filtri_aziende_formazioni != rubrica)	this.rubrica_filtri_aziende_formazioni.fl_open = false;
+			if (this.rubrica_filtri_circuiti_formazioni	&& this.rubrica_filtri_circuiti_formazioni != rubrica)	this.rubrica_filtri_circuiti_formazioni.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
-		,rubrica_filtri_aziende_formazioni: {
-			template: "tmpl/rubrica_filtri_aziende_formazioni.tmpl.html"
-			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.aziende_formazioni
+		,rubrica_filtri_circuiti_formazioni: {
+			template: "tmpl/rubrica_filtri_circuiti_formazioni.tmpl.html"
+			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.circuiti_formazioni
 			,fl_open: false
 		}
 	};
-	$rootScope.aziende_formazioni.rubrica_filtri_aziende_formazioni.model = $rootScope.aziende_formazioni;
+	$rootScope.circuiti_formazioni.rubrica_filtri_circuiti_formazioni.model = $rootScope.circuiti_formazioni;
 
-	$rootScope.select_aziende_formazioni = function() {
+	$rootScope.select_circuiti_formazioni = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -114,14 +114,14 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 			,true
 		).then(
 			(response) => {
-				$rootScope.aziende_formazioni.righe = response;
-				$rootScope.aziende_formazioni.map = {};
-				for (let af = 0; af < $rootScope.aziende_formazioni.righe.length; af++) {
-					let azienda_formazione = $rootScope.aziende_formazioni.righe[af];
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] : {};
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = azienda_formazione;
+				$rootScope.circuiti_formazioni.righe = response;
+				$rootScope.circuiti_formazioni.map = {};
+				for (let af = 0; af < $rootScope.circuiti_formazioni.righe.length; af++) {
+					let azienda_formazione = $rootScope.circuiti_formazioni.righe[af];
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] : {};
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = azienda_formazione;
 				}
-				return Promise.resolve($rootScope.aziende_formazioni.righe);
+				return Promise.resolve($rootScope.circuiti_formazioni.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -139,9 +139,9 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 			).then(
 				(response) => {
 					azienda_formazione.af_id = response[0].af_id;
-					$scope.push($rootScope.aziende_formazioni.righe, azienda_formazione);
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] : {};
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = azienda_formazione;
+					$scope.push($rootScope.circuiti_formazioni.righe, azienda_formazione);
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] : {};
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = azienda_formazione;
 					$scope.toast("Prenotazione di evento avvenuta");
 					return Promise.resolve(azienda_formazione);
 				}
@@ -171,7 +171,7 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 		dialog.data_richiesta		= azienda_formazione && azienda_formazione.af_data_richiesta	? new Date(azienda_formazione.af_data_richiesta.valueOf())	: new Date();
 		dialog.data_evasione		= azienda_formazione && azienda_formazione.af_data_evasione		? new Date(azienda_formazione.af_data_evasione.valueOf())	: undefined;
 
-		dialog.aziende = $rootScope.aziende;
+		dialog.circuiti = $rootScope.circuiti;
 		dialog.formazioni = $rootScope.formazioni;
 
 		dialog.deleteFn = dialog.azienda_formazione.af_id ? function(answer, cancelFn) {
@@ -209,9 +209,9 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.aziende_formazioni.righe, azienda_formazione);
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione] : {};
-					$rootScope.aziende_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = undefined;
+					$scope.splice($rootScope.circuiti_formazioni.righe, azienda_formazione);
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] = $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] ? $rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione] : {};
+					$rootScope.circuiti_formazioni.map[azienda_formazione.af_idformazione][azienda_formazione.af_idazienda] = undefined;
 					$scope.toast("Prenotazione di evento avvenuto");
 					return Promise.resolve(azienda_formazione);
 				}

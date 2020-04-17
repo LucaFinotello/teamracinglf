@@ -1,8 +1,8 @@
-app.controller("aziende_tipi", ["$rootScope", function($rootScope) {
-	$rootScope.aziende_tipi = $rootScope.aziende_tipi ? $rootScope.aziende_tipi : {};
+app.controller("circuiti_tipi", ["$rootScope", function($rootScope) {
+	$rootScope.circuiti_tipi = $rootScope.circuiti_tipi ? $rootScope.circuiti_tipi : {};
 
 	$rootScope.select_aziende_tipi = function() {
-		$rootScope.aziende_tipi.righe = [{
+		$rootScope.circuiti_tipi.righe = [{
 			at_property: "az_flitaliano"
 			,at_value: "0"
 			,at_descr: "Non socio"
@@ -19,11 +19,11 @@ app.controller("aziende_tipi", ["$rootScope", function($rootScope) {
 			,at_value: "1"
 			,at_descr: "Con contratto"
 		}];
-		$rootScope.aziende_tipi.map = {};
-		for (let at = 0; at < $rootScope.aziende_tipi.righe.length; at++) {
-			let azienda_tipo = $rootScope.aziende_tipi.righe[at];
-			$rootScope.aziende_tipi.map[azienda_tipo.at_property] = $rootScope.aziende_tipi.map[azienda_tipo.at_property] ? $rootScope.aziende_tipi.map[azienda_tipo.at_property] : {};
-			$rootScope.aziende_tipi.map[azienda_tipo.at_property][azienda_tipo.at_value] = azienda_tipo;
+		$rootScope.circuiti_tipi.map = {};
+		for (let at = 0; at < $rootScope.circuiti_tipi.righe.length; at++) {
+			let azienda_tipo = $rootScope.circuiti_tipi.righe[at];
+			$rootScope.circuiti_tipi.map[azienda_tipo.at_property] = $rootScope.circuiti_tipi.map[azienda_tipo.at_property] ? $rootScope.circuiti_tipi.map[azienda_tipo.at_property] : {};
+			$rootScope.circuiti_tipi.map[azienda_tipo.at_property][azienda_tipo.at_value] = azienda_tipo;
 		}
 		return Promise.resolve($rootScope.aziende_tipi.righe);
 	}
