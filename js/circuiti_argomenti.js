@@ -1,4 +1,4 @@
-app.controller("aziende_argomenti", ["$rootScope", "$scope", function($rootScope, $scope) {
+app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScope, $scope) {
 	$rootScope.aziende_argomenti = $rootScope.aziende_argomenti ? $rootScope.aziende_argomenti : {};
 
 	$rootScope.select_aziende_argomenti = function() {

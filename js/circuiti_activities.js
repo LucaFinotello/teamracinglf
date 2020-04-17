@@ -1,73 +1,73 @@
-app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
-	$rootScope.aziende_activities = $rootScope.aziende_activities ? $rootScope.aziende_activities : {
-		filtri_key: "filtri_aziende_activities"
+app.controller("circuiti_activities", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
+	$rootScope.circuiti_activities = $rootScope.circuiti_activities ? $rootScope.circuiti_activities : {
+		filtri_key: "filtri_circuiti_activities"
 		,fn_filtri_set_default_filtri_app: function() {
-			if ($rootScope.aziende_activities && $rootScope.aziende_activities.filtri) {
+			if ($rootScope.circuiti_activities && $rootScope.circuiti_activities.filtri) {
 				let data_inizio = new Date();
 				data_inizio.setHours(0,0,0,0);
 				let data_fine = new Date();
 				data_fine.setHours(23,59,59,999);
 
-				$rootScope.aziende_activities.filtri.sorting						= [{
+				$rootScope.circuiti_activities.filtri.sorting						= [{
 					property: "aa_date"
 					,reverse: true
 				}];
 
-				$rootScope.aziende_activities.filtri.search							= undefined;
+				$rootScope.circuiti_activities.filtri.search							= undefined;
 
-				$rootScope.aziende_activities.filtri.fl_data						= true;
-				$rootScope.aziende_activities.filtri.data_inizio					= new Date(data_inizio.valueOf());
-				$rootScope.aziende_activities.filtri.data_fine						= new Date(data_fine.valueOf());
+				$rootScope.circuiti_activities.filtri.fl_data						= true;
+				$rootScope.circuiti_activities.filtri.data_inizio					= new Date(data_inizio.valueOf());
+				$rootScope.circuiti_activities.filtri.data_fine						= new Date(data_fine.valueOf());
 
-				$rootScope.aziende_activities.filtri.show							= $rootScope.aziende_activities.filtri.show ? $rootScope.aziende_activities.filtri.show : {};
-				$rootScope.aziende_activities.filtri.show.aa_id						= true;
-				$rootScope.aziende_activities.filtri.show.aa_idazienda				= true;
-				$rootScope.aziende_activities.filtri.show.aa_idutente				= true;
-				$rootScope.aziende_activities.filtri.show.aa_type					= true;
-				$rootScope.aziende_activities.filtri.show.aa_date					= true;
-				$rootScope.aziende_activities.filtri.show.aa_descr					= true;
-				$rootScope.aziende_activities.filtri.show.aa_note					= true;
-				$rootScope.aziende_activities.filtri.show.aa_qta					= true;
-				$rootScope.aziende_activities.filtri.show.aa_pre_ant				= true;
-				$rootScope.aziende_activities.filtri.show.aa_pre_post				= true;
-				$rootScope.aziende_activities.filtri.show.aa_ant					= true;
-				$rootScope.aziende_activities.filtri.show.aa_post					= true;
-				$rootScope.aziende_activities.filtri.show.aa_moto					= true;
-				$rootScope.aziende_activities.filtri.show.aa_pres_ant				= true;
-				$rootScope.aziende_activities.filtri.show.aa_pres_post				= true;
-				$rootScope.aziende_activities.filtri.show.aa_gradi					= true;
+				$rootScope.circuiti_activities.filtri.show							= $rootScope.circuiti_activities.filtri.show ? $rootScope.circuiti_activities.filtri.show : {};
+				$rootScope.circuiti_activities.filtri.show.aa_id					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_idazienda				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_idutente				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_type					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_date					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_descr					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_note					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_qta					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_pre_ant				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_pre_post				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_ant					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_post					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_moto					= true;
+				$rootScope.circuiti_activities.filtri.show.aa_pres_ant				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_pres_post				= true;
+				$rootScope.circuiti_activities.filtri.show.aa_gradi					= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
-			if ($rootScope.aziende_activities && $rootScope.aziende_activities.filtri) {
-				let filtri_app = $localStorage[$rootScope.aziende_activities.filtri_key];
+			if ($rootScope.circuiti_activities && $rootScope.circuiti_activities.filtri) {
+				let filtri_app = $localStorage[$rootScope.circuiti_activities.filtri_key];
 
 				if (filtri_app) {
-					$rootScope.aziende_activities.filtri.sorting						= filtri_app.sorting							? filtri_app.sorting							: $rootScope.aziende_activities.filtri.sorting;
-					$rootScope.aziende_activities.filtri.search							= filtri_app.search								? filtri_app.search								: $rootScope.aziende_activities.filtri.search;
+					$rootScope.circuiti_activities.filtri.sorting						= filtri_app.sorting							? filtri_app.sorting							: $rootScope.circuiti_activities.filtri.sorting;
+					$rootScope.circuiti_activities.filtri.search						= filtri_app.search								? filtri_app.search								: $rootScope.circuiti_activities.filtri.search;
 
-					$rootScope.aziende_activities.filtri.fl_data						= !!filtri_app.fl_data;
-					$rootScope.aziende_activities.filtri.data_inizio					= filtri_app.data_inizio						? new Date(filtri_app.data_inizio.valueOf())	: $rootScope.aziende_activities.filtri.data_inizio;
-					$rootScope.aziende_activities.filtri.data_fine						= filtri_app.data_fine							? new Date(filtri_app.data_fine.valueOf())		: $rootScope.aziende_activities.filtri.data_fine;
+					$rootScope.circuiti_activities.filtri.fl_data						= !!filtri_app.fl_data;
+					$rootScope.circuiti_activities.filtri.data_inizio					= filtri_app.data_inizio						? new Date(filtri_app.data_inizio.valueOf())	: $rootScope.circuiti_activities.filtri.data_inizio;
+					$rootScope.circuiti_activities.filtri.data_fine						= filtri_app.data_fine							? new Date(filtri_app.data_fine.valueOf())		: $rootScope.circuiti_activities.filtri.data_fine;
 
-					$rootScope.aziende_activities.filtri.show							= $rootScope.aziende_activities.filtri.show		? $rootScope.aziende_activities.filtri.show		: {};
+					$rootScope.circuiti_activities.filtri.show							= $rootScope.circuiti_activities.filtri.show	? $rootScope.circuiti_activities.filtri.show	: {};
 					filtri_app.show														= filtri_app.show								? filtri_app.show								: {};
-					$rootScope.aziende_activities.filtri.show.aa_id						= !!filtri_app.show.aa_id;
-					$rootScope.aziende_activities.filtri.show.aa_idazienda				= !!filtri_app.show.aa_idazienda;
-					$rootScope.aziende_activities.filtri.show.aa_idutente				= !!filtri_app.show.aa_idutente;
-					$rootScope.aziende_activities.filtri.show.aa_type					= !!filtri_app.show.aa_type;
-					$rootScope.aziende_activities.filtri.show.aa_date					= !!filtri_app.show.aa_date;
-					$rootScope.aziende_activities.filtri.show.aa_descr					= !!filtri_app.show.aa_descr;
-					$rootScope.aziende_activities.filtri.show.aa_note					= !!filtri_app.show.aa_note;
-					$rootScope.aziende_activities.filtri.show.aa_qta					= !!filtri_app.show.aa_qta;
-					$rootScope.aziende_activities.filtri.show.aa_pre_ant				= !!filtri_app.show.aa_pre_ant;
-					$rootScope.aziende_activities.filtri.show.aa_pre_post				= !!filtri_app.show.aa_pre_post;
-					$rootScope.aziende_activities.filtri.show.aa_ant					= !!filtri_app.show.aa_ant;
-					$rootScope.aziende_activities.filtri.show.aa_post					= !!filtri_app.show.aa_post;
-					$rootScope.aziende_activities.filtri.show.aa_moto					= !!filtri_app.show.aa_moto;
-					$rootScope.aziende_activities.filtri.show.aa_gradi					= !!filtri_app.show.aa_gradi;
-					$rootScope.aziende_activities.filtri.show.aa_pres_post				= !!filtri_app.show.aa_pres_post;
-					$rootScope.aziende_activities.filtri.show.aa_pres_ant				= !!filtri_app.show.aa_pres_ant;
+					$rootScope.circuiti_activities.filtri.show.aa_id						= !!filtri_app.show.aa_id;
+					$rootScope.circuiti_activities.filtri.show.aa_idazienda				= !!filtri_app.show.aa_idazienda;
+					$rootScope.circuiti_activities.filtri.show.aa_idutente				= !!filtri_app.show.aa_idutente;
+					$rootScope.circuiti_activities.filtri.show.aa_type					= !!filtri_app.show.aa_type;
+					$rootScope.circuiti_activities.filtri.show.aa_date					= !!filtri_app.show.aa_date;
+					$rootScope.circuiti_activities.filtri.show.aa_descr					= !!filtri_app.show.aa_descr;
+					$rootScope.circuiti_activities.filtri.show.aa_note					= !!filtri_app.show.aa_note;
+					$rootScope.circuiti_activities.filtri.show.aa_qta					= !!filtri_app.show.aa_qta;
+					$rootScope.circuiti_activities.filtri.show.aa_pre_ant				= !!filtri_app.show.aa_pre_ant;
+					$rootScope.circuiti_activities.filtri.show.aa_pre_post				= !!filtri_app.show.aa_pre_post;
+					$rootScope.circuiti_activities.filtri.show.aa_ant					= !!filtri_app.show.aa_ant;
+					$rootScope.circuiti_activities.filtri.show.aa_post					= !!filtri_app.show.aa_post;
+					$rootScope.circuiti_activities.filtri.show.aa_moto					= !!filtri_app.show.aa_moto;
+					$rootScope.circuiti_activities.filtri.show.aa_gradi					= !!filtri_app.show.aa_gradi;
+					$rootScope.circuiti_activities.filtri.show.aa_pres_post				= !!filtri_app.show.aa_pres_post;
+					$rootScope.circuiti_activities.filtri.show.aa_pres_ant				= !!filtri_app.show.aa_pres_ant;
 				}
 			}
 		}
@@ -89,7 +89,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 					&& !$filter("filter")(
 						[{
 							item: item
-							,azienda: $rootScope.aziende.map[item.aa_idazienda]
+							,azienda: $rootScope.circuiti.map[item.aa_idazienda]
 							,utente: $rootScope.utenti.map[item.aa_idutente]
 						}]
 						, filtri.search
@@ -102,18 +102,18 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 			return filtered;
 		}
 		,toggle_rubrica: function(rubrica) {
-			if (this.rubrica_filtri_aziende_activities	&& this.rubrica_filtri_circuiti_activities != rubrica)	this.rubrica_filtri_circuiti_activities.fl_open = false;
+			if (this.rubrica_filtri_circuiti_activities	&& this.rubrica_filtri_circuiti_activities != rubrica)	this.rubrica_filtri_circuiti_activities.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
 		,rubrica_filtri_circuiti_activities: {
-			template: "tmpl/rubrica_filtri_aziende_activities.tmpl.html"
-			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.aziende_activities
+			template: "tmpl/rubrica_filtri_circuiti_activities.tmpl.html"
+			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.circuiti_activities
 			,fl_open: false
 		}
 	};
-	$rootScope.aziende_activities.rubrica_filtri_circuiti_activities.model = $rootScope.circuiti_activities;
+	$rootScope.circuiti_activities.rubrica_filtri_circuiti_activities.model = $rootScope.circuiti_activities;
 
-	$rootScope.select_aziende_activities = function() {
+	$rootScope.select_circuiti_activities = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -123,8 +123,8 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 			,true
 		).then(
 			(response) => {
-				$rootScope.aziende_activities.righe = response;
-				return Promise.resolve($rootScope.aziende_activities.righe);
+				$rootScope.circuiti_activities.righe = response;
+				return Promise.resolve($rootScope.circuiti_activities.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -141,7 +141,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 		).then(
 			(response) => {
 				azienda_activity.aa_id = response[0].aa_id;
-				$scope.push($rootScope.aziende_activities.righe, azienda_activity);
+				$scope.push($rootScope.circuiti_activities.righe, azienda_activity);
 				$scope.toast("Attività salvata");
 				return Promise.resolve(azienda_activity);
 			}
@@ -160,7 +160,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.aziende_activities.righe, azienda_activity);
+					$scope.splice($rootScope.circuiti_activities.righe, azienda_activity);
 					if ($rootScope.gestione && $rootScope.gestione.azienda_activity == azienda_activity) {
 						$rootScope.gestione_clear_azienda_activity();
 					}
@@ -194,7 +194,7 @@ app.controller("aziende_activities", ["$rootScope", "$scope", "$localStorage", "
 		dialog.date.setSeconds(0, 0);
 		dialog.azienda_activity.aa_qta = dialog.azienda_activity.aa_qta ? parseFloat(dialog.azienda_activity.aa_qta) : 0;
 
-		dialog.aziende = $rootScope.aziende;
+		dialog.circuiti = $rootScope.circuiti;
 		dialog.utenti = $rootScope.utenti;
 		dialog.logged_user = $scope.logged_user;
 

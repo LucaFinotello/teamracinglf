@@ -22,7 +22,7 @@ try {
 				isset($azienda_argomento->aa_idazienda) ? $azienda_argomento->aa_idazienda : 0
 				,isset($azienda_argomento->aa_idargomento) ? $azienda_argomento->aa_idargomento : 0
 			];
-			$sql = "DELETE FROM aziende_argomenti
+			$sql = "DELETE FROM circuiti_argomenti
 					WHERE aa_idazienda = ? AND aa_idargomento = ?";
 			$query = query($beansMaps->AziendaArgomentoBean->dbh, $sql, $params);
 			if ($query->status) {

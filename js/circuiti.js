@@ -93,7 +93,7 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			,circuiti_tipi_click: function(azienda_tipo) {
 				if ($rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] && $rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value]) {
 					$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property][azienda_tipo.at_value] = undefined;
-					if ($scope.get_valid_keys($rootScope.aziende.filtri.circuiti_tipi[azienda_tipo.at_property]).length == 0) {
+					if ($scope.get_valid_keys($rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property]).length == 0) {
 						$rootScope.circuiti.filtri.circuiti_tipi[azienda_tipo.at_property] = undefined;
 					}
 				} else {
@@ -221,8 +221,8 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 		);
 	}
 
-	$rootScope.report_aziende_export_xlsx = function(aziende, filtri) {
-		aziende = aziende ? aziende : [];
+	$rootScope.report_circuiti_export_xlsx = function(circuiti, filtri) {
+		circuiti = circuiti ? circuiti : [];
 		filtri = filtri ? filtri : {};
 		filtri.show = filtri.show ? filtri.show : {
 			az_id: true
@@ -244,8 +244,8 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 		if (filtri.show.az_flmondiale) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Contratto</b></th>";
 		table += "</tr></thead>";
 		table +="<tbody>";
-		for (let az = 0; az < aziende.length; az++) {
-			let azienda = aziende[az];
+		for (let az = 0; az < circuiti.length; az++) {
+			let azienda = circuiti[az];
 			table += "<tr>";
 			if (filtri.show.az_descr) table += "<td>" + azienda.az_id + "</td>";
 			if (filtri.show.az_descr) table += "<td>" + azienda.az_descr + "</td>";
@@ -296,8 +296,8 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			,(response) => {return Promise.resolve(response)}
 		)
 	}
-	$rootScope.report_aziende_export_pdf = function(aziende, filtri) {
-				aziende = aziende ? aziende : [];
+	$rootScope.report_circuiti_export_pdf = function(circuiti, filtri) {
+				circuiti = circuiti ? circuiti : [];
                 filtri = filtri ? filtri : {};
                 filtri.show = filtri.show ? filtri.show : {
                     az_id: true
@@ -310,8 +310,8 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
                 };
 
                 let righe = [];
-                for (let az = 0; az < aziende.length; az++) {
-                    let azienda = aziende[az];
+                for (let az = 0; az < circuiti.length; az++) {
+                    let azienda = circuiti[az];
                     righe.push({
                         az_descr: azienda.az_id
                         ,az_descr: azienda.az_descr
@@ -325,7 +325,7 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
                 return $scope.ajax(
                     "api/base/toPdf.php"
                     ,{
-                        template: "report_aziende.tmpl.html"
+                        template: "report_circuiti.tmpl.html"
                         ,options: {
                             landscape: true
                             ,disable_links: true

@@ -55,7 +55,7 @@ try {
 						if ($save->status) {
 							$allegati = $save->response;
 							$allegati_utenti = [];
-							$allegati_aziende = [];
+							$allegati_circuiti = [];
 							$allegati_dipendenti = [];
 							$allegati_checkups = [];
 							$allegati_checkups_righe = [];
@@ -106,7 +106,7 @@ try {
 										"au_idallegato" => $pdf_allegato->al_id
 										,"au_idutente" => $_SESSION[$session_logged]->username # non lo prendo dal checkup perchè potrei essere in modifica di un checkup di un altro utente
 									];
-									$allegati_aziende[] = (Object) [
+									$allegati_circuiti[] = (Object) [
 										"aa_idallegato" => $pdf_allegato->al_id
 										,"aa_idazienda" => $checkup->ch_idazienda
 									];
@@ -117,7 +117,7 @@ try {
 
 									$save = save("AllegatoUtenteBean", $allegati_utenti);
 									if ($save->status) {
-										$save = save("AllegatoAziendaBean", $allegati_aziende);
+										$save = save("AllegatoAziendaBean", $allegati_circuiti);
 										if ($save->status) {
 											$save = save("AllegatoDipendenteBean", $allegati_dipendenti);
 											if ($save->status) {
@@ -127,7 +127,7 @@ try {
 													if ($save->status) {
 														@$checkup->allegati = $allegati;
 														@$checkup->allegati_utenti = $allegati_utenti;
-														@$checkup->allegati_aziende = $allegati_aziende;
+														@$checkup->allegati_circuiti = $allegati_circuiti;
 														@$checkup->allegati_dipendenti = $allegati_dipendenti;
 														@$checkup->allegati_checkups = $allegati_checkups;
 														@$checkup->allegati_checkups_righe = $allegati_checkups_righe;
