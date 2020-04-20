@@ -257,7 +257,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				(response) => {
 					dipendente_formazione.df_id = response[0].df_id;
 					$scope.push($rootScope.dipendenti_formazioni.righe, dipendente_formazione);
-					$scope.toast("Formazione svolta salvata");
+					$scope.toast("Evento prenotato");
 					return Promise.resolve(dipendente_formazione);
 				}
 				,(response) => {return Promise.reject(response)}
@@ -317,7 +317,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 
 	$rootScope.delete_dipendente_formazione = function(dipendente_formazione, fl_ask_confirm) {
 		if (dipendente_formazione) {
-			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler eliminare questa formazione svolta?", "SI", "NO").then(
+			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler eliminare questo evento?", "SI", "NO").then(
 				(yes) => {return $rootScope.delete_dipendente_formazione(dipendente_formazione, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(
