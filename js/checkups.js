@@ -65,8 +65,8 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 
 			for (let i = 0; items && i < items.length && (!limit || (limit && limit > filtered.length)); i++) {
 				let item = items[i];
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "checkups") {
-					if ($rootScope.scadenziario.azienda && $rootScope.scadenziario.azienda.az_id != item.ch_idazienda) {
+				if ($scope.page() == "pista" && $rootScope.pista.page == "checkups") {
+					if ($rootScope.pista.azienda && $rootScope.pista.azienda.az_id != item.ch_idazienda) {
 						continue;
 					}
 				}
@@ -217,8 +217,8 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 					$rootScope.checkups.map[checkup.ch_id] = undefined;
 					if (checkup == $rootScope.checkups.selected) {
 						$rootScope.checkups.selected = undefined;
-						if ($scope.page() == "scadenziario" && $rootScope.scadenziario && $rootScope.scadenziario.page == "checkup") {
-							$rootScope.scadenziario.page = "checkups";
+						if ($scope.page() == "pista" && $rootScope.pista && $rootScope.pista.page == "checkup") {
+							$rootScope.pista.page = "checkups";
 						}
 					}
 					$scope.toast("Checkup eliminato");
@@ -249,11 +249,11 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 				checkup.fn_filtri_set_default_filtri_app = undefined;
 				checkup.fn_filtri_set_custom_filtri_app = undefined;
 				checkup.fn_filtri_filter = undefined;
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario) {
+				if ($scope.page() == "pista" && $rootScope.pista) {
 					if ($rootScope.checkups.selected == checkup) {
 						$rootScope.checkups.selected = undefined;
 					}
-					$rootScope.scadenziario.page = "checkups";
+					$rootScope.pista.page = "checkups";
 				}
 				return Promise.resolve(checkup);
 			}
@@ -262,7 +262,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 	}
 
 	$rootScope.anagrafica_checkup = function(checkup, disabledform, editableform) {
-		if ($scope.page() == "scadenziario" && $rootScope.scadenziario) {
+		if ($scope.page() == "pista" && $rootScope.pista) {
 			checkup = checkup ? checkup : {};
 			if ($rootScope.checkups.selected && !$rootScope.checkups.selected.disabledform && $rootScope.checkups.selected != checkup) {
 				return $rootScope.cancel_checkup($rootScope.checkups.selected, true).then(
@@ -275,8 +275,8 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 			checkup.editableform = editableform === undefined ? true : !!editableform;
 
 			if (!checkup.ch_id && !checkup.disabledform && checkup.editableform) {
-				if ($rootScope.scadenziario.azienda) {
-					checkup.ch_idazienda = checkup.ch_idazienda ? checkup.ch_idazienda : $rootScope.scadenziario.azienda.az_id;
+				if ($rootScope.pista.azienda) {
+					checkup.ch_idazienda = checkup.ch_idazienda ? checkup.ch_idazienda : $rootScope.pista.azienda.az_id;
 					checkup.azienda = checkup.azienda ? checkup.azienda : $rootScope.circuiti.map[checkup.ch_idazienda];
 					checkup.ch_idutente = checkup.ch_idutente ? checkup.ch_idutente : $scope.logged_user.username;
 					checkup.utente = checkup.utente ? checkup.utente : $rootScope.utenti.map[checkup.ch_idutente];
@@ -448,7 +448,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 			$rootScope.checkups.toggle_rubrica();
 			$rootScope.checkups.toggle_rubrica($rootScope.checkups.rubrica_checkup_argomenti);
 
-			$rootScope.scadenziario.page = "checkup";
+			$rootScope.pista.page = "checkup";
 			return Promise.resolve($rootScope.checkups.selected);
 		}
 
@@ -594,7 +594,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 		};
 
 		return $scope.alert(dialog).then(
-			(answer) => {return $scope.page() == "scadenziario" && $rootScope.scadenziario.page == "checkup" ? Promise.resolve(answer.checkup_riga) : $rootScope.insert_checkup_riga(answer.checkup_riga)}
+			(answer) => {return $scope.page() == "pista" && $rootScope.pista.page == "checkup" ? Promise.resolve(answer.checkup_riga) : $rootScope.insert_checkup_riga(answer.checkup_riga)}
 			,(answer) => {return Promise.reject(answer)}
 		);
 	}

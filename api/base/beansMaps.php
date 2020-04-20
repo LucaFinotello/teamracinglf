@@ -87,8 +87,8 @@ $beansMaps->UtenteBean = (Object) [
 				"type" => null
 			]
 		]
-		,"fl_scadenziario" => (Object) [
-			"name" => "ut_flScadenziario"
+		,"fl_pista" => (Object) [
+			"name" => "ut_flPista"
 			,"options" => (Object) [
 				"type" => null
 			]

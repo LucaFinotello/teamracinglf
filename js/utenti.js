@@ -15,7 +15,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 				$rootScope.utenti.filtri.show.idazienda				= true;
 				$rootScope.utenti.filtri.show.admin					= true;
 				$rootScope.utenti.filtri.show.fl_gestione			= true;
-				$rootScope.utenti.filtri.show.fl_scadenziario		= true;
+				$rootScope.utenti.filtri.show.fl_pista		= true;
 				$rootScope.utenti.filtri.show.fl_allegati			= true;
 				$rootScope.utenti.filtri.show.fl_report				= true;
 			}
@@ -35,7 +35,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 					$rootScope.utenti.filtri.show.idazienda				= !!filtri_app.show.idazienda;
 					$rootScope.utenti.filtri.show.admin					= !!filtri_app.show.admin;
 					$rootScope.utenti.filtri.show.fl_gestione			= !!filtri_app.show.fl_gestione;
-					$rootScope.utenti.filtri.show.fl_scadenziario		= !!filtri_app.show.fl_scadenziario;
+					$rootScope.utenti.filtri.show.fl_pista		= !!filtri_app.show.fl_pista;
 					$rootScope.utenti.filtri.show.fl_allegati			= !!filtri_app.show.fl_allegati;
 					$rootScope.utenti.filtri.show.fl_report				= !!filtri_app.show.fl_report;
 				}

@@ -1,0 +1,34 @@
+<div layout="row" layout-align="start center">
+	<md-icon md-svg-icon="img/icons/circuit.svg"></md-icon>
+	<md-input-container flex>
+		<md-autocomplete
+			md-selected-item="pista.azienda"
+			md-search-text="pista.azienda_search"
+			md-items="azienda in circuiti.righe | filter:pista.azienda_search"
+			md-item-text="azienda.az_descr"
+			md-floating-label="Circuito"
+			md-no-cache="true"
+			md-min-length="0"
+			md-clear-button="logged_user | utente_is_utente"
+			md-selected-item-change="
+				pista.dipendente && (pista.dipendente = pista.dipendente && pista.dipendente.di_idazienda == pista.azienda.az_id ? pista.dipendente : undefined) ? true : false;
+				pista.dipendente && (pista.dipendente_search = pista.dipendente && pista.dipendente.di_idazienda == pista.azienda.az_id ? pista.dipendente_search : undefined) ? true : false;
+			"
+			md-search-text-change="
+				pista.azienda = undefined;
+				pista.dipendente = undefined;
+				pista.dipendente_search = undefined
+			"
+			ng-disabled="!(logged_user | utente_is_utente)"
+		>
+			<md-item-template>
+				<div>{{azienda.az_descr}}</div>
+				<md-not-found>Non sono state trovate circuiti per "{{pista.azienda_search}}".</md-not-found>
+			</md-item-template>
+		</md-autocomplete>
+	</md-input-container>
+	<md-button ng-if="pista.azienda" class="md-icon-button" ng-click="pista.fl_anagrafica_azienda_open = !pista.fl_anagrafica_azienda_open" aria-label="toggle">
+		<md-icon md-svg-icon="img/icons/{{pista.fl_anagrafica_azienda_open ? 'arrow_up' : 'arrow_down'}}.svg"></md-icon>
+		<md-tooltip md-direction="bottom">{{pista.fl_anagrafica_azienda_open ? 'Comprimi' : 'Espandi'}}</md-tooltip>
+	</md-button>
+</div>

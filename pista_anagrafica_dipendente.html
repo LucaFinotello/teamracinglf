@@ -1,0 +1,27 @@
+<div layout="row" layout-align="start center">
+	<md-icon md-svg-icon="img/icons/task.svg"></md-icon>
+	<md-input-container flex>
+		<md-autocomplete
+			md-selected-item="pista.dipendente"
+			md-search-text="pista.dipendente_search"
+			md-items="dipendente in dipendenti.righe | filter:{di_idazienda: pista.azienda.az_id} | filter:pista.dipendente_search"
+			md-item-text="dipendente.di_descr"
+			md-floating-label="Eventi"
+			md-no-cache="true"
+			md-min-length="0"
+			md-clear-button="!(logged_user | utente_is_dipendente)"
+			md-selected-item-change="pista.dipendente && (pista.azienda = circuiti.map[pista.dipendente.di_idazienda])"
+			md-search-text-change="pista.dipendente = undefined"
+			ng-disabled="(logged_user | utente_is_dipendente)"
+		>
+			<md-item-template>
+				<div>{{dipendente.di_descr}}</div>
+				<md-not-found>Non sono stati trovati eventi per "{{pista.dipendente_search}}".</md-not-found>
+			</md-item-template>
+		</md-autocomplete>
+	</md-input-container>
+	<md-button ng-if="pista.dipendente" class="md-icon-button" ng-click="pista.fl_anagrafica_dipendente_open = !pista.fl_anagrafica_dipendente_open" aria-label="toggle">
+		<md-icon md-svg-icon="img/icons/{{pista.fl_anagrafica_dipendente_open ? 'arrow_up' : 'arrow_down'}}.svg"></md-icon>
+		<md-tooltip md-direction="bottom">{{pista.fl_anagrafica_dipendente_open ? 'Comprimi' : 'Espandi'}}</md-tooltip>
+	</md-button>
+</div>

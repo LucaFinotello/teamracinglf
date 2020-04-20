@@ -72,8 +72,8 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 				let item = items[i];
 				if (data_inizio	&& item.ch_date	< data_inizio) continue;
 				if (data_fine	&& item.ch_date	> data_fine) continue;
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "school_calendar") {
-					if ($rootScope.scadenziario.azienda && $rootScope.scadenziario.azienda.az_id != item.ch_idazienda) continue;
+				if ($scope.page() == "pista" && $rootScope.pista.page == "school_calendar") {
+					if ($rootScope.pista.azienda && $rootScope.pista.azienda.az_id != item.ch_idazienda) continue;
 				} else if ($rootScope.utente_is_utente($scope.logged_user)) {
 					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[item.ch_idazienda]) continue;
 				} else {
@@ -162,8 +162,8 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 			,caption: function(item) {return item.ar_id}
 			,lines: 2
 			,custom_filter_fn: function(item) {
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario && $rootScope.scadenziario.page == "adempimenti" && $rootScope.scadenziario.azienda) {
-					return !!$rootScope.argomento_in_azienda($rootScope.scadenziario.azienda, item);
+				if ($scope.page() == "pista" && $rootScope.pista && $rootScope.pista.page == "adempimenti" && $rootScope.pista.azienda) {
+					return !!$rootScope.argomento_in_azienda($rootScope.pista.azienda, item);
 				}
 				return true;
 			}

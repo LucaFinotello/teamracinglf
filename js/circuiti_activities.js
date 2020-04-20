@@ -80,7 +80,7 @@ app.controller("circuiti_activities", ["$rootScope", "$scope", "$localStorage", 
 			if (items) for (let i = 0; i < items.length && (!limit || (limit && limit > filtered.length)); i++){
 				let item = items[i];
 				if (filtri && !filtri.fl_show_done && item.af_data_evasione) continue;
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "crm" && $rootScope.scadenziario.azienda && $rootScope.scadenziario.azienda.az_id != item.aa_idazienda) continue;
+				if ($scope.page() == "pista" && $rootScope.pista.page == "agenda" && $rootScope.pista.azienda && $rootScope.pista.azienda.az_id != item.aa_idazienda) continue;
 				if (data_inizio && item.aa_date < data_inizio) continue;
 				if (data_fine && item.aa_date > data_fine) continue;
 				if (

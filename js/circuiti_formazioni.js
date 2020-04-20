@@ -70,7 +70,7 @@ app.controller("circuiti_formazioni", ["$rootScope", "$scope", "$localStorage", 
 			if (items) for (let i = 0; i < items.length && (!limit || (limit && limit > filtered.length)); i++){
 				let item = items[i];
 				if (filtri && !filtri.fl_show_done && item.af_data_evasione) continue;
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "school_calendar" && $rootScope.scadenziario.azienda && $rootScope.scadenziario.azienda.az_id != item.af_idazienda) continue;
+				if ($scope.page() == "pista" && $rootScope.pista.page == "school_calendar" && $rootScope.pista.azienda && $rootScope.pista.azienda.az_id != item.af_idazienda) continue;
 				if (data_inizio_richiesta	&& item.af_data_richiesta	< data_inizio_richiesta) continue;
 				if (data_fine_richiesta		&& item.af_data_richiesta	> data_fine_richiesta) continue;
 				if (data_inizio_evasione	&& item.af_data_evasione	< data_inizio_evasione) continue;

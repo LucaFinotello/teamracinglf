@@ -40,7 +40,7 @@
 
 			<div ng-controller="utenti"						ng-init="select_utenti()"																></div>
 			<div ng-controller="gestione"					ng-init="gestione.page = logged_user.admin == '1' ? 'utenti' : 'azienda_argomenti'"		></div>
-			<div ng-controller="scadenziario"				ng-init="init_scadenziario()"															></div>
+			<div ng-controller="pista"						ng-init="init_pista()"																	></div>
 			<div ng-controller="circuiti_tipi"				ng-init="select_circuiti_tipi()"														></div>
 			<div ng-controller="circuiti"					ng-init="select_circuiti()"																></div>
 			<div ng-controller="circuiti_activities"		ng-init="select_circuiti_activities()"													></div>
@@ -71,8 +71,8 @@
 			></div>
 
 			<div
-				ng-if="gestione.moduli.scadenziario && page()=='scadenziario'"
-				ng-include="'scadenziario.html'"
+				ng-if="gestione.moduli.pista && page()=='pista'"
+				ng-include="'pista.html'"
 				layout="column" layout-align="start stretch" class="full-height" flex
 			></div>
 
@@ -109,7 +109,7 @@
 
 <script type="text/javascript" src="js/utenti.js"></script>
 <script type="text/javascript" src="js/gestione.js"></script>
-<script type="text/javascript" src="js/scadenziario.js"></script>
+<script type="text/javascript" src="js/pista.js"></script>
 <script type="text/javascript" src="js/circuiti_tipi.js"></script>
 <script type="text/javascript" src="js/circuiti.js"></script>
 <script type="text/javascript" src="js/circuiti_activities.js"></script>

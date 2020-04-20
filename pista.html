@@ -3,44 +3,44 @@
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_toolbar.html'"
+	ng-include="'pista_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page != 'checkup' && (!(logged_user | utente_is_dipendente) || scadenziario.azienda)"
+	ng-if="pista.page != 'checkup' && (!(logged_user | utente_is_dipendente) || pista.azienda)"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
-	ng-include="'scadenziario_anagrafica_azienda.html'"
+	ng-include="'pista_anagrafica_azienda.html'"
 ></md-card>
 
 <md-card
-	ng-if="scadenziario.page == 'dipendenti_formazioni'"
+	ng-if="pista.page == 'dipendenti_formazioni'"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
-	ng-include="'scadenziario_anagrafica_dipendente.html'"
+	ng-include="'pista_anagrafica_dipendente.html'"
 ></md-card>
 
 <div
-	ng-if="scadenziario.page == 'checkup'"
+	ng-if="pista.page == 'checkup'"
 	layout="row"
 	layout-align="start stretch"
 	flex
 	class="full-height"
-	ng-include="'scadenziario_checkup.html'"
+	ng-include="'pista_checkup.html'"
 ></div>
 <div
-	ng-if="scadenziario.page == 'checkup' && scadenziario.azienda"
+	ng-if="pista.page == 'checkup' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_checkup_toolbar.html'"
+	ng-include="'pista_checkup_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page == 'checkups' && scadenziario.azienda"
+	ng-if="pista.page == 'checkups' && pista.azienda"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -52,20 +52,20 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'scadenziario_checkups.html'"
+		ng-include="'pista_checkups.html'"
 	></div>
 </md-card>
 <div
-	ng-if="scadenziario.page == 'checkups' && scadenziario.azienda"
+	ng-if="pista.page == 'checkups' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_checkups_toolbar.html'"
+	ng-include="'pista_checkups_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page == 'adempimenti' && scadenziario.azienda"
+	ng-if="pista.page == 'adempimenti' && pista.azienda"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -77,20 +77,20 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'scadenziario_adempimenti.html'"
+		ng-include="'pista_adempimenti.html'"
 	></div>
 </md-card>
 <div
-	ng-if="scadenziario.page == 'adempimenti' && scadenziario.azienda"
+	ng-if="pista.page == 'adempimenti' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_adempimenti_toolbar.html'"
+	ng-include="'pista_adempimenti_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page == 'dipendenti_formazioni' && (scadenziario.azienda || scadenziario.dipendente)"
+	ng-if="pista.page == 'dipendenti_formazioni' && (pista.azienda || pista.dipendente)"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -102,20 +102,20 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'scadenziario_dipendenti_formazioni.html'"
+		ng-include="'pista_dipendenti_formazioni.html'"
 	></div>
 </md-card>
 <div
-	ng-if="scadenziario.page == 'dipendenti_formazioni' && (scadenziario.azienda || scadenziario.dipendente)"
+	ng-if="pista.page == 'dipendenti_formazioni' && (pista.azienda || pista.dipendente)"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_dipendenti_formazioni_toolbar.html'"
+	ng-include="'pista_dipendenti_formazioni_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page == 'school_calendar' && scadenziario.azienda"
+	ng-if="pista.page == 'school_calendar' && pista.azienda"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -127,20 +127,20 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'scadenziario_school_calendar.html'"
+		ng-include="'pista_school_calendar.html'"
 	></div>
 </md-card>
 <div
-	ng-if="scadenziario.page == 'school_calendar' && scadenziario.azienda"
+	ng-if="pista.page == 'school_calendar' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_school_calendar_toolbar.html'"
+	ng-include="'pista_school_calendar_toolbar.html'"
 ></div>
 
 <md-card
-	ng-if="scadenziario.page == 'crm' && scadenziario.azienda"
+	ng-if="pista.page == 'agenda' && pista.azienda"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -152,14 +152,14 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'scadenziario_crm.html'"
+		ng-include="'pista_agenda.html'"
 	></div>
 </md-card>
 <div
-	ng-if="scadenziario.page == 'crm' && scadenziario.azienda"
+	ng-if="pista.page == 'agenda' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'scadenziario_crm_toolbar.html'"
+	ng-include="'pista_agenda_toolbar.html'"
 ></div>

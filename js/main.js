@@ -197,12 +197,12 @@ app.controller("main", ["$scope", "$http", "$mdDialog", "$rootScope", "$mdToast"
 	$scope.welcome = function(utente) {
 		let count = 0;
 		count +=			moduli && moduli.gestione			&& utente && utente.fl_gestione == "1"			? 1 : 0;
-		count +=			moduli && moduli.scadenziario		&& utente && utente.fl_scadenziario == "1"		? 1 : 0;
+		count +=			moduli && moduli.pista		&& utente && utente.fl_pista == "1"		? 1 : 0;
 		count +=			moduli && moduli.allegati			&& utente && utente.fl_allegati == "1"			? 1 : 0;
 		count +=			moduli && moduli.report				&& utente && utente.fl_report == "1"			? 1 : 0;
 
 		if (count == 1 &&	moduli && moduli.gestione			&& utente && utente.fl_gestione == "1")			return "gestione";
-		if (count == 1 &&	moduli && moduli.scadenziario		&& utente && utente.fl_scadenziario == "1")		return "scadenziario";
+		if (count == 1 &&	moduli && moduli.pista		&& utente && utente.fl_pista == "1")		return "pista";
 		if (count == 1 &&	moduli && moduli.allegati			&& utente && utente.fl_allegati == "1")			return "allegati";
 		if (count == 1 &&	moduli && moduli.report				&& utente && utente.fl_report == "1")			return "report";
 		return "welcome_page";

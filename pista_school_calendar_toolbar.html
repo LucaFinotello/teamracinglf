@@ -3,7 +3,7 @@
 	<md-tooltip md-direction="top">Aggiorna</md-tooltip>
 </md-button>
 <div flex></div>
-<md-button ng-if="scadenziario.azienda && (logged_user | utente_is_utente)" class="md-icon-button" ng-click="anagrafica_azienda_formazione({af_idazienda:scadenziario.azienda.az_id, azienda: scadenziario.azienda})" aria-label="add">
+<md-button ng-if="pista.azienda && (logged_user | utente_is_utente)" class="md-icon-button" ng-click="anagrafica_azienda_formazione({af_idazienda:pista.azienda.az_id, azienda: pista.azienda})" aria-label="add">
 	<md-icon md-svg-src="img/icons/add.svg"></md-icon>
 	<md-tooltip md-direction="top">Aggiungi</md-tooltip>
 </md-button>

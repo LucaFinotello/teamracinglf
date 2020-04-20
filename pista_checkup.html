@@ -1,14 +1,14 @@
 <div layout="column" layout-align="start stretch" class="full-height" flex>
 	<md-card
-		ng-if="scadenziario.page == 'checkup'"
+		ng-if="pista.page == 'checkup'"
 		style="max-height: calc(50vh - 60px); overflow-y: auto"
 		layout="column"
 		layout-align="start stretch"
 		layout-padding
-		ng-include="'scadenziario_checkup_testata.html'"
+		ng-include="'pista_checkup_testata.html'"
 	></md-card>
 	<md-card
-		ng-if="scadenziario.page == 'checkup' && scadenziario.azienda"
+		ng-if="pista.page == 'checkup' && pista.azienda"
 		layout="column"
 		layout-align="start stretch"
 		layout-padding

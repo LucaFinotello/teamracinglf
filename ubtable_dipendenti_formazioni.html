@@ -3,7 +3,7 @@
 		<md-icon md-svg-icon="img/icons/eye.svg"><md-tooltip md-direction="left">Mostra/nascondi colonne</md-tooltip></md-icon>
 	</md-button>
 	<md-menu-content ng-mouseleave="$mdMenu.close()" layout-padding>
-		<md-menu-item ng-if="page() != 'scadenziario'">
+		<md-menu-item ng-if="page() != 'pista'">
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.idazienda" aria-label="idazienda">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/person_tie.svg"></md-icon>
 			</md-checkbox>

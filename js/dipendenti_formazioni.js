@@ -81,9 +81,9 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				if (data_fine_esecuzione	&& item.df_data_esecuzione	> data_fine_esecuzione) continue;
 				if (data_inizio_scadenza	&& item.df_data_scadenza	< data_inizio_scadenza) continue;
 				if (data_fine_scadenza		&& item.df_data_scadenza	> data_fine_scadenza) continue;
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.page == "dipendenti_formazioni") {
-					if ($rootScope.scadenziario.azienda) {
-						if ($rootScope.scadenziario.azienda.az_id != $rootScope.dipendenti.map[item.df_iddipendente].di_idazienda) {
+				if ($scope.page() == "pista" && $rootScope.pista.page == "dipendenti_formazioni") {
+					if ($rootScope.pista.azienda) {
+						if ($rootScope.pista.azienda.az_id != $rootScope.dipendenti.map[item.df_iddipendente].di_idazienda) {
 							continue;
 						}
 					} else {
@@ -91,8 +91,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 							continue;
 						}
 					}
-					if ($rootScope.scadenziario.dipendente) {
-						if ($rootScope.scadenziario.dipendente.di_id != item.df_iddipendente) {
+					if ($rootScope.pista.dipendente) {
+						if ($rootScope.pista.dipendente.di_id != item.df_iddipendente) {
 							continue;
 						}
 					} else {
@@ -163,8 +163,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			,caption: function(item) {return item.di_id}
 			,lines: 2
 			,custom_filter_fn: function(item) {
-				if ($scope.page() == "scadenziario" && $rootScope.scadenziario.azienda) {
-					return item && $rootScope.scadenziario.azienda.az_id == item.di_idazienda;
+				if ($scope.page() == "pista" && $rootScope.pista.azienda) {
+					return item && $rootScope.pista.azienda.az_id == item.di_idazienda;
 				}
 				return true;
 			}

@@ -1,5 +1,5 @@
-app.controller("report_scadenziario", ["$rootScope", function($rootScope) {
-	$rootScope.report_scadenziario = $rootScope.report_scadenziario ? $rootScope.report_scadenziario : {
+app.controller("report_pista", ["$rootScope", function($rootScope) {
+	$rootScope.report_pista = $rootScope.report_pista ? $rootScope.report_pista : {
 		righe: []
 	};
 }]);
