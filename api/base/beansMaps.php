@@ -662,7 +662,7 @@ $beansMaps->AziendaFormazioneBean = (Object) [
 # DipendenteFormazioneBean
 $beansMaps->DipendenteFormazioneBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "dipendenti_formazioni"
+	,"sqlTableName" => "training_school"
 	,"sqlFieldsMap" => (Object) [
 		"df_id" => (Object) [
 			"name" => "df_id"

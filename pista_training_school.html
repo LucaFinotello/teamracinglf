@@ -4,7 +4,11 @@
 	class="toolbar no-padding"
 	md-colors="{background: colors.secondary_toolbar}"
 >
-	<md-button class="md-icon-button" ng-if="!(logged_user | utente_is_dipendente) && !pista.dipendente" ng-class="{'selected': training_school.rubrica_dipendenti.fl_open}" ng-click="training_school.toggle_rubrica(training_school.rubrica_dipendenti)">
+	<md-button class="md-icon-button" ng-if="!(logged_user | utente_is_dipendente) && (page() != 'pista' || (page() == 'pista' && !pista.azienda))" ng-class="{'selected': training_school.rubrica_circuiti.fl_open}" ng-click="training_school.toggle_rubrica(training_school.rubrica_circuiti)">
+		<md-icon md-svg-icon="img/icons/circuit.svg"></md-icon>
+		<md-tooltip md-direction="top">Circuiti</md-tooltip>
+	</md-button>
+	<md-button class="md-icon-button" ng-if="!(logged_user | utente_is_dipendente) && (page() != 'pista' || (page() == 'pista' && !pista.dipendente))" ng-class="{'selected': training_school.rubrica_dipendenti.fl_open}" ng-click="training_school.toggle_rubrica(training_school.rubrica_dipendenti)">
 		<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>
 		<md-tooltip md-direction="top">Dipendenti</md-tooltip>
 	</md-button>
@@ -25,7 +29,8 @@
 </div>
 
 <div layout="row" layout-align="start start" class="full-height" flex>
-	<div ng-if="training_school.rubrica_dipendenti.fl_open && !pista.dipendente" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(training_school.rubrica_dipendenti)" ng-include="rubrica.template"></div>
+	<div ng-if="training_school.rubrica_circuiti.fl_open && !(logged_user | utente_is_dipendente) && (page() != 'pista' || (page() == 'pista' && !pista.azienda))" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(training_school.rubrica_circuiti)" ng-include="rubrica.template"></div>
+	<div ng-if="training_school.rubrica_dipendenti.fl_open && !(logged_user | utente_is_dipendente) && (page() != 'pista' || (page() == 'pista' && !pista.dipendente))" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(training_school.rubrica_dipendenti)" ng-include="rubrica.template"></div>
 	<div ng-if="training_school.rubrica_formazioni.fl_open" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(training_school.rubrica_formazioni)" ng-include="rubrica.template"></div>
 	<div ng-if="training_school.rubrica_filtri_training_school.fl_open" layout="column" layout-align="start stretch" class="full-height rubrica rubrica-left" ng-controller="rubrica" ng-init="init_rubrica(training_school.rubrica_filtri_training_school)" ng-include="rubrica.template"></div>
 	<div flex ng-controller="filtri_app" ng-init="filtri_app(training_school)" ub-table layout="column" layout-align="start stretch" class="full-height" ng-include="'ubtable_training_school.html'"></div>

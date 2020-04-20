@@ -15,7 +15,7 @@
 ></md-card>
 
 <md-card
-	ng-if="pista.page == 'dipendenti_formazioni'"
+	ng-if="pista.page == 'training_school'"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
@@ -90,7 +90,7 @@
 ></div>
 
 <md-card
-	ng-if="pista.page == 'dipendenti_formazioni' && (pista.azienda || pista.dipendente)"
+	ng-if="pista.page == 'training_school' && (pista.azienda || pista.dipendente)"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -102,16 +102,16 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'pista_dipendenti_formazioni.html'"
+		ng-include="'pista_training_school.html'"
 	></div>
 </md-card>
 <div
-	ng-if="pista.page == 'dipendenti_formazioni' && (pista.azienda || pista.dipendente)"
+	ng-if="pista.page == 'training_school' && (pista.azienda || pista.dipendente)"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'pista_dipendenti_formazioni_toolbar.html'"
+	ng-include="'pista_training_school_toolbar.html'"
 ></div>
 
 <md-card

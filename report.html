@@ -61,19 +61,19 @@
 ></div>
 
 <md-card
-	ng-if="report.page == 'dipendenti_formazioni'"
+	ng-if="report.page == 'training_school'"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
 	flex
 	class="full-height"
-	ng-include="'pista_dipendenti_formazioni.html'"
+	ng-include="'pista_training_school.html'"
 ></md-card>
 <div
-	ng-if="report.page == 'dipendenti_formazioni'"
+	ng-if="report.page == 'training_school'"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'report_dipendenti_formazioni_toolbar.html'"
+	ng-include="'report_training_school_toolbar.html'"
 ></div>

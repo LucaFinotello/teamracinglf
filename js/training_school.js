@@ -1,69 +1,69 @@
-app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
-	$rootScope.dipendenti_formazioni = $rootScope.dipendenti_formazioni ? $rootScope.dipendenti_formazioni : {
-		filtri_key: "filtri_dipendenti_formazioni"
+app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
+	$rootScope.training_school = $rootScope.training_school ? $rootScope.training_school : {
+		filtri_key: "filtri_training_school"
 		,fn_filtri_set_default_filtri_app: function() {
-			if ($rootScope.dipendenti_formazioni && $rootScope.dipendenti_formazioni.filtri) {
+			if ($rootScope.training_school && $rootScope.training_school.filtri) {
 				let data_inizio = new Date();
 				data_inizio.setHours(0,0,0,0);
 				let data_fine = new Date();
 				data_fine.setHours(23,59,59,999);
 
-				$rootScope.dipendenti_formazioni.filtri.sorting						= [{
+				$rootScope.training_school.filtri.sorting						= [{
 					property: "df_data_scadenza"
 					,reverse: false
 				}];
 
-				$rootScope.dipendenti_formazioni.filtri.search						= undefined;
-				$rootScope.dipendenti_formazioni.filtri.circuiti						= {};
-				$rootScope.dipendenti_formazioni.filtri.dipendenti					= {};
-				$rootScope.dipendenti_formazioni.filtri.formazioni					= {};
+				$rootScope.training_school.filtri.search						= undefined;
+				$rootScope.training_school.filtri.circuiti						= {};
+				$rootScope.training_school.filtri.dipendenti					= {};
+				$rootScope.training_school.filtri.formazioni					= {};
 
-				$rootScope.dipendenti_formazioni.filtri.fl_data_esecuzione			= true;
-				$rootScope.dipendenti_formazioni.filtri.data_inizio_esecuzione		= new Date(data_inizio.valueOf());
-				$rootScope.dipendenti_formazioni.filtri.data_fine_esecuzione		= new Date(data_fine.valueOf());
-				$rootScope.dipendenti_formazioni.filtri.fl_data_scadenza			= false;
-				$rootScope.dipendenti_formazioni.filtri.data_inizio_scadenza		= new Date(data_inizio.valueOf());
-				$rootScope.dipendenti_formazioni.filtri.data_fine_scadenza			= new Date(data_fine.valueOf());
+				$rootScope.training_school.filtri.fl_data_esecuzione			= true;
+				$rootScope.training_school.filtri.data_inizio_esecuzione		= new Date(data_inizio.valueOf());
+				$rootScope.training_school.filtri.data_fine_esecuzione		= new Date(data_fine.valueOf());
+				$rootScope.training_school.filtri.fl_data_scadenza			= false;
+				$rootScope.training_school.filtri.data_inizio_scadenza		= new Date(data_inizio.valueOf());
+				$rootScope.training_school.filtri.data_fine_scadenza			= new Date(data_fine.valueOf());
 
-				$rootScope.dipendenti_formazioni.filtri.show						= $rootScope.dipendenti_formazioni.filtri.show ? $rootScope.dipendenti_formazioni.filtri.show : {};
-				$rootScope.dipendenti_formazioni.filtri.show.idazienda				= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_id					= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_iddipendente		= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_idformazione		= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_data_esecuzione		= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_data_scadenza		= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_docente				= true;
-				$rootScope.dipendenti_formazioni.filtri.show.df_note				= true;
+				$rootScope.training_school.filtri.show						= $rootScope.training_school.filtri.show ? $rootScope.training_school.filtri.show : {};
+				$rootScope.training_school.filtri.show.idazienda				= true;
+				$rootScope.training_school.filtri.show.df_id					= true;
+				$rootScope.training_school.filtri.show.df_iddipendente		= true;
+				$rootScope.training_school.filtri.show.df_idformazione		= true;
+				$rootScope.training_school.filtri.show.df_data_esecuzione		= true;
+				$rootScope.training_school.filtri.show.df_data_scadenza		= true;
+				$rootScope.training_school.filtri.show.df_docente				= true;
+				$rootScope.training_school.filtri.show.df_note				= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
-			if ($rootScope.dipendenti_formazioni && $rootScope.dipendenti_formazioni.filtri) {
-				let filtri_app = $localStorage[$rootScope.dipendenti_formazioni.filtri_key];
+			if ($rootScope.training_school && $rootScope.training_school.filtri) {
+				let filtri_app = $localStorage[$rootScope.training_school.filtri_key];
 
 				if (filtri_app) {
-					$rootScope.dipendenti_formazioni.filtri.sorting						= filtri_app.sorting								? filtri_app.sorting										: $rootScope.dipendenti_formazioni.filtri.sorting;
-					$rootScope.dipendenti_formazioni.filtri.search						= filtri_app.search									? filtri_app.search											: $rootScope.dipendenti_formazioni.filtri.search;
-					$rootScope.dipendenti_formazioni.filtri.circuiti						= filtri_app.circuiti								? filtri_app.circuiti										: $rootScope.dipendenti_formazioni.filtri.circuiti;
-					$rootScope.dipendenti_formazioni.filtri.dipendenti					= filtri_app.dipendenti								? filtri_app.dipendenti										: $rootScope.dipendenti_formazioni.filtri.dipendenti;
-					$rootScope.dipendenti_formazioni.filtri.formazioni					= filtri_app.formazioni								? filtri_app.formazioni										: $rootScope.dipendenti_formazioni.filtri.formazioni;
+					$rootScope.training_school.filtri.sorting						= filtri_app.sorting								? filtri_app.sorting										: $rootScope.training_school.filtri.sorting;
+					$rootScope.training_school.filtri.search						= filtri_app.search									? filtri_app.search											: $rootScope.training_school.filtri.search;
+					$rootScope.training_school.filtri.circuiti						= filtri_app.circuiti								? filtri_app.circuiti										: $rootScope.training_school.filtri.circuiti;
+					$rootScope.training_school.filtri.dipendenti					= filtri_app.dipendenti								? filtri_app.dipendenti										: $rootScope.training_school.filtri.dipendenti;
+					$rootScope.training_school.filtri.formazioni					= filtri_app.formazioni								? filtri_app.formazioni										: $rootScope.training_school.filtri.formazioni;
 
-					$rootScope.dipendenti_formazioni.filtri.fl_data_esecuzione			= !!filtri_app.fl_data_esecuzione;
-					$rootScope.dipendenti_formazioni.filtri.data_inizio_esecuzione		= filtri_app.data_inizio_esecuzione					? new Date(filtri_app.data_inizio_esecuzione.valueOf())		: $rootScope.dipendenti_formazioni.filtri.data_inizio_esecuzione;
-					$rootScope.dipendenti_formazioni.filtri.data_fine_esecuzione		= filtri_app.data_fine_esecuzione					? new Date(filtri_app.data_fine_esecuzione.valueOf())		: $rootScope.dipendenti_formazioni.filtri.data_fine_esecuzione;
-					$rootScope.dipendenti_formazioni.filtri.fl_data_scadenza			= !!filtri_app.fl_data_scadenza;
-					$rootScope.dipendenti_formazioni.filtri.data_inizio_scadenza		= filtri_app.data_inizio_scadenza					? new Date(filtri_app.data_inizio_scadenza.valueOf())		: $rootScope.dipendenti_formazioni.filtri.data_inizio_scadenza;
-					$rootScope.dipendenti_formazioni.filtri.data_fine_scadenza			= filtri_app.data_fine_scadenza						? new Date(filtri_app.data_fine_scadenza.valueOf())			: $rootScope.dipendenti_formazioni.filtri.data_fine_scadenza;
+					$rootScope.training_school.filtri.fl_data_esecuzione			= !!filtri_app.fl_data_esecuzione;
+					$rootScope.training_school.filtri.data_inizio_esecuzione		= filtri_app.data_inizio_esecuzione					? new Date(filtri_app.data_inizio_esecuzione.valueOf())		: $rootScope.training_school.filtri.data_inizio_esecuzione;
+					$rootScope.training_school.filtri.data_fine_esecuzione		= filtri_app.data_fine_esecuzione					? new Date(filtri_app.data_fine_esecuzione.valueOf())		: $rootScope.training_school.filtri.data_fine_esecuzione;
+					$rootScope.training_school.filtri.fl_data_scadenza			= !!filtri_app.fl_data_scadenza;
+					$rootScope.training_school.filtri.data_inizio_scadenza		= filtri_app.data_inizio_scadenza					? new Date(filtri_app.data_inizio_scadenza.valueOf())		: $rootScope.training_school.filtri.data_inizio_scadenza;
+					$rootScope.training_school.filtri.data_fine_scadenza			= filtri_app.data_fine_scadenza						? new Date(filtri_app.data_fine_scadenza.valueOf())			: $rootScope.training_school.filtri.data_fine_scadenza;
 
-					$rootScope.dipendenti_formazioni.filtri.show						= $rootScope.dipendenti_formazioni.filtri.show		? $rootScope.dipendenti_formazioni.filtri.show				: {};
+					$rootScope.training_school.filtri.show						= $rootScope.training_school.filtri.show		? $rootScope.training_school.filtri.show				: {};
 					filtri_app.show														= filtri_app.show									? filtri_app.show											: {};
-					$rootScope.dipendenti_formazioni.filtri.show.idazienda				= !!filtri_app.show.idazienda;
-					$rootScope.dipendenti_formazioni.filtri.show.df_id					= !!filtri_app.show.df_id;
-					$rootScope.dipendenti_formazioni.filtri.show.df_iddipendente		= !!filtri_app.show.df_iddipendente;
-					$rootScope.dipendenti_formazioni.filtri.show.df_idformazione		= !!filtri_app.show.df_idformazione;
-					$rootScope.dipendenti_formazioni.filtri.show.df_data_esecuzione		= !!filtri_app.show.df_data_esecuzione;
-					$rootScope.dipendenti_formazioni.filtri.show.df_data_scadenza		= !!filtri_app.show.df_data_scadenza;
-					$rootScope.dipendenti_formazioni.filtri.show.df_docente				= !!filtri_app.show.df_docente;
-					$rootScope.dipendenti_formazioni.filtri.show.df_note				= !!filtri_app.show.df_note;
+					$rootScope.training_school.filtri.show.idazienda				= !!filtri_app.show.idazienda;
+					$rootScope.training_school.filtri.show.df_id					= !!filtri_app.show.df_id;
+					$rootScope.training_school.filtri.show.df_iddipendente		= !!filtri_app.show.df_iddipendente;
+					$rootScope.training_school.filtri.show.df_idformazione		= !!filtri_app.show.df_idformazione;
+					$rootScope.training_school.filtri.show.df_data_esecuzione		= !!filtri_app.show.df_data_esecuzione;
+					$rootScope.training_school.filtri.show.df_data_scadenza		= !!filtri_app.show.df_data_scadenza;
+					$rootScope.training_school.filtri.show.df_docente				= !!filtri_app.show.df_docente;
+					$rootScope.training_school.filtri.show.df_note				= !!filtri_app.show.df_note;
 				}
 			}
 		}
@@ -81,7 +81,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				if (data_fine_esecuzione	&& item.df_data_esecuzione	> data_fine_esecuzione) continue;
 				if (data_inizio_scadenza	&& item.df_data_scadenza	< data_inizio_scadenza) continue;
 				if (data_fine_scadenza		&& item.df_data_scadenza	> data_fine_scadenza) continue;
-				if ($scope.page() == "pista" && $rootScope.pista.page == "dipendenti_formazioni") {
+				if ($scope.page() == "pista" && $rootScope.pista.page == "training_school") {
 					if ($rootScope.pista.azienda) {
 						if ($rootScope.pista.azienda.az_id != $rootScope.dipendenti.map[item.df_iddipendente].di_idazienda) {
 							continue;
@@ -129,7 +129,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			if (this.rubrica_circuiti						&& this.rubrica_circuiti != rubrica)							this.rubrica_circuiti.fl_open = false;
 			if (this.rubrica_dipendenti						&& this.rubrica_dipendenti != rubrica)						this.rubrica_dipendenti.fl_open = false;
 			if (this.rubrica_formazioni						&& this.rubrica_formazioni != rubrica)						this.rubrica_formazioni.fl_open = false;
-			if (this.rubrica_filtri_dipendenti_formazioni	&& this.rubrica_filtri_dipendenti_formazioni != rubrica)	this.rubrica_filtri_dipendenti_formazioni.fl_open = false;
+			if (this.rubrica_filtri_training_school	&& this.rubrica_filtri_training_school != rubrica)	this.rubrica_filtri_training_school.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
 		,rubrica_circuiti: {
@@ -137,10 +137,10 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti_formazioni.filtri.circuiti = {}}
+			,deselect: function() {$rootScope.training_school.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] = $rootScope.dipendenti_formazioni.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.training_school.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.training_school.filtri.circuiti[item.az_id] = $rootScope.training_school.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -154,10 +154,10 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			,model: $rootScope.dipendenti
 			,order_by: ["di_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti_formazioni.filtri.dipendenti = {}}
+			,deselect: function() {$rootScope.training_school.filtri.dipendenti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti_formazioni.filtri.dipendenti[item.di_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti_formazioni.filtri.dipendenti[item.di_id] = $rootScope.dipendenti_formazioni.filtri.dipendenti[item.di_id] !== undefined ? undefined : item.di_descr}
+			,checked: function(item) {return item && $rootScope.training_school.filtri.dipendenti[item.di_id] !== undefined}
+			,click: function(item) {$rootScope.training_school.filtri.dipendenti[item.di_id] = $rootScope.training_school.filtri.dipendenti[item.di_id] !== undefined ? undefined : item.di_descr}
 			,subhead: function(item) {return item.di_descr}
 			,body: undefined
 			,caption: function(item) {return item.di_id}
@@ -174,23 +174,23 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			,model: $rootScope.formazioni
 			,order_by: ["fo_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti_formazioni.filtri.formazioni = {}}
+			,deselect: function() {$rootScope.training_school.filtri.formazioni = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti_formazioni.filtri.formazioni[item.fo_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti_formazioni.filtri.formazioni[item.fo_id] = $rootScope.dipendenti_formazioni.filtri.formazioni[item.fo_id] !== undefined ? undefined : item.fo_descr}
+			,checked: function(item) {return item && $rootScope.training_school.filtri.formazioni[item.fo_id] !== undefined}
+			,click: function(item) {$rootScope.training_school.filtri.formazioni[item.fo_id] = $rootScope.training_school.filtri.formazioni[item.fo_id] !== undefined ? undefined : item.fo_descr}
 			,subhead: function(item) {return item.fo_descr}
 			,body: undefined
 			,caption: function(item) {return item.fo_id}
 			,lines: 2
 			,custom_filter_fn: undefined
 		}
-		,rubrica_filtri_dipendenti_formazioni: {
-			template: "tmpl/rubrica_filtri_dipendenti_formazioni.tmpl.html"
-			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.dipendenti_formazioni
+		,rubrica_filtri_training_school: {
+			template: "tmpl/rubrica_filtri_training_school.tmpl.html"
+			,model: undefined // settato dopo... dovrebbe puntare a $rootScope.training_school
 			,fl_open: false
 		}
 	};
-	$rootScope.dipendenti_formazioni.rubrica_filtri_dipendenti_formazioni.model = $rootScope.dipendenti_formazioni;
+	$rootScope.training_school.rubrica_filtri_training_school.model = $rootScope.training_school;
 
 	$rootScope.select_history_dipendente_formazione = function(dipendente_formazione) {
 		return $scope.ajax(
@@ -209,12 +209,12 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				dialog.clickOutsideToClose = true;
 				dialog.title = "Storico evento";
 				dialog.class = "";
-				dialog.content_tmpl = "tmpl/history_dipendente_formazione.tmpl.html";
+				dialog.content_tmpl = "tmpl/history_training_school.tmpl.html";
 				dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";
 				dialog.disabledform = true;
 				dialog.editableform = false;
 
-				dialog.dipendenti_formazioni = {righe: response};
+				dialog.training_school = {righe: response};
 
 				dialog.dipendenti = $rootScope.dipendenti;
 				dialog.formazioni = $rootScope.formazioni;
@@ -222,7 +222,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				dialog.logged_user = $scope.logged_user;
 
 				return $scope.alert(dialog).then(
-					(answer) => {return Promise.resolve(answer.dipendenti_formazioni)}
+					(answer) => {return Promise.resolve(answer.training_school)}
 					,(answer) => {return Promise.reject(answer)}
 				);
 			}
@@ -230,15 +230,15 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		);
 	}
 
-	$rootScope.select_lastest_dipendenti_formazioni = function() {
+	$rootScope.select_lastest_training_school = function() {
 		return $scope.ajax(
-			"api/dipendente_formazione/find_lastest.php"
+			"api/training_school/find_lastest.php"
 			,{}
 			,true
 		).then(
 			(response) => {
-				$rootScope.dipendenti_formazioni.righe = response;
-				return Promise.resolve($rootScope.dipendenti_formazioni.righe);
+				$rootScope.training_school.righe = response;
+				return Promise.resolve($rootScope.training_school.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -256,7 +256,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			).then(
 				(response) => {
 					dipendente_formazione.df_id = response[0].df_id;
-					$scope.push($rootScope.dipendenti_formazioni.righe, dipendente_formazione);
+					$scope.push($rootScope.training_school.righe, dipendente_formazione);
 					$scope.toast("Evento prenotato");
 					return Promise.resolve(dipendente_formazione);
 				}
@@ -264,7 +264,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			)
 		}
 		return Promise.reject(
-			"dipendente_formazione is "
+			"training_school is "
 			+ (dipendente_formazione === undefined ? "undefined" : "")
 			+ (dipendente_formazione === null ? "null" : "")
 			+ (dipendente_formazione === false ? "false" : "")
@@ -277,7 +277,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		dialog.clickOutsideToClose = true;
 		dialog.title = "Anagrafica Evento";
 		dialog.class = "";
-		dialog.content_tmpl = "tmpl/anagrafica_dipendente_formazione.tmpl.html";
+		dialog.content_tmpl = "tmpl/anagrafica_training_school.tmpl.html";
 		dialog.toolbar_action_buttons_tmpl = "tmpl/default_toolbar_action_buttons.tmpl.html";
 		dialog.disabledform = disabledform === undefined ? false : !!disabledform;
 		dialog.editableform = editableform === undefined ? true : !!editableform;
@@ -321,12 +321,12 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 				(yes) => {return $rootScope.delete_dipendente_formazione(dipendente_formazione, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(
-				"api/dipendente_formazione/delete.php"
+				"api/training_school/delete.php"
 				,{dipendente_formazione: dipendente_formazione}
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.dipendenti_formazioni.righe, dipendente_formazione);
+					$scope.splice($rootScope.training_school.righe, dipendente_formazione);
 					$scope.toast("Evento eliminato");
 					return Promise.resolve(dipendente_formazione);
 				}
@@ -334,7 +334,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			);
 		}
 		return Promise.reject(
-			"dipendente_formazione is "
+			"training_school is "
 			+ (dipendente_formazione === undefined ? "undefined" : "")
 			+ (dipendente_formazione === null ? "null" : "")
 			+ (dipendente_formazione === false ? "false" : "")
@@ -342,8 +342,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		)
 	}
 
-	$rootScope.report_dipendenti_formazioni_export_xlsx = function(dipendenti_formazioni, filtri) {
-		dipendenti_formazioni = dipendenti_formazioni ? dipendenti_formazioni : [];
+	$rootScope.report_training_school_export_xlsx = function(training_school, filtri) {
+		training_school = training_school ? training_school : [];
 		filtri = filtri ? filtri : {};
 		filtri.show = filtri.show ? filtri.show : {
 			idazienda: true
@@ -370,8 +370,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		if (filtri.show.df_note) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Note</b></th>";
 		table += "</tr></thead>";
 		table +="<tbody>";
-		for (let df = 0; df < dipendenti_formazioni.length; df++) {
-			let dipendente_formazione = dipendenti_formazioni[df];
+		for (let df = 0; df < training_school.length; df++) {
+			let dipendente_formazione = training_school[df];
 			table += "<tr>";
 			if (filtri.show.idazienda) {
 				table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">";
@@ -432,8 +432,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 			,(response) => {return Promise.resolve(response)}
 		)
 	}
-	$rootScope.report_dipendenti_formazioni_export_pdf = function(dipendenti_formazioni, filtri) {
-		dipendenti_formazioni = dipendenti_formazioni ? dipendenti_formazioni : [];
+	$rootScope.report_training_school_export_pdf = function(training_school, filtri) {
+		training_school = training_school ? training_school : [];
 		filtri = filtri ? filtri : {};
 		filtri.show = filtri.show ? filtri.show : {
 			idazienda: true
@@ -447,8 +447,8 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		};
 
 		let righe = [];
-		for (let di = 0; di < dipendenti_formazioni.length; di++) {
-			let dipendente_formazione = dipendenti_formazioni[di];
+		for (let di = 0; di < training_school.length; di++) {
+			let dipendente_formazione = training_school[di];
 			righe.push({
 				az_id: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda
 				,az_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda ? $rootScope.circuiti.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr : undefined
@@ -466,7 +466,7 @@ app.controller("dipendenti_formazioni", ["$rootScope", "$scope", "$localStorage"
 		return $scope.ajax(
 			"api/base/toPdf.php"
 			,{
-				template: "report_dipendenti_formazioni.tmpl.html"
+				template: "report_training_school.tmpl.html"
 				,options: {
 					landscape: true
 					,disable_links: true

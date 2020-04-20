@@ -19,7 +19,7 @@ try {
 
 		if ($dipendente_formazione) {
 			$params = [isset($dipendente_formazione->df_id) ? $dipendente_formazione->df_id : 0];
-			$sql = "DELETE FROM dipendenti_formazioni WHERE df_id = ?";
+			$sql = "DELETE FROM training_school WHERE df_id = ?";
 			$query = query($beansMaps->DipendenteFormazioneBean->dbh, $sql, $params);
 			if ($query->status) {
 				$response->response = $query->rowCount;
@@ -28,7 +28,7 @@ try {
 				$response->response = $query->error;
 			}
 		} else {
-			$response->response = "dipendente_formazione is null";
+			$response->response = "training_school is null";
 		}
 	} else {
 		$response->response = "Sessione scaduta";

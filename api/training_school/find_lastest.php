@@ -27,13 +27,13 @@ try {
 					,DATE_FORMAT(df_data_scadenza, '%Y-%m-%dT%TZ') AS df_data_scadenza
 					,df_docente
 					,df_note
-				FROM dipendenti_formazioni
+				FROM training_school
 				WHERE df_data_esecuzione = (
 					SELECT MAX(df_data_esecuzione)
-					FROM dipendenti_formazioni AS dipendenti_formazioni_temp
+					FROM training_school AS training_school_temp
 					WHERE
-						dipendenti_formazioni_temp.df_iddipendente = dipendenti_formazioni.df_iddipendente
-						AND dipendenti_formazioni_temp.df_idformazione = dipendenti_formazioni.df_idformazione
+						training_school_temp.df_iddipendente = training_school.df_iddipendente
+						AND training_school_temp.df_idformazione = training_school.df_idformazione
 				)";
 		$query = query($beansMaps->DipendenteFormazioneBean->dbh, $sql, $params);
 		if ($query->status) {

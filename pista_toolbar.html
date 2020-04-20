@@ -10,13 +10,13 @@
 	<md-icon md-svg-src="img/icons/book.svg"></md-icon>
 	<md-tooltip md-direction="top">Adempimenti</md-tooltip>
 </md-button>-->
-<md-button class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'dipendenti_formazioni'" ng-class="{'selected': pista.page == 'dipendenti_formazioni'}" aria-label="dipendenti_formazioni">
+<md-button class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'training_school'" ng-class="{'selected': pista.page == 'training_school'}" aria-label="training_school">
 	<md-icon md-svg-src="img/icons/school_done.svg"></md-icon>
 	<md-tooltip md-direction="top">Prenotazione corso</md-tooltip>
 </md-button>
 <md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'school_calendar'" ng-class="{'selected': pista.page == 'school_calendar'}" aria-label="school_calendar">
 	<md-icon md-svg-src="img/icons/school_calendar.svg"></md-icon>
-	<md-tooltip md-direction="top">prenotazione eventi</md-tooltip>
+	<md-tooltip md-direction="top">Prenotazione eventi</md-tooltip>
 </md-button>
 <md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'agenda'" ng-class="{'selected': pista.page == 'agenda'}" aria-label="agenda">
 	<md-icon md-svg-src="img/icons/pista.svg"></md-icon>
