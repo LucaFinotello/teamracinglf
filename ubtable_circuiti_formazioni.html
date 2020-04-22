@@ -3,7 +3,7 @@
 		<md-icon md-svg-icon="img/icons/eye.svg"><md-tooltip md-direction="left">Mostra/nascondi colonne</md-tooltip></md-icon>
 	</md-button>
 	<md-menu-content ng-mouseleave="$mdMenu.close()" layout-padding>
-		<md-menu-item ng-if="page() != 'pista' && pista.page != 'school_calendar'">
+		<md-menu-item ng-if="page() != 'pista' && pista.page != 'events'">
 			<md-checkbox layout="row" layout-align="start center" class="md-primary no-margin" ng-model="model.filtri.show.af_idazienda" aria-label="af_idazienda">
 				<md-icon class="no-padding no-margin" md-svg-src="img/icons/circuit.svg"></md-icon>
 			</md-checkbox>
@@ -33,7 +33,7 @@
 
 <div> <!-- importantissimo questo div inutile. non eliminare. fixa un bug grafico -->
 	<div layout="row" class="ub-table-head">
-		<div class="ub-table-cell" flex ng-if="model.filtri.show.af_idazienda && page() != 'pista' && pista.page != 'school_calendar'">
+		<div class="ub-table-cell" flex ng-if="model.filtri.show.af_idazienda && page() != 'pista' && pista.page != 'events'">
 			<div layout="row" layout-align="center center" ng-click="model.filtri_app_scope.fn_filtri_sort_by('af_idazienda')">
 				<md-icon md-svg-src="img/icons/circuit.svg"><md-tooltip md-direction="top">Circuiti</md-tooltip></md-icon>
 				<md-icon ng-if="model.filtri_app_scope.fn_filtri_sorted_by('af_idazienda') == 'asc'" md-svg-src="img/icons/arrow_up.svg"></md-icon>
@@ -75,7 +75,7 @@
 <div flex layout="column" ng-if="model.filtri_app_scope" class="ub-table-body" scroll="model">
 	<div ng-repeat="azienda_formazione in model.filtered">
 		<div class="ub-table-body-row" layout="row" layout-align="start stretch">
-			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.af_idazienda && page() != 'pista' && pista.page != 'school_calendar'">
+			<div class="ub-table-cell" flex ng-class="{'striped': $index % 2 == 1}" ng-if="model.filtri.show.af_idazienda && page() != 'pista' && pista.page != 'events'">
 				<div layout="row" layout-align="start center" layout-fill>
 					<div flex class="md-caption" md-truncate>{{circuiti.map[azienda_formazione.af_idazienda].az_descr}}</div>
 				</div>

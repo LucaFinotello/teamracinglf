@@ -72,7 +72,7 @@ app.controller("adempimenti", ["$rootScope", "$scope", "$localStorage", "$filter
 				let item = items[i];
 				if (data_inizio	&& item.ch_date	< data_inizio) continue;
 				if (data_fine	&& item.ch_date	> data_fine) continue;
-				if ($scope.page() == "pista" && $rootScope.pista.page == "school_calendar") {
+				if ($scope.page() == "pista" && $rootScope.pista.page == "events") {
 					if ($rootScope.pista.azienda && $rootScope.pista.azienda.az_id != item.ch_idazienda) continue;
 				} else if ($rootScope.utente_is_utente($scope.logged_user)) {
 					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[item.ch_idazienda]) continue;

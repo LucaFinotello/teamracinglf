@@ -1,20 +1,8 @@
-<!--<md-button ng-if="checkups.selected" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'checkup'" ng-class="{'selected': pista.page == 'checkup'}" aria-label="checkup">
-	<md-icon md-svg-src="img/icons/task_edit.svg"></md-icon>
-	<md-tooltip md-direction="top">Checkup</md-tooltip>
-</md-button>
-<md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'checkups'" ng-class="{'selected': pista.page == 'checkups'}" aria-label="checkups">
-	<md-icon md-svg-src="img/icons/task.svg"></md-icon>
-	<md-tooltip md-direction="top">Checkup</md-tooltip>
-</md-button>
-<md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'adempimenti'" ng-class="{'selected': pista.page == 'adempimenti'}" aria-label="adempimenti">
-	<md-icon md-svg-src="img/icons/book.svg"></md-icon>
-	<md-tooltip md-direction="top">Adempimenti</md-tooltip>
-</md-button>-->
 <md-button class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'training_school'" ng-class="{'selected': pista.page == 'training_school'}" aria-label="training_school">
 	<md-icon md-svg-src="img/icons/school_done.svg"></md-icon>
 	<md-tooltip md-direction="top">Prenotazione corso</md-tooltip>
 </md-button>
-<md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'school_calendar'" ng-class="{'selected': pista.page == 'school_calendar'}" aria-label="school_calendar">
+<md-button ng-if="!(logged_user | utente_is_dipendente)" class="md-icon-button" ng-click="clean_checkup_scopes(checkups.selected); pista.page = 'events'" ng-class="{'selected': pista.page == 'events'}" aria-label="events">
 	<md-icon md-svg-src="img/icons/school_calendar.svg"></md-icon>
 	<md-tooltip md-direction="top">Prenotazione eventi</md-tooltip>
 </md-button>

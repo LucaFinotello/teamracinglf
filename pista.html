@@ -115,7 +115,7 @@
 ></div>
 
 <md-card
-	ng-if="pista.page == 'school_calendar' && pista.azienda"
+	ng-if="pista.page == 'events' && pista.azienda"
 	layout="column"
 	layout-align="start stretch"
 	flex
@@ -127,16 +127,16 @@
 		layout-padding
 		flex
 		class="full-height"
-		ng-include="'pista_school_calendar.html'"
+		ng-include="'pista_events.html'"
 	></div>
 </md-card>
 <div
-	ng-if="pista.page == 'school_calendar' && pista.azienda"
+	ng-if="pista.page == 'events' && pista.azienda"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'pista_school_calendar_toolbar.html'"
+	ng-include="'pista_events_toolbar.html'"
 ></div>
 
 <md-card
