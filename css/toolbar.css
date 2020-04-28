@@ -13,5 +13,5 @@
 ,.toolbar label
 ,.toolbar md-input-container.md-default-theme:not(.md-input-invalid).md-input-has-value label
 ,.toolbar md-input-container:not(.md-input-invalid).md-input-has-value label {
-	color: white;
+	color: #0000ff;
 }

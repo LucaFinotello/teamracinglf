@@ -19,7 +19,7 @@ url = "http://127.0.0.1/teamRacingLF/";	//DEV
 //url = "xxx.xxx.xxx.xxx/ubmanagement";								//PROD
 //url = "https://www.teamracinglf.cloud/TeamRacing/";				//PROD DNS
 
-let statusbar_backgroundcolor = "#1976D2";
+let statusbar_backgroundcolor = "#daa520";
 
 let utenti_chiavi = undefined; // true | false | undefined	// usato nel login
 

@@ -7,8 +7,8 @@ body:not(.ubprintx) {
 	background-color: #eee;
 }
 
-.dark-primary-color    { background: #1976D2; }
-.default-primary-color { background: #2196F3; }
+.dark-primary-color    { background: #daa520; }
+.default-primary-color { background: #ffd700; }
 .light-primary-color   { background: #BBDEFB; }
 .text-primary-color    { color: #FFFFFF; }
 .accent-color          { background: #03A9F4; }
@@ -33,6 +33,10 @@ body:not(.ubprintx) {
 }
 md-card {
 	margin: 4px;
+}
+
+md-icon {
+	color: #0000ff;
 }
 
 .md-toast-open-top .md-button.md-fab-top-left
