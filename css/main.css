@@ -43,18 +43,6 @@ md-icon {
 	background: #c0c0c0 !important;
 }
 
-.layout-padding,
-.layout-padding-gt-sm,
-.layout-padding-gt-sm > *,
-.layout-padding-md,
-.layout-padding-md > *,
-.layout-padding > *,
-.layout-padding > .flex,
-.layout-padding > .flex-gt-sm,
-.layout-padding > .flex-md {
-	background: #c0c0c0 !important;
-}
-
 .md-toast-open-top .md-button.md-fab-top-left
 ,.md-toast-open-top .md-button.md-fab-top-right
 ,.md-toast-open-bottom .md-button.md-fab-bottom-left
