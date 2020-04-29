@@ -4,7 +4,7 @@ body:not(.ubprintx) {
 	min-width: 100vw;
 	max-width: 100vw;
 	overflow: hidden;
-	background-color: #eee;
+	background-color: #c0c0c0;
 }
 
 .dark-primary-color    { background: #daa520; }
@@ -37,6 +37,22 @@ md-card {
 
 md-icon {
 	color: #0000ff;
+}
+
+.layout-column>.flex {
+	background: #c0c0c0 !important;
+}
+
+.layout-padding,
+.layout-padding-gt-sm,
+.layout-padding-gt-sm > *,
+.layout-padding-md,
+.layout-padding-md > *,
+.layout-padding > *,
+.layout-padding > .flex,
+.layout-padding > .flex-gt-sm,
+.layout-padding > .flex-md {
+	background: #c0c0c0 !important;
 }
 
 .md-toast-open-top .md-button.md-fab-top-left
