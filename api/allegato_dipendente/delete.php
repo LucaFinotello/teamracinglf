@@ -22,7 +22,7 @@ try {
 				isset($allegato_dipendente->ad_idallegato) ? $allegato_dipendente->ad_idallegato : 0
 				,isset($allegato_dipendente->ad_iddipendente) ? $allegato_dipendente->ad_iddipendente : 0
 			];
-			$sql = "DELETE FROM allegati_dipendenti
+			$sql = "DELETE FROM allegati_eventi
 					WHERE
 						ad_idallegato = ?
 						AND ad_iddipendente = ?";

@@ -3,7 +3,7 @@
 		<div class="md-title" ng-if="!dialog.training_school.righe.length">Nessun dato da visualizzare</div>
 		<div ng-if="dialog.training_school.righe.length" layout="row" layout-align="start center">
 			<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>
-			<div class="md-subhead">{{dialog.dipendenti.map[dialog.training_school.righe[0].df_iddipendente].di_descr}}</div>
+			<div class="md-subhead">{{dialog.eventi.map[dialog.training_school.righe[0].df_iddipendente].di_descr}}</div>
 		</div>
 		<div ng-if="dialog.training_school.righe.length" layout="row" layout-align="start center">
 			<md-icon md-svg-icon="img/icons/school.svg"></md-icon>
@@ -12,7 +12,7 @@
 		<md-list>
 			<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="dipendente_formazione in dialog.training_school.righe | orderBy:['-df_data_esecuzione']"
 				ng-click="
-					dipendente_formazione.dipendente = dialog.dipendenti.map[dipendente_formazione.df_iddipendente];
+					dipendente_formazione.dipendente = dialog.eventi.map[dipendente_formazione.df_iddipendente];
 					dipendente_formazione.formazione = dialog.formazioni.map[dipendente_formazione.df_idformazione];
 					dialog.anagrafica_dipendente_formazione(dipendente_formazione, !(dialog.logged_user | utente_is_utente), dialog.logged_user | utente_is_utente);
 				"

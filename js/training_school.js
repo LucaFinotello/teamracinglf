@@ -15,7 +15,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 
 				$rootScope.training_school.filtri.search						= undefined;
 				$rootScope.training_school.filtri.circuiti						= {};
-				$rootScope.training_school.filtri.dipendenti					= {};
+				$rootScope.training_school.filtri.eventi					= {};
 				$rootScope.training_school.filtri.formazioni					= {};
 
 				$rootScope.training_school.filtri.fl_data_esecuzione			= true;
@@ -44,7 +44,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 					$rootScope.training_school.filtri.sorting						= filtri_app.sorting								? filtri_app.sorting										: $rootScope.training_school.filtri.sorting;
 					$rootScope.training_school.filtri.search						= filtri_app.search									? filtri_app.search											: $rootScope.training_school.filtri.search;
 					$rootScope.training_school.filtri.circuiti						= filtri_app.circuiti								? filtri_app.circuiti										: $rootScope.training_school.filtri.circuiti;
-					$rootScope.training_school.filtri.dipendenti					= filtri_app.dipendenti								? filtri_app.dipendenti										: $rootScope.training_school.filtri.dipendenti;
+					$rootScope.training_school.filtri.eventi					= filtri_app.eventi								? filtri_app.eventi										: $rootScope.training_school.filtri.eventi;
 					$rootScope.training_school.filtri.formazioni					= filtri_app.formazioni								? filtri_app.formazioni										: $rootScope.training_school.filtri.formazioni;
 
 					$rootScope.training_school.filtri.fl_data_esecuzione			= !!filtri_app.fl_data_esecuzione;
@@ -83,11 +83,11 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 				if (data_fine_scadenza		&& item.df_data_scadenza	> data_fine_scadenza) continue;
 				if ($scope.page() == "pista" && $rootScope.pista.page == "training_school") {
 					if ($rootScope.pista.azienda) {
-						if ($rootScope.pista.azienda.az_id != $rootScope.dipendenti.map[item.df_iddipendente].di_idazienda) {
+						if ($rootScope.pista.azienda.az_id != $rootScope.eventi.map[item.df_iddipendente].di_idazienda) {
 							continue;
 						}
 					} else {
-						if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) {
+						if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.eventi.map[item.df_iddipendente].di_idazienda]) {
 							continue;
 						}
 					}
@@ -96,13 +96,13 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 							continue;
 						}
 					} else {
-						if (filtri && filtri.dipendenti && $scope.get_valid_keys(filtri.dipendenti).length > 0 && !filtri.dipendenti[item.df_iddipendente]) {
+						if (filtri && filtri.eventi && $scope.get_valid_keys(filtri.eventi).length > 0 && !filtri.eventi[item.df_iddipendente]) {
 							continue;
 						}
 					}
 				} else {
-					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.dipendenti.map[item.df_iddipendente].di_idazienda]) continue;
-					if (filtri && filtri.dipendenti && $scope.get_valid_keys(filtri.dipendenti).length > 0 && !filtri.dipendenti[item.df_iddipendente]) continue;
+					if (filtri && filtri.circuiti && $scope.get_valid_keys(filtri.circuiti).length > 0 && !filtri.circuiti[$rootScope.eventi.map[item.df_iddipendente].di_idazienda]) continue;
+					if (filtri && filtri.eventi && $scope.get_valid_keys(filtri.eventi).length > 0 && !filtri.eventi[item.df_iddipendente]) continue;
 				}
 				if (filtri && filtri.formazioni && $scope.get_valid_keys(filtri.formazioni).length > 0 && !filtri.formazioni[item.df_idformazione]) continue;
 				if (
@@ -111,7 +111,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 					&& !$filter("filter")(
 						[{
 							item: item
-							,dipendente: $rootScope.dipendenti.map[item.df_iddipendente]
+							,dipendente: $rootScope.eventi.map[item.df_iddipendente]
 							,formazione: $rootScope.formazioni.map[item.df_idformazione]
 						}]
 						, filtri.search
@@ -127,7 +127,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 		}
 		,toggle_rubrica: function(rubrica) {
 			if (this.rubrica_circuiti						&& this.rubrica_circuiti != rubrica)							this.rubrica_circuiti.fl_open = false;
-			if (this.rubrica_dipendenti						&& this.rubrica_dipendenti != rubrica)						this.rubrica_dipendenti.fl_open = false;
+			if (this.rubrica_eventi						&& this.rubrica_eventi != rubrica)						this.rubrica_eventi.fl_open = false;
 			if (this.rubrica_formazioni						&& this.rubrica_formazioni != rubrica)						this.rubrica_formazioni.fl_open = false;
 			if (this.rubrica_filtri_training_school	&& this.rubrica_filtri_training_school != rubrica)	this.rubrica_filtri_training_school.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
@@ -149,15 +149,15 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 				return $rootScope.utente_is_utente($scope.logged_user) || $scope.logged_user.idazienda == item.az_id;
 			}
 		}
-		,rubrica_dipendenti: {
+		,rubrica_eventi: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.dipendenti
+			,model: $rootScope.eventi
 			,order_by: ["di_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.training_school.filtri.dipendenti = {}}
+			,deselect: function() {$rootScope.training_school.filtri.eventi = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.training_school.filtri.dipendenti[item.di_id] !== undefined}
-			,click: function(item) {$rootScope.training_school.filtri.dipendenti[item.di_id] = $rootScope.training_school.filtri.dipendenti[item.di_id] !== undefined ? undefined : item.di_descr}
+			,checked: function(item) {return item && $rootScope.training_school.filtri.eventi[item.di_id] !== undefined}
+			,click: function(item) {$rootScope.training_school.filtri.eventi[item.di_id] = $rootScope.training_school.filtri.eventi[item.di_id] !== undefined ? undefined : item.di_descr}
 			,subhead: function(item) {return item.di_descr}
 			,body: undefined
 			,caption: function(item) {return item.di_id}
@@ -216,7 +216,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 
 				dialog.training_school = {righe: response};
 
-				dialog.dipendenti = $rootScope.dipendenti;
+				dialog.eventi = $rootScope.eventi;
 				dialog.formazioni = $rootScope.formazioni;
 				dialog.anagrafica_dipendente_formazione = $rootScope.anagrafica_dipendente_formazione;
 				dialog.logged_user = $scope.logged_user;
@@ -283,12 +283,12 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 		dialog.editableform = editableform === undefined ? true : !!editableform;
 
 		dialog.dipendente_formazione				= dipendente_formazione								? dipendente_formazione														: {};
-		dialog.dipendente_formazione.dipendente		= dialog.dipendente_formazione.df_iddipendente		? $rootScope.dipendenti.map[dialog.dipendente_formazione.df_iddipendente]	: undefined;
+		dialog.dipendente_formazione.dipendente		= dialog.dipendente_formazione.df_iddipendente		? $rootScope.eventi.map[dialog.dipendente_formazione.df_iddipendente]	: undefined;
 		dialog.dipendente_formazione.formazione		= dialog.dipendente_formazione.df_idformazione		? $rootScope.formazioni.map[dialog.dipendente_formazione.df_idformazione]	: undefined;
 		dialog.data_esecuzione						= dialog.dipendente_formazione.df_data_esecuzione	? new Date(dialog.dipendente_formazione.df_data_esecuzione.valueOf())		: new Date();
 		dialog.data_scadenza						= dialog.dipendente_formazione.df_data_scadenza		? new Date(dialog.dipendente_formazione.df_data_scadenza.valueOf())			: undefined;
 
-		dialog.dipendenti = $rootScope.dipendenti;
+		dialog.eventi = $rootScope.eventi;
 		dialog.formazioni = $rootScope.formazioni;
 
 		dialog.deleteFn = dialog.dipendente_formazione.df_id ? function(answer, cancelFn) {
@@ -356,7 +356,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 			,df_note: true
 		};
 		
-		let title = "Formazione_dipendenti";
+		let title = "Formazione_eventi";
 		let table = "<thead><tr>";
 		if (filtri.show.idazienda) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>ID Azienda</b></th>";
 		if (filtri.show.idazienda) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Azienda</b></th>";
@@ -375,14 +375,14 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 			table += "<tr>";
 			if (filtri.show.idazienda) {
 				table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">";
-				if ($rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda;
+				if ($rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda;
 				table += "</td>";
 				table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">";
-				if ($rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.circuiti.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr;
+				if ($rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda) table += $rootScope.circuiti.map[$rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr;
 				table += "</td>";
 			}
 			if (filtri.show.df_iddipendente) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + dipendente_formazione.df_iddipendente + "</td>";
-			if (filtri.show.df_iddipendente) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_descr + "</td>";
+			if (filtri.show.df_iddipendente) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + $rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_descr + "</td>";
 			if (filtri.show.df_idformazione) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + dipendente_formazione.df_idformazione + "</td>";
 			if (filtri.show.df_idformazione) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + $rootScope.formazioni.map[dipendente_formazione.df_idformazione].fo_descr + "</td>";
 			if (filtri.show.df_data_esecuzione) table += "<td style=\"background-color: " + ($filter("dipendente_formazione_scaduta")(dipendente_formazione) ? "#F44336" : "transparent") + "\">" + (dipendente_formazione.df_data_esecuzione ? $filter("date")(dipendente_formazione.df_data_esecuzione, "dd/MM/yyyy") : "") + "</td>";
@@ -450,10 +450,10 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 		for (let di = 0; di < training_school.length; di++) {
 			let dipendente_formazione = training_school[di];
 			righe.push({
-				az_id: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda
-				,az_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda ? $rootScope.circuiti.map[$rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr : undefined
+				az_id: $rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda
+				,az_descr: $rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda ? $rootScope.circuiti.map[$rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_idazienda].az_descr : undefined
 				,df_iddipendente: dipendente_formazione.df_iddipendente
-				,di_descr: $rootScope.dipendenti.map[dipendente_formazione.df_iddipendente].di_descr
+				,di_descr: $rootScope.eventi.map[dipendente_formazione.df_iddipendente].di_descr
 				,df_idformazione: dipendente_formazione.df_idformazione
 				,fo_descr: $rootScope.formazioni.map[dipendente_formazione.df_idformazione].fo_descr
 				,df_data_esecuzione: dipendente_formazione.df_data_esecuzione
@@ -485,7 +485,7 @@ app.controller("training_school", ["$rootScope", "$scope", "$localStorage", "$fi
 		).then(
 			(response) => {
 				let file = {
-					name: "Formazione_dipendenti" + $filter("date")(new Date(), "_yyyy_MM_dd_HH_mm_ss") + ".pdf"
+					name: "Formazione_eventi" + $filter("date")(new Date(), "_yyyy_MM_dd_HH_mm_ss") + ".pdf"
 					,type: "application/pdf"
 					,size: response.length
 					,blob_base64: window.btoa(unescape(encodeURIComponent(response)))

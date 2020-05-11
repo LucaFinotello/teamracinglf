@@ -118,14 +118,14 @@
 		<div layout="column" layout-align="start stretch" class="full-height" flex>
 			<div layout="row" layout-align="start center">
 				<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>
-				<div flex md-truncate class="md-title">Dipendenti assegnabili</div>
+				<div flex md-truncate class="md-title">eventi assegnabili</div>
 			</div>
 			<md-input-container>
 				<label>Cerca</label>
-				<input type="text" ng-model="dialog.search_dipendenti"/>
+				<input type="text" ng-model="dialog.search_eventi"/>
 			</md-input-container>
-			<md-list class="md-dense" scroll="dialog.dipendenti" style="max-height: 250px;">
-				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="dipendente in dialog.dipendenti.righe | not_in:dialog.allegato:dialog.dipendente_in_allegato | filter:dialog.search_dipendenti | limitTo:dialog.dipendenti.limit" ng-click="dialog.insert_allegato_dipendente({ad_idallegato: dialog.allegato.al_id, ad_iddipendente: dipendente.di_id})">
+			<md-list class="md-dense" scroll="dialog.eventi" style="max-height: 250px;">
+				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="dipendente in dialog.eventi.righe | not_in:dialog.allegato:dialog.dipendente_in_allegato | filter:dialog.search_eventi | limitTo:dialog.eventi.limit" ng-click="dialog.insert_allegato_dipendente({ad_idallegato: dialog.allegato.al_id, ad_iddipendente: dipendente.di_id})">
 					<div class="md-list-item-text">
 						<div class="md-body-1" md-truncate>{{dipendente.di_descr}}</div>
 						<div class="md-caption" md-truncate>{{dipendente.di_id}}</div>
@@ -136,17 +136,17 @@
 		<div layout="column" layout-align="start stretch" class="full-height" flex>
 			<div layout="row" layout-align="start center">
 				<md-icon md-svg-icon="img/icons/person_helm.svg"></md-icon>
-				<div flex md-truncate class="md-title">Dipendenti assegnati</div>
+				<div flex md-truncate class="md-title">eventi assegnati</div>
 			</div>
 			<md-input-container>
 				<label>Cerca</label>
-				<input type="text" ng-model="dialog.search_dipendenti_assegnati"/>
+				<input type="text" ng-model="dialog.search_eventi_assegnati"/>
 			</md-input-container>
-			<md-list class="md-dense" scroll="dialog.allegati_dipendenti" style="max-height: 250px;">
-				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="allegato_dipendente in dialog.allegati_dipendenti.map[dialog.allegato.al_id] | toArray | filter:dialog.search_dipendenti_assegnati | limitTo:dialog.allegati_dipendenti.limit" ng-click="dialog.delete_allegato_dipendente(allegato_dipendente, true)">
+			<md-list class="md-dense" scroll="dialog.allegati_eventi" style="max-height: 250px;">
+				<md-list-item class="md-2-line" ng-class="{'striped': $index % 2}" ng-repeat="allegato_dipendente in dialog.allegati_eventi.map[dialog.allegato.al_id] | toArray | filter:dialog.search_eventi_assegnati | limitTo:dialog.allegati_eventi.limit" ng-click="dialog.delete_allegato_dipendente(allegato_dipendente, true)">
 					<div class="md-list-item-text">
-						<div class="md-body-1" md-truncate>{{dialog.dipendenti.map[allegato_dipendente.ad_iddipendente].di_descr}}</div>
-						<div class="md-caption" md-truncate>{{dialog.dipendenti.map[allegato_dipendente.ad_iddipendente].di_id}}</div>
+						<div class="md-body-1" md-truncate>{{dialog.eventi.map[allegato_dipendente.ad_iddipendente].di_descr}}</div>
+						<div class="md-caption" md-truncate>{{dialog.eventi.map[allegato_dipendente.ad_iddipendente].di_id}}</div>
 					</div>
 				</md-list-item>
 			</md-list>

@@ -23,15 +23,15 @@ try {
 
 			$save = save("DipendenteBean", $dipendente);
 			if ($save->status) {
-				$dipendenti = $save->response;
+				$eventi = $save->response;
 				$params = [
-					$dipendenti[0]->di_idazienda
-					,$dipendenti[0]->di_id
+					$eventi[0]->di_idazienda
+					,$eventi[0]->di_id
 				];
 				$sql = "UPDATE utenti SET ut_idazienda = ? WHERE ut_iddipendente = ?";
 				$query = query($beansMaps->UtenteBean->dbh, $sql, $params);
 				if ($query->status) {
-					$response->response = $dipendenti;
+					$response->response = $eventi;
 					$response->status = true;
 				} else {
 					$response->response = $query->error;

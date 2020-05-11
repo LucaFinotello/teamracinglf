@@ -54,7 +54,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 						[{
 							item: item
 							,azienda: $rootScope.circuiti.map[item.idazienda]
-							,dipendente: $rootScope.dipendenti.map[item.iddipendente]
+							,dipendente: $rootScope.eventi.map[item.iddipendente]
 						}]
 						,filtri.search
 					).length
@@ -200,7 +200,7 @@ app.controller("utenti", ["$rootScope", "$scope", "$localStorage", "$filter", fu
 
 			dialog.logged_user = $rootScope.logged_user;
 			dialog.utente = utente;
-			dialog.dipendenti = $rootScope.dipendenti;
+			dialog.eventi = $rootScope.eventi;
 			dialog.circuiti = $rootScope.circuiti;
 			dialog.moduli = $rootScope.gestione.moduli;
 
@@ -247,7 +247,7 @@ app.filter("utente_is_azienda", ["$rootScope", function($rootScope) {
 app.filter("utente_is_utente", ["$rootScope", function($rootScope) {
 	return $rootScope.utente_is_utente;
 }]);
-app.filter("utenti_dipendenti", ["$rootScope", function($rootScope) {
+app.filter("utenti_eventi", ["$rootScope", function($rootScope) {
 	return function(utenti) {
 		let filtered = [];
 		for (let ut = 0; utenti && ut < utenti.length; ut++) {

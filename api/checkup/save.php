@@ -56,7 +56,7 @@ try {
 							$allegati = $save->response;
 							$allegati_utenti = [];
 							$allegati_circuiti = [];
-							$allegati_dipendenti = [];
+							$allegati_eventi = [];
 							$allegati_checkups = [];
 							$allegati_checkups_righe = [];
 							if (isset($allegati) && count($allegati) > 0) foreach ($allegati as &$allegato) {
@@ -119,7 +119,7 @@ try {
 									if ($save->status) {
 										$save = save("AllegatoAziendaBean", $allegati_circuiti);
 										if ($save->status) {
-											$save = save("AllegatoDipendenteBean", $allegati_dipendenti);
+											$save = save("AllegatoDipendenteBean", $allegati_eventi);
 											if ($save->status) {
 												$save = save("AllegatoCheckupBean", $allegati_checkups);
 												if ($save->status) {
@@ -128,7 +128,7 @@ try {
 														@$checkup->allegati = $allegati;
 														@$checkup->allegati_utenti = $allegati_utenti;
 														@$checkup->allegati_circuiti = $allegati_circuiti;
-														@$checkup->allegati_dipendenti = $allegati_dipendenti;
+														@$checkup->allegati_eventi = $allegati_eventi;
 														@$checkup->allegati_checkups = $allegati_checkups;
 														@$checkup->allegati_checkups_righe = $allegati_checkups_righe;
 														$response->response = [$checkup];

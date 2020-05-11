@@ -54,7 +54,7 @@
 				<md-autocomplete
 					md-selected-item="dialog.utente.dipendente"
 					md-search-text="dialog.dipendente_search"
-					md-items="dipendente in dialog.dipendenti.righe | filter:{di_idazienda: dialog.utente.idazienda} | filter:dialog.dipendente_search"
+					md-items="dipendente in dialog.eventi.righe | filter:{di_idazienda: dialog.utente.idazienda} | filter:dialog.dipendente_search"
 					md-item-text="dipendente.di_descr"
 					md-floating-label="Dipendente"
 					md-no-cache="true"
@@ -66,7 +66,7 @@
 				>
 					<md-item-template>
 						<div>{{dipendente.di_id}} - {{dipendente.di_descr}}</div>
-						<md-not-found>Non sono stati trovati dipendenti per "{{dialog.dipendente_search}}".</md-not-found>
+						<md-not-found>Non sono stati trovati eventi per "{{dialog.dipendente_search}}".</md-not-found>
 					</md-item-template>
 				</md-autocomplete>
 			</md-input-container>

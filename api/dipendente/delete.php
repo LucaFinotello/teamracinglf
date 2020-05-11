@@ -19,7 +19,7 @@ try {
 
 		if ($dipendente) {
 			$params = [isset($dipendente->di_id) ? $dipendente->di_id : 0];
-			$sql = "DELETE FROM dipendenti WHERE di_id = ?";
+			$sql = "DELETE FROM eventi WHERE di_id = ?";
 			$query = query($beansMaps->DipendenteBean->dbh, $sql, $params);
 			if ($query->status) {
 				$response->response = $query->rowCount;

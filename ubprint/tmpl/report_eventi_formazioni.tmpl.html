@@ -1,7 +1,7 @@
 <div md-colors="{'background': 'grey-400-1'}">
 	<div layout="column" layout-align="start stretch">
 		<div layout="row" layout-align="space-between center" layout-padding layout-wrap>
-			<div class="md-display-2" flex md-truncate>Dipendenti</div>
+			<div class="md-display-2" flex md-truncate>eventi</div>
 			<div class="md-title">{{postdata.date | date:'dd/MM/yyyy HH:mm'}}</div>
 		</div>
 		<md-divider class="md-body-2" layout-margin></md-divider>
@@ -23,9 +23,9 @@
 				<md-icon md-svg-src="../../../img/icons/person_tie.svg"></md-icon>
 				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.circuiti)">{{filter_key}} - {{postdata.filtri.circuiti[filter_key]}}</div>
 			</div>
-			<div ng-if="get_valid_keys(postdata.filtri.dipendenti).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
+			<div ng-if="get_valid_keys(postdata.filtri.eventi).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
 				<md-icon md-svg-src="../../../img/icons/person_helm.svg"></md-icon>
-				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.dipendenti)">{{filter_key}} - {{postdata.filtri.dipendenti[filter_key]}}</div>
+				<div class="md-body-1" md-truncate ng-repeat="filter_key in get_valid_keys(postdata.filtri.eventi)">{{filter_key}} - {{postdata.filtri.eventi[filter_key]}}</div>
 			</div>
 			<div ng-if="get_valid_keys(postdata.filtri.formazioni).length > 0" layout="column" layout-align="start stretch" style="margin: 0 8px">
 				<md-icon md-svg-src="../../../img/icons/school.svg"></md-icon>

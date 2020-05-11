@@ -16,7 +16,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				$rootScope.allegati.filtri.search					= undefined;
 				$rootScope.allegati.filtri.utenti					= {};
 				$rootScope.allegati.filtri.circuiti					= {};
-				$rootScope.allegati.filtri.dipendenti				= {};
+				$rootScope.allegati.filtri.eventi				= {};
 				$rootScope.allegati.filtri.checkups					= {};
 
 				$rootScope.allegati.filtri.fl_data					= true;
@@ -43,7 +43,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					$rootScope.allegati.filtri.search						= filtri_app.search						? filtri_app.search									: $rootScope.allegati.filtri.search;
 					$rootScope.allegati.filtri.utenti						= filtri_app.utenti						? filtri_app.utenti									: $rootScope.allegati.filtri.utenti;
 					$rootScope.allegati.filtri.circuiti						= filtri_app.circuiti					? filtri_app.circuiti								: $rootScope.allegati.filtri.circuiti;
-					$rootScope.allegati.filtri.dipendenti					= filtri_app.dipendenti					? filtri_app.dipendenti								: $rootScope.allegati.filtri.dipendenti;
+					$rootScope.allegati.filtri.eventi					= filtri_app.eventi					? filtri_app.eventi								: $rootScope.allegati.filtri.eventi;
 					$rootScope.allegati.filtri.checkups						= filtri_app.checkups					? filtri_app.checkups								: $rootScope.allegati.filtri.checkups;
 
 					$rootScope.allegati.filtri.fl_data						= !!filtri_app.fl_data;
@@ -96,11 +96,11 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					if (!fl_ok) continue;
 				}
 
-				let dipendenti = $scope.get_valid_keys(filtri.dipendenti);
-				if (($rootScope.utente_is_utente($scope.logged_user) || $rootScope.utente_is_azienda($scope.logged_user)) && dipendenti.length > 0) {
+				let eventi = $scope.get_valid_keys(filtri.eventi);
+				if (($rootScope.utente_is_utente($scope.logged_user) || $rootScope.utente_is_azienda($scope.logged_user)) && eventi.length > 0) {
 					let fl_ok = false;
-					for (let i = 0; !fl_ok && i < dipendenti.length; i++) {
-						fl_ok = $rootScope.allegato_is_visibile(item.al_id, undefined, undefined, dipendenti[i]);
+					for (let i = 0; !fl_ok && i < eventi.length; i++) {
+						fl_ok = $rootScope.allegato_is_visibile(item.al_id, undefined, undefined, eventi[i]);
 					}
 					if (!fl_ok) continue;
 				}
@@ -120,7 +120,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 					&& !$filter("filter")(
 						[{
 							item: item
-							,dipendente: $rootScope.dipendenti.map[item.df_iddipendente]
+							,dipendente: $rootScope.eventi.map[item.df_iddipendente]
 							,formazione: $rootScope.formazioni.map[item.df_idformazione]
 						}]
 						,filtri.search
@@ -137,7 +137,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 		,toggle_rubrica: function(rubrica) {
 			if (this.rubrica_utenti				&& this.rubrica_utenti != rubrica)				this.rubrica_utenti.fl_open = false;
 			if (this.rubrica_circuiti			&& this.rubrica_circuiti != rubrica)			this.rubrica_circuiti.fl_open = false;
-			if (this.rubrica_dipendenti			&& this.rubrica_dipendenti != rubrica)			this.rubrica_dipendenti.fl_open = false;
+			if (this.rubrica_eventi			&& this.rubrica_eventi != rubrica)			this.rubrica_eventi.fl_open = false;
 			if (this.rubrica_checkups			&& this.rubrica_checkups != rubrica)			this.rubrica_checkups.fl_open = false;
 			if (this.rubrica_filtri_allegati	&& this.rubrica_filtri_allegati != rubrica)		this.rubrica_filtri_allegati.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
@@ -174,15 +174,15 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				return $rootScope.utente_is_utente($scope.logged_user) || $scope.logged_user.idazienda == item.az_id;
 			}
 		}
-		,rubrica_dipendenti: {
+		,rubrica_eventi: {
 			template: "tmpl/rubrica_default.tmpl.html"
-			,model: $rootScope.dipendenti
+			,model: $rootScope.eventi
 			,order_by: ["di_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.allegati.filtri.dipendenti = {}}
+			,deselect: function() {$rootScope.allegati.filtri.eventi = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.allegati.filtri.dipendenti[item.di_id] !== undefined}
-			,click: function(item) {$rootScope.allegati.filtri.dipendenti[item.di_id] = $rootScope.allegati.filtri.dipendenti[item.di_id] !== undefined ? undefined : item.di_descr}
+			,checked: function(item) {return item && $rootScope.allegati.filtri.eventi[item.di_id] !== undefined}
+			,click: function(item) {$rootScope.allegati.filtri.eventi[item.di_id] = $rootScope.allegati.filtri.eventi[item.di_id] !== undefined ? undefined : item.di_descr}
 			,subhead: function(item) {return item.di_descr}
 			,body: undefined
 			,caption: function(item) {return item.di_id}
@@ -200,7 +200,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 						&& $rootScope.allegati.filtri.circuiti
 						&& $scope.get_valid_keys($rootScope.allegati.filtri.circuiti).length > 0
 						&& !$rootScope.allegati.filtri.circuiti[item.di_idazienda]
-						&& !$rootScope.allegati.filtri.dipendenti[item.di_id]
+						&& !$rootScope.allegati.filtri.eventi[item.di_id]
 					) {
 						return false;
 					}
@@ -356,8 +356,8 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				return allegato && azienda && $rootScope.allegato_is_visibile(allegato.al_id, undefined, azienda.az_id);
 			}
 
-			dialog.dipendenti = $rootScope.dipendenti;
-			dialog.allegati_dipendenti = $rootScope.allegati_dipendenti;
+			dialog.eventi = $rootScope.eventi;
+			dialog.allegati_eventi = $rootScope.allegati_eventi;
 			dialog.insert_allegato_dipendente = $rootScope.insert_allegato_dipendente;
 			dialog.delete_allegato_dipendente = $rootScope.delete_allegato_dipendente;
 			dialog.dipendente_in_allegato = function(allegato, dipendente) {
@@ -399,7 +399,7 @@ app.controller("allegati", ["$rootScope", "$scope", "$localStorage", "$filter", 
 		return idallegato ? (
 			(!idutente				|| ($rootScope.allegati_utenti.map[idallegato] && $rootScope.allegati_utenti.map[idallegato][idutente]))
 			&& (!idazienda			|| ($rootScope.allegati_circuiti.map[idallegato] && $rootScope.allegati_circuiti.map[idallegato][idazienda]))
-			&& (!iddipendente		|| ($rootScope.allegati_dipendenti.map[idallegato] && $rootScope.allegati_dipendenti.map[idallegato][iddipendente]))
+			&& (!iddipendente		|| ($rootScope.allegati_eventi.map[idallegato] && $rootScope.allegati_eventi.map[idallegato][iddipendente]))
 			&& (!idcheckup			|| ($rootScope.allegati_checkups.map[idallegato] && $rootScope.allegati_checkups.map[idallegato][idcheckup]))
 			&& (!idcheckup_riga		|| ($rootScope.allegati_checkups_righe.map[idallegato] && $rootScope.allegati_checkups_righe.map[idallegato][idcheckup_riga]))
 		) : true;

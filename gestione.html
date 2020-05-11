@@ -43,57 +43,21 @@
 ></div>
 
 <md-card
-	ng-if="gestione.page == 'dipendenti'"
+	ng-if="gestione.page == 'eventi'"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
 	flex
 	class="full-height"
-	ng-include="'gestione_dipendenti.html'"
+	ng-include="'gestione_eventi.html'"
 ></md-card>
 <div
-	ng-if="gestione.page == 'dipendenti'"
+	ng-if="gestione.page == 'eventi'"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'gestione_dipendenti_toolbar.html'"
-></div>
-
-<md-card
-	ng-if="gestione.page == 'argomenti'"
-	layout="column"
-	layout-align="start stretch"
-	layout-padding
-	flex
-	class="full-height"
-	ng-include="'gestione_argomenti.html'"
-></md-card>
-<div
-	ng-if="gestione.page == 'argomenti'"
-	layout="row"
-	layout-align="start center"
-	class="toolbar"
-	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'gestione_argomenti_toolbar.html'"
-></div>
-
-<md-card
-	ng-if="gestione.page == 'azienda_argomenti'"
-	layout="column"
-	layout-align="start stretch"
-	layout-padding
-	flex
-	class="full-height"
-	ng-include="'gestione_azienda_argomenti.html'"
-></md-card>
-<div
-	ng-if="gestione.page == 'azienda_argomenti'"
-	layout="row"
-	layout-align="start center"
-	class="toolbar"
-	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'gestione_azienda_argomenti_toolbar.html'"
+	ng-include="'gestione_eventi_toolbar.html'"
 ></div>
 
 <md-card

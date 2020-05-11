@@ -169,7 +169,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 					$rootScope.push_allegato(response[0].allegati);
 					$rootScope.push_allegato_utente(response[0].allegati_utenti);
 					$rootScope.push_allegato_azienda(response[0].allegati_circuiti);
-					$rootScope.push_allegato_dipendente(response[0].allegati_dipendenti);
+					$rootScope.push_allegato_dipendente(response[0].allegati_eventi);
 					$rootScope.push_allegato_checkup(response[0].allegati_checkups);
 					$rootScope.push_allegato_checkup_riga(response[0].allegati_checkups_righe);
 

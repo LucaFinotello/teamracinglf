@@ -1,39 +1,39 @@
-app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
-	$rootScope.dipendenti = $rootScope.dipendenti ? $rootScope.dipendenti : {
-		filtri_key: "filtri_dipendenti"
+app.controller("eventi", ["$rootScope", "$scope", "$localStorage", "$filter", function($rootScope, $scope, $localStorage, $filter) {
+	$rootScope.eventi = $rootScope.eventi ? $rootScope.eventi : {
+		filtri_key: "filtri_eventi"
 		,fn_filtri_set_default_filtri_app: function() {
-			if ($rootScope.dipendenti && $rootScope.dipendenti.filtri) {
-				$rootScope.dipendenti.filtri.sorting					= [{
+			if ($rootScope.eventi && $rootScope.eventi.filtri) {
+				$rootScope.eventi.filtri.sorting					= [{
 					property: "di_descr"
 					,reverse: false
 				}];
 
-				$rootScope.dipendenti.filtri.search						= undefined;
-				$rootScope.dipendenti.filtri.circuiti					= {};
+				$rootScope.eventi.filtri.search						= undefined;
+				$rootScope.eventi.filtri.circuiti					= {};
 
-				$rootScope.dipendenti.filtri.show						= $rootScope.dipendenti.filtri.show ? $rootScope.dipendenti.filtri.show : {};
-				$rootScope.dipendenti.filtri.show.di_id					= true;
-				$rootScope.dipendenti.filtri.show.di_idazienda			= true;
-				$rootScope.dipendenti.filtri.show.di_descr				= true;
-				$rootScope.dipendenti.filtri.show.di_note				= true;
-				$rootScope.dipendenti.filtri.show.di_note_interne		= true;
+				$rootScope.eventi.filtri.show						= $rootScope.eventi.filtri.show ? $rootScope.eventi.filtri.show : {};
+				$rootScope.eventi.filtri.show.di_id					= true;
+				$rootScope.eventi.filtri.show.di_idazienda			= true;
+				$rootScope.eventi.filtri.show.di_descr				= true;
+				$rootScope.eventi.filtri.show.di_note				= true;
+				$rootScope.eventi.filtri.show.di_note_interne		= true;
 			}
 		}
 		,fn_filtri_set_custom_filtri_app: function() {
-			if ($rootScope.dipendenti && $rootScope.dipendenti.filtri) {
-				let filtri_app = $localStorage[$rootScope.dipendenti.filtri_key];
+			if ($rootScope.eventi && $rootScope.eventi.filtri) {
+				let filtri_app = $localStorage[$rootScope.eventi.filtri_key];
 
 				if (filtri_app) {
-					$rootScope.dipendenti.filtri.sorting				= filtri_app.sorting					? filtri_app.sorting					: $rootScope.dipendenti.filtri.sorting;
-					$rootScope.dipendenti.filtri.search					= filtri_app.search						? filtri_app.search						: $rootScope.dipendenti.filtri.search;
-					$rootScope.dipendenti.filtri.circuiti				= filtri_app.dipendenti					? filtri_app.dipendenti					: $rootScope.dipendenti.filtri.circuiti;
-					$rootScope.dipendenti.filtri.show					= $rootScope.dipendenti.filtri.show		? $rootScope.dipendenti.filtri.show		: {};
+					$rootScope.eventi.filtri.sorting				= filtri_app.sorting					? filtri_app.sorting					: $rootScope.eventi.filtri.sorting;
+					$rootScope.eventi.filtri.search					= filtri_app.search						? filtri_app.search						: $rootScope.eventi.filtri.search;
+					$rootScope.eventi.filtri.circuiti				= filtri_app.eventi					? filtri_app.eventi					: $rootScope.eventi.filtri.circuiti;
+					$rootScope.eventi.filtri.show					= $rootScope.eventi.filtri.show		? $rootScope.eventi.filtri.show		: {};
 					filtri_app.show										= filtri_app.show						? filtri_app.show						: {};
-					$rootScope.dipendenti.filtri.show.di_id				= !!filtri_app.show.di_id;
-					$rootScope.dipendenti.filtri.show.di_idazienda		= !!filtri_app.show.di_idazienda;
-					$rootScope.dipendenti.filtri.show.di_descr			= !!filtri_app.show.di_descr;
-					$rootScope.dipendenti.filtri.show.di_note			= !!filtri_app.show.di_note;
-					$rootScope.dipendenti.filtri.show.di_note_interne	= !!filtri_app.show.di_note_interne;
+					$rootScope.eventi.filtri.show.di_id				= !!filtri_app.show.di_id;
+					$rootScope.eventi.filtri.show.di_idazienda		= !!filtri_app.show.di_idazienda;
+					$rootScope.eventi.filtri.show.di_descr			= !!filtri_app.show.di_descr;
+					$rootScope.eventi.filtri.show.di_note			= !!filtri_app.show.di_note;
+					$rootScope.eventi.filtri.show.di_note_interne	= !!filtri_app.show.di_note_interne;
 				}
 			}
 		}
@@ -51,7 +51,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 					&& !$filter("filter")(
 						[{
 							item: item
-							,azienda: $rootScope.dipendenti.map[item.di_idazienda]
+							,azienda: $rootScope.eventi.map[item.di_idazienda]
 						}]
 						,filtri.search
 					).length
@@ -66,7 +66,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 		}
 		,toggle_rubrica: function(rubrica) {
 			if (this.rubrica_circuiti			&& this.rubrica_circuiti != rubrica)					this.rubrica_circuiti.fl_open = false;
-			if (this.rubrica_filtri_dipendenti	&& this.rubrica_filtri_dipendenti != rubrica)		this.rubrica_filtri_dipendenti.fl_open = false;
+			if (this.rubrica_filtri_eventi	&& this.rubrica_filtri_eventi != rubrica)		this.rubrica_filtri_eventi.fl_open = false;
 			if (rubrica) rubrica.fl_open = !rubrica.fl_open;
 		}
 		,rubrica_circuiti: {
@@ -74,10 +74,10 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			,model: $rootScope.circuiti
 			,order_by: ["az_descr"]
 			,fl_open: false
-			,deselect: function() {$rootScope.dipendenti.filtri.circuiti = {}}
+			,deselect: function() {$rootScope.eventi.filtri.circuiti = {}}
 			,search: undefined
-			,checked: function(item) {return item && $rootScope.dipendenti.filtri.circuiti[item.az_id] !== undefined}
-			,click: function(item) {$rootScope.dipendenti.filtri.circuiti[item.az_id] = $rootScope.dipendenti.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
+			,checked: function(item) {return item && $rootScope.eventi.filtri.circuiti[item.az_id] !== undefined}
+			,click: function(item) {$rootScope.eventi.filtri.circuiti[item.az_id] = $rootScope.eventi.filtri.circuiti[item.az_id] !== undefined ? undefined : item.az_descr}
 			,subhead: function(item) {return item.az_descr}
 			,body: undefined
 			,caption: function(item) {return item.az_id}
@@ -86,13 +86,13 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 				return $rootScope.utente_is_utente($scope.logged_user) || $scope.logged_user.idazienda == item.az_id;
 			}
 		}
-		,rubrica_filtri_dipendenti: {
-			template: "tmpl/rubrica_filtri_dipendenti.tmpl.html"
+		,rubrica_filtri_eventi: {
+			template: "tmpl/rubrica_filtri_eventi.tmpl.html"
 			,model: undefined
 			,fl_open: false
 		}
 	};
-	$rootScope.dipendenti.rubrica_filtri_dipendenti.model = $rootScope.dipendenti;
+	$rootScope.eventi.rubrica_filtri_eventi.model = $rootScope.eventi;
 
 	$rootScope.push_dipendente = function(dipendente) {
 		if (dipendente) {
@@ -101,13 +101,13 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 					$rootScope.push_dipendente(dipendente[i]);
 				}
 			} else {
-				$scope.push($rootScope.dipendenti.righe, dipendente);
-				$rootScope.dipendenti.map[dipendente.di_id] = dipendente;
+				$scope.push($rootScope.eventi.righe, dipendente);
+				$rootScope.eventi.map[dipendente.di_id] = dipendente;
 			}
 		}
 	}
 
-	$rootScope.select_dipendenti = function() {
+	$rootScope.select_eventi = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -117,13 +117,13 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			,true
 		).then(
 			(response) => {
-				$rootScope.dipendenti.righe = response;
-				$rootScope.dipendenti.map = {};
-				for (let di = 0; di < $rootScope.dipendenti.righe.length; di++) {
-					let dipendente = $rootScope.dipendenti.righe[di];
-					$rootScope.dipendenti.map[dipendente.di_id] = dipendente;
+				$rootScope.eventi.righe = response;
+				$rootScope.eventi.map = {};
+				for (let di = 0; di < $rootScope.eventi.righe.length; di++) {
+					let dipendente = $rootScope.eventi.righe[di];
+					$rootScope.eventi.map[dipendente.di_id] = dipendente;
 				}
-				return Promise.resolve($rootScope.dipendenti.righe);
+				return Promise.resolve($rootScope.eventi.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -140,8 +140,8 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.dipendenti.righe, dipendente);
-					$rootScope.dipendenti.map[dipendente.di_id] = undefined;
+					$scope.splice($rootScope.eventi.righe, dipendente);
+					$rootScope.eventi.map[dipendente.di_id] = undefined;
 					$scope.toast("Evento eliminato");
 					return Promise.resolve(dipendente);
 				}
@@ -214,8 +214,8 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 		);
 	}
 
-	$rootScope.report_dipendenti_export_xlsx = function(dipendenti, filtri) {
-		dipendenti = dipendenti ? dipendenti : [];
+	$rootScope.report_eventi_export_xlsx = function(eventi, filtri) {
+		eventi = eventi ? eventi : [];
 		filtri = filtri ? filtri : {};
 		filtri.show = filtri.show ? filtri.show : {
 			di_id: true
@@ -234,8 +234,8 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 		if (filtri.show.di_note) table += "<th style=\"border-bottom: 3px solid #BBB\"><b>Note</b></th>";
 		table += "</tr></thead>";
 		table +="<tbody>";
-		for (let di = 0; di < dipendenti.length; di++) {
-			let dipendente = dipendenti[di];
+		for (let di = 0; di < eventi.length; di++) {
+			let dipendente = eventi[di];
 			table += "<tr>";
 			if (filtri.show.di_idazienda) table += "<td>" + (dipendente.di_idazienda ? dipendente.di_idazienda : "") + "</td>";
 			if (filtri.show.di_idazienda) table += "<td>" + (dipendente.di_idazienda ? $rootScope.circuiti.map[dipendente.di_idazienda].az_descr : "") + "</td>";
@@ -286,8 +286,8 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 			,(response) => {return Promise.resolve(response)}
 		);
 	}
-	$rootScope.report_dipendenti_export_pdf = function(dipendenti, filtri) {
-		dipendenti = dipendenti ? dipendenti : [];
+	$rootScope.report_eventi_export_pdf = function(eventi, filtri) {
+		eventi = eventi ? eventi : [];
 		filtri = filtri ? filtri : {};
 		filtri.show = filtri.show ? filtri.show : {
 			di_id: true
@@ -298,8 +298,8 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 		};
 
 		let righe = [];
-		for (let di = 0; di < dipendenti.length; di++) {
-			let dipendente = dipendenti[di];
+		for (let di = 0; di < eventi.length; di++) {
+			let dipendente = eventi[di];
 			righe.push({
 				di_id: dipendente.di_id
 				,di_idazienda: dipendente.di_idazienda
@@ -313,7 +313,7 @@ app.controller("dipendenti", ["$rootScope", "$scope", "$localStorage", "$filter"
 		return $scope.ajax(
 			"api/base/toPdf.php"
 			,{
-				template: "report_dipendenti.tmpl.html"
+				template: "report_eventi.tmpl.html"
 				,options: {
 					landscape: true
 					,disable_links: true

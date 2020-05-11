@@ -25,21 +25,21 @@
 ></div>
 
 <md-card
-	ng-if="report.page == 'dipendenti'"
+	ng-if="report.page == 'eventi'"
 	layout="column"
 	layout-align="start stretch"
 	layout-padding
 	flex
 	class="full-height"
-	ng-include="'gestione_dipendenti.html'"
+	ng-include="'gestione_eventi.html'"
 ></md-card>
 <div
-	ng-if="report.page == 'dipendenti'"
+	ng-if="report.page == 'eventi'"
 	layout="row"
 	layout-align="start center"
 	class="toolbar"
 	md-colors="{background: colors.secondary_toolbar}"
-	ng-include="'report_dipendenti_toolbar.html'"
+	ng-include="'report_eventi_toolbar.html'"
 ></div>
 
 <md-card

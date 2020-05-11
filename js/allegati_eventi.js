@@ -1,7 +1,7 @@
-app.controller("allegati_dipendenti", ["$rootScope", "$scope", function($rootScope, $scope) {
-	$rootScope.allegati_dipendenti = $rootScope.allegati_dipendenti ? $rootScope.allegati_dipendenti : {};
+app.controller("allegati_eventi", ["$rootScope", "$scope", function($rootScope, $scope) {
+	$rootScope.allegati_eventi = $rootScope.allegati_eventi ? $rootScope.allegati_eventi : {};
 
-	$rootScope.select_allegati_dipendenti = function() {
+	$rootScope.select_allegati_eventi = function() {
 		return $scope.ajax(
 			"api/base/find.php"
 			,{
@@ -11,10 +11,10 @@ app.controller("allegati_dipendenti", ["$rootScope", "$scope", function($rootSco
 			,true
 		).then(
 			(response) => {
-				$rootScope.allegati_dipendenti.righe = [];
-				$rootScope.allegati_dipendenti.map = {};
+				$rootScope.allegati_eventi.righe = [];
+				$rootScope.allegati_eventi.map = {};
 				$rootScope.push_allegato_dipendente(response);
-				return Promise.resolve($rootScope.allegati_dipendenti.righe);
+				return Promise.resolve($rootScope.allegati_eventi.righe);
 			}
 			,(response) => {return Promise.reject(response)}
 		);
@@ -27,9 +27,9 @@ app.controller("allegati_dipendenti", ["$rootScope", "$scope", function($rootSco
 					$rootScope.push_allegato_dipendente(allegato_dipendente[i]);
 				}
 			} else {
-				$scope.push($rootScope.allegati_dipendenti.righe, allegato_dipendente);
-				$rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato] = $rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato] ? $rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato] : {};
-				$rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato][allegato_dipendente.ad_iddipendente] = allegato_dipendente;
+				$scope.push($rootScope.allegati_eventi.righe, allegato_dipendente);
+				$rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato] = $rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato] ? $rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato] : {};
+				$rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato][allegato_dipendente.ad_iddipendente] = allegato_dipendente;
 			}
 		}
 	}
@@ -69,9 +69,9 @@ app.controller("allegati_dipendenti", ["$rootScope", "$scope", function($rootSco
 				,true
 			).then(
 				(response) => {
-					$scope.splice($rootScope.allegati_dipendenti.righe, allegato_dipendente);
-					if ($rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato]) {
-						$rootScope.allegati_dipendenti.map[allegato_dipendente.ad_idallegato][allegato_dipendente.ad_iddipendente] = undefined;
+					$scope.splice($rootScope.allegati_eventi.righe, allegato_dipendente);
+					if ($rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato]) {
+						$rootScope.allegati_eventi.map[allegato_dipendente.ad_idallegato][allegato_dipendente.ad_iddipendente] = undefined;
 					}
 					$scope.toast("Dipendente rimosso");
 					return Promise.resolve(allegato_dipendente);

@@ -163,7 +163,7 @@ $beansMaps->UtenteBean = (Object) [
 # DipendenteBean
 $beansMaps->DipendenteBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "dipendenti"
+	,"sqlTableName" => "eventi"
 	,"sqlFieldsMap" => (Object) [
 		"di_id" => (Object) [
 			"name" => "di_id"
@@ -849,7 +849,7 @@ $beansMaps->AllegatoAziendaBean = (Object) [
 # AllegatoDipendenteBean
 $beansMaps->AllegatoDipendenteBean = (Object) [
 	"dbh" => $dbh
-	,"sqlTableName" => "allegati_dipendenti"
+	,"sqlTableName" => "allegati_eventi"
 	,"sqlFieldsMap" => (Object) [
 		"ad_idallegato" => (Object) [
 			"name" => "ad_idallegato"
