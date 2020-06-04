@@ -342,7 +342,7 @@ app.controller("checkups", ["$rootScope", "$scope", "$filter", "$localStorage", 
 						}
 					}
 				} else {
-					return $scope.alert_warning("azienda is null");
+					return $scope.alert_warning("circuito is null");
 				}
 			} else {
 				for (let cr = 0; cr < checkup.righe.length; cr++) {

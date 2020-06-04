@@ -28,7 +28,7 @@ try {
 				$response->response = $query->error;
 			}
 		} else {
-			$response->response = "azienda is null";
+			$response->response = "circuito is null";
 		}
 	} else {
 		$response->response = "Sessione scaduta";

@@ -149,7 +149,7 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 				(yes) => {return $rootScope.delete_azienda(azienda, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(
-				"api/azienda/delete.php"
+				"api/circuito/delete.php"
 				,{azienda: azienda}
 				,true
 			).then(
@@ -163,7 +163,7 @@ app.controller("circuiti", ["$rootScope", "$scope", "$localStorage", "$filter", 
 			);
 		}
 		return Promise.reject(
-			"azienda is "
+			"circuito is "
 			+ (azienda === undefined ? "undefined" : "")
 			+ (azienda === null ? "null" : "")
 			+ (azienda === false ? "false" : "")

@@ -148,7 +148,7 @@ $beansMaps->UtenteBean = (Object) [
 			,"flGetFirst" => true
 			,"flReadOnly" => true
 		]
-		,"azienda" => (Object) [
+		,"circuito" => (Object) [
 			"beanName" => "CircuitoBean"
 			,"fksMap" => (Object) [
 				"az_id" => (Object) [

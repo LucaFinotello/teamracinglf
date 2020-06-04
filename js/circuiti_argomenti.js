@@ -38,7 +38,7 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 					$scope.push($rootScope.circuiti_argomenti.righe, azienda_argomento);
 					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] : {};
 					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = azienda_argomento;
-					$scope.toast("Argomento assegnato all'azienda");
+					$scope.toast("Argomento assegnato all'circuito");
 					return Promise.resolve(azienda_argomento);
 				}
 				,(response) => {return Promise.reject(response)}
@@ -55,7 +55,7 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 
 	$rootScope.delete_azienda_argomento = function(azienda_argomento, fl_ask_confirm) {
 		if (azienda_argomento) {
-			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere l'argomento da questa azienda?", "SI", "NO").then(
+			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere l'argomento da questa circuito?", "SI", "NO").then(
 				(yes) => {return $rootScope.delete_azienda_argomento(azienda_argomento, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(
@@ -67,7 +67,7 @@ app.controller("circuiti_argomenti", ["$rootScope", "$scope", function($rootScop
 					$scope.splice($rootScope.circuiti_argomenti.righe, azienda_argomento);
 					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] = $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] ? $rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento] : {};
 					$rootScope.circuiti_argomenti.map[azienda_argomento.aa_idargomento][azienda_argomento.aa_idazienda] = undefined;
-					$scope.toast("Argomento rimosso dall'azienda");
+					$scope.toast("Argomento rimosso dall'circuito");
 					return Promise.resolve(azienda_argomento);
 				}
 				,(response) => {return Promise.reject(response)}

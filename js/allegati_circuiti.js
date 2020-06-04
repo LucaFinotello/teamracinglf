@@ -60,7 +60,7 @@ app.controller("allegati_circuiti", ["$rootScope", "$scope", function($rootScope
 
 	$rootScope.delete_allegato_azienda = function(allegato_azienda, fl_ask_confirm) {
 		if (allegato_azienda) {
-			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere l'azienda?", "SI", "NO").then(
+			return fl_ask_confirm ? $scope.alert_confirm("Sicuro di voler rimuovere l'circuito?", "SI", "NO").then(
 				(yes) => {return $rootScope.delete_allegato_azienda(allegato_azienda, false)}
 				,(no) => {return Promise.reject(no)}
 			) : $scope.ajax(

@@ -74,7 +74,7 @@ if ($fl_prod == 1) { # TEST
 	$url =					"https://www.teamracinglf.cloud/TeamRacing/";
 	# DB
 	$db_host				= "89.46.111.108";
-	$db_name				= "Sql1344355_1";
+	$db_name				= "Sql1344355_3";
 	$db_user				= "Sql1344355";
 	$db_pass				= "m6477r3814";
 	# DB gestionale
